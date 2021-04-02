@@ -31,7 +31,7 @@ class UserService {
       if (userFromDb) {
         // const isPasswordEqual = (userFromDb.password === this.password);
         if (userFromDb.password === this.password) {
-          const data = this.prepareData(userFromDb.id, userFromDb.password);
+          const data = this.prepareData(userFromDb.id, userFromDb.email);
           return {
             message: "Successfully logged in",
             success: true,
