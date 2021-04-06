@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.js": "/prohogar/static/js/main.4adc479e.chunk.js",
-    "main.js.map": "/prohogar/static/js/main.4adc479e.chunk.js.map",
+    "main.js": "/prohogar/static/js/main.15627747.chunk.js",
+    "main.js.map": "/prohogar/static/js/main.15627747.chunk.js.map",
     "runtime-main.js": "/prohogar/static/js/runtime-main.2d17e252.js",
     "runtime-main.js.map": "/prohogar/static/js/runtime-main.2d17e252.js.map",
-    "static/js/2.fa8f570c.chunk.js": "/prohogar/static/js/2.fa8f570c.chunk.js",
-    "static/js/2.fa8f570c.chunk.js.map": "/prohogar/static/js/2.fa8f570c.chunk.js.map",
+    "static/js/2.73447aac.chunk.js": "/prohogar/static/js/2.73447aac.chunk.js",
+    "static/js/2.73447aac.chunk.js.map": "/prohogar/static/js/2.73447aac.chunk.js.map",
     "index.html": "/prohogar/index.html",
-    "static/js/2.fa8f570c.chunk.js.LICENSE.txt": "/prohogar/static/js/2.fa8f570c.chunk.js.LICENSE.txt"
+    "static/js/2.73447aac.chunk.js.LICENSE.txt": "/prohogar/static/js/2.73447aac.chunk.js.LICENSE.txt",
+    "static/media/logo.d1923fc5.svg": "/prohogar/static/media/logo.d1923fc5.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.2d17e252.js",
-    "static/js/2.fa8f570c.chunk.js",
-    "static/js/main.4adc479e.chunk.js"
+    "static/js/2.73447aac.chunk.js",
+    "static/js/main.15627747.chunk.js"
   ]
 }
