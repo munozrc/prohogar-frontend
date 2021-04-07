@@ -107,7 +107,7 @@ class LoginPage extends React.Component {
             <LineItem widthLine={"85px"} />
           </Title>
           <NormalInput
-            type="email"
+            typeInput="email"
             name="email"
             value={this.state.email}
             placeHolder="Ingrese Correo electrónico"
@@ -115,7 +115,7 @@ class LoginPage extends React.Component {
             label="Correo electrónico del usuario"
           />
           <NormalInput
-            type="password"
+            typeInput="password"
             name="password"
             value={this.state.password}
             placeHolder="Ingrese Contraseña"
