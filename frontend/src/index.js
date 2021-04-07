@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { createGlobalStyle } from "styled-components";
 import { Router, Route } from "wouter";
 
+// Views
+import ClientPage from "./views/ClientPage";
 import LoginPage from "./views/LoginPage";
 import MainPage from "./views/MainPage";
 
@@ -30,6 +32,7 @@ ReactDOM.render(
     <Router base="/prohogar">
       <Route path="/" component={MainPage} />
       <Route path="/login" component={LoginPage} />
+      <Route path="/client" component={ClientPage} />
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
