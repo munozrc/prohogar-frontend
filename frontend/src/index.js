@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { createGlobalStyle } from "styled-components";
-import { Router, Route } from "wouter";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Views
 import ClientPage from "./views/ClientPage";
@@ -29,10 +29,18 @@ const GlobalStyle = createGlobalStyle`
 ReactDOM.render(
   <React.StrictMode>
     <GlobalStyle />
-    <Router base="/prohogar">
-      <Route path="/" component={MainPage} />
-      <Route path="/login" component={LoginPage} />
-      <Route path="/client" component={ClientPage} />
+    <Router basename="/prohogar">
+      <Switch>
+        <Route exact path="/">
+          <MainPage />
+        </Route>
+        <Route path="/login">
+          <LoginPage />
+        </Route>
+        <Route path="/dashboard">
+          <ClientPage />
+        </Route>
+      </Switch>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

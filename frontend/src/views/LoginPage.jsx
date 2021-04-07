@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import LogoSVG from "../assets/logo.svg";
@@ -98,7 +98,7 @@ class LoginPage extends React.Component {
   render() {
     return (
       <Container>
-        <Link href="/">
+        <Link to="/">
           <LogoIcon src={LogoSVG} />
         </Link>
         <Form onSubmit={this.handleSubmit}>
@@ -125,7 +125,7 @@ class LoginPage extends React.Component {
           <NormalButton typeButton="submit" center={true}>
             Entrar
           </NormalButton>
-          <LinkForm href="/">Recuperar Cuenta</LinkForm>
+          <LinkForm to="/">Recuperar Cuenta</LinkForm>
           <LineItem widthLine={"100%"} marginBottom={"0.6em"} />
         </Form>
         <WaveForm up={false} />

@@ -1,17 +1,17 @@
 import React from "react";
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 import NormalButton from "../components/NormalButton";
 
 class MainPage extends React.Component {
   render() {
     return (
       <div>
-        <NormalButton typeButton={"buttom"}>
-          <Link href="/login">Login</Link>
-        </NormalButton>
-        <NormalButton typeButton={"buttom"}>
-          <Link href="/login">Sign Up</Link>
-        </NormalButton>
+        <Link to="/login">
+          <NormalButton typeButton={"buttom"}>Login</NormalButton>
+        </Link>
+        <Link to="/login">
+          <NormalButton typeButton={"buttom"}>Sign Up</NormalButton>
+        </Link>
       </div>
     );
   }
