@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { createGlobalStyle } from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import "normalize.css";
+
 // Views
 import ClientPage from "./views/ClientPage";
 import LoginPage from "./views/LoginPage";
