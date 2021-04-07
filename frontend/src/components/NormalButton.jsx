@@ -12,12 +12,22 @@ const Button = styled.button`
   border-radius: 10px;
   cursor: pointer;
   margin: ${({ center }) => (center ? "0 auto" : "0")};
+  transition: background-color 0.2s ease 0s;
+
+  & a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  :hover {
+    background-color: #7d92dd;
+  }
 `;
 
-const NormalButton = ({ text, center }) => {
+const NormalButton = ({ typeButton = "button", center = false, children }) => {
   return (
-    <Button type="submit" center={center}>
-      {text}
+    <Button type={typeButton} center={center}>
+      {children}
     </Button>
   );
 };

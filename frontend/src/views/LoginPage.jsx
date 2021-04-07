@@ -122,7 +122,9 @@ class LoginPage extends React.Component {
             handleChange={(value) => this.setState({ password: value })}
             label="Contraseña"
           />
-          <NormalButton text="Entrar" center={true} />
+          <NormalButton typeButton="submit" center={true}>
+            Entrar
+          </NormalButton>
           <LinkForm href="/">Recuperar Cuenta</LinkForm>
           <LineItem widthLine={"100%"} marginBottom={"0.6em"} />
         </Form>
