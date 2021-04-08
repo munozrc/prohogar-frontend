@@ -1,4 +1,5 @@
 import ISafeData from "../typings/ISafeData";
+import jwt from "jsonwebtoken";
 
 interface AuthReturnData {
   message: string;
@@ -56,7 +57,7 @@ class UserService {
   }
 
   private prepareData(id: string, email: string, role: string): ISafeData {
-    const token = "asjkdhajksd";
+    const token = jwt.sign({ id }, "cambiarClave", { expiresIn: "30d" });
     const data: ISafeData = {
       user: {
         id,
