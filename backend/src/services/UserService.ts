@@ -11,11 +11,13 @@ let users = [
     id: "0",
     email: "carlos@gmail.com",
     password: "12345",
+    role: "client",
   },
   {
     id: "1",
     email: "yiner@gmail.com",
     password: "12345",
+    role: "professional",
   },
 ];
 
@@ -31,7 +33,11 @@ class UserService {
       if (userFromDb) {
         // const isPasswordEqual = (userFromDb.password === this.password);
         if (userFromDb.password === this.password) {
-          const data = this.prepareData(userFromDb.id, userFromDb.email);
+          const data = this.prepareData(
+            userFromDb.id,
+            userFromDb.email,
+            userFromDb.role
+          );
           return {
             message: "Successfully logged in",
             success: true,
@@ -49,12 +55,13 @@ class UserService {
     }
   }
 
-  private prepareData(id: string, email: string): ISafeData {
+  private prepareData(id: string, email: string, role: string): ISafeData {
     const token = "asjkdhajksd";
     const data: ISafeData = {
       user: {
         id,
         email,
+        role,
       },
       jwt: token,
     };
