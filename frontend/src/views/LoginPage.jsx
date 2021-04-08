@@ -88,14 +88,15 @@ class LoginPage extends React.Component {
         email: this.state.email,
         password: this.state.password,
       });
-
       window.localStorage.setItem("AppUser", JSON.stringify(user));
+      this.props.history.push("/dashboard");
     } catch (error) {
       console.error("login: ", error);
     }
   }
 
   render() {
+    const { email, password } = this.state;
     return (
       <Container>
         <Link to="/">
@@ -109,7 +110,7 @@ class LoginPage extends React.Component {
           <NormalInput
             typeInput="email"
             name="email"
-            value={this.state.email}
+            value={email}
             placeHolder="Ingrese Correo electrónico"
             handleChange={(value) => this.setState({ email: value })}
             label="Correo electrónico del usuario"
@@ -117,7 +118,7 @@ class LoginPage extends React.Component {
           <NormalInput
             typeInput="password"
             name="password"
-            value={this.state.password}
+            value={password}
             placeHolder="Ingrese Contraseña"
             handleChange={(value) => this.setState({ password: value })}
             label="Contraseña"
