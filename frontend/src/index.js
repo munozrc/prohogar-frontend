@@ -15,6 +15,7 @@ import MainPage from "./views/MainPage";
 import LoginPage from "./views/LoginPage";
 import ClientPage from "./views/ClientPage";
 import ProfessionalPage from "./views/ProfessionalPage";
+import NotFound from "./views/NotFound";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -45,16 +46,33 @@ const isAuthenticated = () => {
   return isValid;
 };
 
-const roleDashboard = (ClientDashboard, ProDashboard) => {
+const getDashboardByRole = (ClientDashboard, ProDashboard, NotFoundView) => {
   const userCurrent = JSON.parse(window.localStorage.getItem("AppUser"));
   try {
     if (userCurrent.data.user.role === "client") return ClientDashboard;
     else if (userCurrent.data.user.role === "professional") return ProDashboard;
-  } catch (error) {}
+    else return NotFoundView;
+  } catch (error) {
+    return NotFoundView;
+  }
 };
 
-const PrivateRoute = (props) =>
-  isAuthenticated() ? <Route {...props} /> : <Redirect to="/login" />;
+const PrivateRoute = ({ path, component, ...props }) => {
+  if (isAuthenticated()) {
+    if (path === "/dashboard") {
+      const viewDashboard = getDashboardByRole(
+        ClientPage,
+        ProfessionalPage,
+        NotFound
+      );
+      return <Route {...props} path={path} component={viewDashboard} />;
+    } else {
+      return <Route {...props} path={path} component={component} />;
+    }
+  } else {
+    return <Redirect to="/login" />;
+  }
+};
 
 const PublicRoute = (props) =>
   !isAuthenticated() ? <Route {...props} /> : <Redirect to="/dashboard" />;
@@ -66,12 +84,8 @@ ReactDOM.render(
       <Switch>
         <PublicRoute exact path="/" component={MainPage} />
         <PublicRoute exact path="/login" component={LoginPage} />
-        <PrivateRoute
-          exact
-          path="/dashboard"
-          component={roleDashboard(ClientPage, ProfessionalPage)}
-        />
-        <Redirect path="/**" to={isAuthenticated() ? "dashboard" : "/"} />
+        <PrivateRoute exact path="/dashboard" component={ClientPage} />
+        <Route component={NotFound} />
       </Switch>
     </Router>
   </React.StrictMode>,

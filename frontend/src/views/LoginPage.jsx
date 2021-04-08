@@ -88,7 +88,7 @@ class LoginPage extends React.Component {
         email: this.state.email,
         password: this.state.password,
       });
-      window.localStorage.setItem("AppUser", JSON.stringify(user));
+      await window.localStorage.setItem("AppUser", JSON.stringify(user));
       this.props.history.push("/dashboard");
     } catch (error) {
       console.error("login: ", error);
