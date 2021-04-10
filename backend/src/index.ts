@@ -1,5 +1,5 @@
 import express from "express";
-import Server from "./Server";
+import Server from "./typings/Server";
 
 // middleware
 import { json, urlencoded } from "body-parser";
@@ -7,7 +7,7 @@ import morgan from "morgan";
 import cors from "cors";
 
 // Controllers
-import Controller from "./Controller";
+import Controller from "./typings/Controller";
 import AuthController from "./controllers/AuthController";
 
 const app: express.Application = express();

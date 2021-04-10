@@ -1,5 +1,5 @@
 import express from "express";
-import Controller, { Methods } from "../Controller";
+import Controller, { Methods } from "../typings/Controller";
 import UserService from "../services/UserService";
 
 class AuthController extends Controller {
