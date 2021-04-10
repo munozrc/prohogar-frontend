@@ -30,38 +30,41 @@ const Label = styled.label`
   color: #fff;
 `;
 
-const InputGeneric = ({
-  typeInput,
-  name,
-  value,
-  placeHolder,
-  handleChange,
-  label,
-}) => {
-  return (
-    <>
-      {label !== "" ? (
-        <>
-          <Label htmlFor={name}>{label}</Label>
+const InputGeneric = React.forwardRef(
+  ({ typeInput, name, placeHolder, label }, ref) => {
+    const [inputValue, setInputValue] = React.useState("");
+
+    const handleChange = (newValue) => {
+      setInputValue(newValue);
+    };
+
+    return (
+      <>
+        {label !== "" ? (
+          <>
+            <Label htmlFor={name}>{label}</Label>
+            <Input
+              type={typeInput}
+              name={name}
+              ref={ref}
+              value={inputValue}
+              placeholder={placeHolder}
+              onChange={({ target }) => handleChange(target.value)}
+            />{" "}
+          </>
+        ) : (
           <Input
             type={typeInput}
             name={name}
-            value={value}
+            ref={ref}
+            value={inputValue}
             placeholder={placeHolder}
             onChange={({ target }) => handleChange(target.value)}
-          />{" "}
-        </>
-      ) : (
-        <Input
-          type={typeInput}
-          name={name}
-          value={value}
-          placeholder={placeHolder}
-          onChange={({ target }) => handleChange(target.value)}
-        />
-      )}
-    </>
-  );
-};
+          />
+        )}
+      </>
+    );
+  }
+);
 
 export default InputGeneric;

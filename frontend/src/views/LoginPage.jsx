@@ -83,24 +83,29 @@ const LinkForm = styled(Link)`
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      email: "",
-      password: "",
-    };
+    this.emailInput = React.createRef();
+    this.passwordInput = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   async handleSubmit(event) {
     event.preventDefault();
     try {
-      const dataUser = await loginService({
-        email: this.state.email,
-        password: this.state.password,
-      });
+      const email = this.emailInput.current.value;
+      const password = this.passwordInput.current.value;
 
-      if (dataUser.message === LOGIN_SUCCESSFUL) {
-        window.localStorage.setItem(USER_DATA, JSON.stringify(dataUser));
-        this.props.history.push("/dashboard");
+      if (email !== "" && password !== "") {
+        const dataUser = await loginService({
+          email,
+          password,
+        });
+
+        if (dataUser.message === LOGIN_SUCCESSFUL) {
+          window.localStorage.setItem(USER_DATA, JSON.stringify(dataUser));
+          this.props.history.push("/dashboard");
+        }
+      } else {
+        console.error("login: campos vacios.");
       }
     } catch (error) {
       console.error("login: ", error);
@@ -108,7 +113,6 @@ class LoginPage extends React.Component {
   }
 
   render() {
-    const { email, password } = this.state;
     return (
       <Container>
         <Link to="/">
@@ -122,17 +126,15 @@ class LoginPage extends React.Component {
           <InputGeneric
             typeInput="email"
             name="email"
-            value={email}
             placeHolder="Ingrese Correo electrónico"
-            handleChange={(value) => this.setState({ email: value })}
+            ref={this.emailInput}
             label="Correo electrónico del usuario"
           />
           <InputGeneric
             typeInput="password"
             name="password"
-            value={password}
             placeHolder="Ingrese Contraseña"
-            handleChange={(value) => this.setState({ password: value })}
+            ref={this.passwordInput}
             label="Contraseña"
           />
           <ButtonGeneric typeButton="submit" center={true}>
