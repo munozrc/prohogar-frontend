@@ -14,7 +14,12 @@ import ButtonGeneric from "../components/common/ButtonGeneric";
 import InputGeneric from "../components/common/InputGeneric";
 
 // Constants
-import { LOGIN_SUCCESSFUL, USER_DATA } from "../constants";
+import {
+  FATAL_SERVER_ERROR,
+  INVALID_CREDENTIALS,
+  LOGIN_SUCCESSFUL,
+  USER_DATA,
+} from "../constants";
 
 // Styled Components
 const Container = styled.div`
@@ -90,25 +95,29 @@ class LoginPage extends React.Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    try {
-      const email = this.emailInput.current.value;
-      const password = this.passwordInput.current.value;
 
+    const email = this.emailInput.current.value;
+    const password = this.passwordInput.current.value;
+
+    try {
       if (email !== "" && password !== "") {
         const dataUser = await loginService({
           email,
           password,
         });
-
         if (dataUser.message === LOGIN_SUCCESSFUL) {
           window.localStorage.setItem(USER_DATA, JSON.stringify(dataUser));
           this.props.history.push("/dashboard");
         }
       } else {
-        console.error("login: campos vacios.");
+        alert("login: campos vacios.");
       }
     } catch (error) {
-      console.error("login: ", error);
+      if (error.response.data.message === INVALID_CREDENTIALS) {
+        alert("login: email o password invalidos");
+      } else if (error.response.data.message === FATAL_SERVER_ERROR) {
+        alert("login: error fatal en el server");
+      }
     }
   }
 

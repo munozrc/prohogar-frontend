@@ -1,1 +1,3 @@
 export const LOGIN_SUCCESSFUL: string = "LOGIN_SUCCESSFUL";
+export const INVALID_CREDENTIALS: string = "INVALID_CREDENTIALS";
+export const FATAL_SERVER_ERROR: string = "FATAL_SERVER_ERROR";

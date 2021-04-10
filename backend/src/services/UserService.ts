@@ -1,6 +1,10 @@
 import ISafeData from "../typings/ISafeData";
 import jwt from "jsonwebtoken";
-import { LOGIN_SUCCESSFUL } from "../constants";
+import {
+  FATAL_SERVER_ERROR,
+  INVALID_CREDENTIALS,
+  LOGIN_SUCCESSFUL,
+} from "../constants";
 
 interface AuthReturnData {
   message: string;
@@ -47,14 +51,14 @@ class UserService {
             data: data,
           };
         } else {
-          return { message: "invalid email or password", success: false };
+          return { message: INVALID_CREDENTIALS, success: false };
         }
       } else {
-        return { message: "invalid email or password", success: false };
+        return { message: INVALID_CREDENTIALS, success: false };
       }
     } catch (error) {
       console.log(error);
-      return { message: "An error occured", success: false };
+      return { message: FATAL_SERVER_ERROR, success: false };
     }
   }
 
