@@ -16,6 +16,9 @@ import LoginPage from "./views/LoginPage";
 import ClientPage from "./views/ClientPage";
 import ProfessionalPage from "./views/ProfessionalPage";
 import NotFound from "./views/NotFound";
+import CreateAccount from "./views/CreateAccount";
+import WelcomePage from "./views/WelcomePage";
+import SelectAccountType from "./views/SelectAccountType";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -84,7 +87,14 @@ ReactDOM.render(
       <Switch>
         <PublicRoute exact path="/" component={MainPage} />
         <PublicRoute exact path="/login" component={LoginPage} />
+        <PublicRoute
+          exact
+          path="/select-account-type"
+          component={SelectAccountType}
+        />
+        <PublicRoute exact path="/register/:type" component={CreateAccount} />
         <PrivateRoute exact path="/dashboard" component={ClientPage} />
+        <PrivateRoute exact path="/welcome" component={WelcomePage} />
         <Route component={NotFound} />
       </Switch>
     </Router>

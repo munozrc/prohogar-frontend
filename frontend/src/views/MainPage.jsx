@@ -9,7 +9,7 @@ class MainPage extends React.Component {
         <Link to="/login">
           <NormalButton typeButton={"buttom"}>Login</NormalButton>
         </Link>
-        <Link to="/login">
+        <Link to="/select-account-type">
           <NormalButton typeButton={"buttom"}>Sign Up</NormalButton>
         </Link>
       </div>
