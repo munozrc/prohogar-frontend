@@ -1,6 +1,18 @@
 import React from "react";
+
+// Constants
+import {
+  PROFESSIONAL_USER,
+  USER_DATA,
+  WELCOME_ROUTE,
+  CATEGORIES,
+} from "../constants";
+
+// Components
 import ButtonGeneric from "../components/common/ButtonGeneric";
-import { USER_DATA, WELCOME_ROUTE } from "../constants";
+import ComboBoxGeneric from "../components/common/ComboBoxGeneric";
+
+// Services
 import registerService from "../services/registerService";
 
 class CreateAccount extends React.Component {
@@ -10,6 +22,7 @@ class CreateAccount extends React.Component {
       email: "",
       password: "",
       role: this.props.match.params.type,
+      category: null,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -29,9 +42,20 @@ class CreateAccount extends React.Component {
     }
   }
   render() {
+    let ComboBoxCatergory;
+    if (this.state.role === PROFESSIONAL_USER)
+      ComboBoxCatergory = (
+        <ComboBoxGeneric
+          label="Seleccione su Categoria"
+          name="category"
+          options={CATEGORIES}
+          placeHolder="Seleccione"
+        />
+      );
     return (
       <form onSubmit={this.handleSubmit}>
         <h2>Registrarse</h2>
+        {ComboBoxCatergory}
         <input type="text" name="name" id="name" placeholder="Ingrese Nombre" />
         <input
           type="text"

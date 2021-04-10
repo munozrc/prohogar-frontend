@@ -50,7 +50,7 @@ const InputGeneric = React.forwardRef(
               value={inputValue}
               placeholder={placeHolder}
               onChange={({ target }) => handleChange(target.value)}
-            />{" "}
+            />
           </>
         ) : (
           <Input
