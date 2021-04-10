@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NormalButton from "../components/NormalButton";
+import ButtonGeneric from "../components/common/ButtonGeneric";
 
 class MainPage extends React.Component {
   render() {
     return (
       <div>
         <Link to="/login">
-          <NormalButton typeButton={"buttom"}>Login</NormalButton>
+          <ButtonGeneric typeButton={"buttom"}>Login</ButtonGeneric>
         </Link>
         <Link to="/select-account-type">
-          <NormalButton typeButton={"buttom"}>Sign Up</NormalButton>
+          <ButtonGeneric typeButton={"buttom"}>Sign Up</ButtonGeneric>
         </Link>
       </div>
     );

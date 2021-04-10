@@ -1,5 +1,5 @@
 import React from "react";
-import NormalButton from "../components/NormalButton";
+import ButtonGeneric from "../components/common/ButtonGeneric";
 import registerService from "../services/registerService";
 
 class CreateAccount extends React.Component {
@@ -58,9 +58,9 @@ class CreateAccount extends React.Component {
           id="password"
           placeholder="Confirme Contraseña"
         />
-        <NormalButton typeButton="submit" center={true}>
+        <ButtonGeneric typeButton="submit" center={true}>
           Crear Cuenta
-        </NormalButton>
+        </ButtonGeneric>
       </form>
     );
   }

@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import LogoSVG from "../assets/logo.svg";
 import WaveForm from "../components/common/WaveForm";
-import NormalButton from "../components/NormalButton";
+import ButtonGeneric from "../components/common/ButtonGeneric";
 import NormalInput from "../components/NormalInput";
 import loginService from "../services/loginService";
 
@@ -123,9 +123,9 @@ class LoginPage extends React.Component {
             handleChange={(value) => this.setState({ password: value })}
             label="Contraseña"
           />
-          <NormalButton typeButton="submit" center={true}>
+          <ButtonGeneric typeButton="submit" center={true}>
             Entrar
-          </NormalButton>
+          </ButtonGeneric>
           <LinkForm to="/">Recuperar Cuenta</LinkForm>
           <LineItem widthLine={"100%"} marginBottom={"0.6em"} />
         </Form>

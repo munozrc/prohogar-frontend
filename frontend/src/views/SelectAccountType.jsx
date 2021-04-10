@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NormalButton from "../components/NormalButton";
+import ButtonGeneric from "../components/common/ButtonGeneric";
 
 class SelectAccountType extends React.Component {
   render() {
@@ -8,10 +8,10 @@ class SelectAccountType extends React.Component {
       <>
         <h1>Seleccione su tipo de cuenta</h1>
         <Link to="/register/client">
-          <NormalButton typeButton={"buttom"}>Cliente</NormalButton>
+          <ButtonGeneric typeButton={"buttom"}>Cliente</ButtonGeneric>
         </Link>
         <Link to="/register/professional">
-          <NormalButton typeButton={"buttom"}>Profesional</NormalButton>
+          <ButtonGeneric typeButton={"buttom"}>Profesional</ButtonGeneric>
         </Link>
       </>
     );

@@ -24,7 +24,7 @@ const Button = styled.button`
   }
 `;
 
-const NormalButton = ({ typeButton = "button", center = false, children }) => {
+const ButtonGeneric = ({ typeButton = "button", center = false, children }) => {
   return (
     <Button type={typeButton} center={center}>
       {children}
@@ -32,4 +32,4 @@ const NormalButton = ({ typeButton = "button", center = false, children }) => {
   );
 };
 
-export default NormalButton;
+export default ButtonGeneric;
