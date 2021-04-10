@@ -30,7 +30,7 @@ const Label = styled.label`
   color: #fff;
 `;
 
-const NormalInput = ({
+const InputGeneric = ({
   typeInput,
   name,
   value,
@@ -64,4 +64,4 @@ const NormalInput = ({
   );
 };
 
-export default NormalInput;
+export default InputGeneric;

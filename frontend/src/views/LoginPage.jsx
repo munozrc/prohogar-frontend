@@ -5,7 +5,7 @@ import styled from "styled-components";
 import LogoSVG from "../assets/logo.svg";
 import WaveForm from "../components/common/WaveForm";
 import ButtonGeneric from "../components/common/ButtonGeneric";
-import NormalInput from "../components/NormalInput";
+import InputGeneric from "../components/common/InputGeneric";
 import loginService from "../services/loginService";
 
 const Container = styled.div`
@@ -88,7 +88,7 @@ class LoginPage extends React.Component {
         email: this.state.email,
         password: this.state.password,
       });
-      await window.localStorage.setItem("AppUser", JSON.stringify(user));
+      window.localStorage.setItem("AppUser", JSON.stringify(user));
       this.props.history.push("/dashboard");
     } catch (error) {
       console.error("login: ", error);
@@ -107,7 +107,7 @@ class LoginPage extends React.Component {
             <LineItem widthLine={"85px"} /> Iniciar Sesión
             <LineItem widthLine={"85px"} />
           </Title>
-          <NormalInput
+          <InputGeneric
             typeInput="email"
             name="email"
             value={email}
@@ -115,7 +115,7 @@ class LoginPage extends React.Component {
             handleChange={(value) => this.setState({ email: value })}
             label="Correo electrónico del usuario"
           />
-          <NormalInput
+          <InputGeneric
             typeInput="password"
             name="password"
             value={password}
