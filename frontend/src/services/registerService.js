@@ -1,6 +1,7 @@
 import axios from "axios";
+import { URL_SERVER } from "../constants";
 
-const baseUrl = "http://localhost:3001/api/register";
+const baseUrl = `${URL_SERVER}/register`;
 
 export default async function loginService(newUser) {
   const { data } = await axios.post(baseUrl, newUser);
