@@ -1,5 +1,6 @@
 import ISafeData from "../typings/ISafeData";
 import jwt from "jsonwebtoken";
+import { LOGIN_SUCCESSFUL } from "../constants";
 
 interface AuthReturnData {
   message: string;
@@ -41,7 +42,7 @@ class UserService {
             userFromDb.role
           );
           return {
-            message: "Successfully logged in",
+            message: LOGIN_SUCCESSFUL,
             success: true,
             data: data,
           };

@@ -9,8 +9,10 @@ import {
   Switch,
 } from "react-router-dom";
 
+// Normalice Styles Css
 import "normalize.css";
 
+// Views
 import MainPage from "./views/MainPage";
 import LoginPage from "./views/LoginPage";
 import ClientPage from "./views/ClientPage";
@@ -20,6 +22,10 @@ import CreateAccount from "./views/CreateAccount";
 import WelcomePage from "./views/WelcomePage";
 import SelectAccountType from "./views/SelectAccountType";
 
+// Constans
+import { USER_DATA, CLIENT_USER, PROFESSIONAL_USER } from "./constants";
+
+// Global Styles Css
 const GlobalStyle = createGlobalStyle`
 
   * {
@@ -38,22 +44,22 @@ const GlobalStyle = createGlobalStyle`
 
 `;
 
+// Methods
 const isAuthenticated = () => {
-  const userCurrent = JSON.parse(window.localStorage.getItem("AppUser"));
-  let isValid = true;
   try {
-    isValid = decode(userCurrent.data.jwt);
+    const dataUser = JSON.parse(window.localStorage.getItem(USER_DATA));
+    return decode(dataUser.data.jwt);
   } catch (error) {
     return false;
   }
-  return isValid;
 };
 
 const getDashboardByRole = (ClientDashboard, ProDashboard, NotFoundView) => {
-  const userCurrent = JSON.parse(window.localStorage.getItem("AppUser"));
   try {
-    if (userCurrent.data.user.role === "client") return ClientDashboard;
-    else if (userCurrent.data.user.role === "professional") return ProDashboard;
+    const dataUser = JSON.parse(window.localStorage.getItem(USER_DATA));
+    const role = dataUser.data.user.role;
+    if (role === CLIENT_USER) return ClientDashboard;
+    else if (role === PROFESSIONAL_USER) return ProDashboard;
     else return NotFoundView;
   } catch (error) {
     return NotFoundView;
@@ -79,6 +85,8 @@ const PrivateRoute = ({ path, component, ...props }) => {
 
 const PublicRoute = (props) =>
   !isAuthenticated() ? <Route {...props} /> : <Redirect to="/dashboard" />;
+
+// END Methods
 
 ReactDOM.render(
   <React.StrictMode>

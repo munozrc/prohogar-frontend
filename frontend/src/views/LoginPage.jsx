@@ -2,12 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+// Services
+import loginService from "../services/loginService";
+
+// Assets
 import LogoSVG from "../assets/logo.svg";
+
+// Components
 import WaveForm from "../components/common/WaveForm";
 import ButtonGeneric from "../components/common/ButtonGeneric";
 import InputGeneric from "../components/common/InputGeneric";
-import loginService from "../services/loginService";
 
+// Constants
+import { LOGIN_SUCCESSFUL, USER_DATA } from "../constants";
+
+// Styled Components
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -69,7 +78,7 @@ const LinkForm = styled(Link)`
   margin: 1em auto;
   font-size: 1.1em;
   color: #7289da;
-`;
+`; // END Styled Components
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -84,12 +93,15 @@ class LoginPage extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     try {
-      const user = await loginService({
+      const dataUser = await loginService({
         email: this.state.email,
         password: this.state.password,
       });
-      window.localStorage.setItem("AppUser", JSON.stringify(user));
-      this.props.history.push("/dashboard");
+
+      if (dataUser.message === LOGIN_SUCCESSFUL) {
+        window.localStorage.setItem(USER_DATA, JSON.stringify(dataUser));
+        this.props.history.push("/dashboard");
+      }
     } catch (error) {
       console.error("login: ", error);
     }
