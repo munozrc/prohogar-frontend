@@ -25,12 +25,13 @@ let users = [
 class UserService {
   constructor(
     public readonly email: string,
-    public readonly password: string
+    public readonly password: string,
+    public readonly role: string
   ) {}
 
   public async login(): Promise<AuthReturnData> {
     try {
-      const userFromDb = await users.find((user) => user.email === this.email);
+      const userFromDb = users.find((user) => user.email === this.email);
       if (userFromDb) {
         // const isPasswordEqual = (userFromDb.password === this.password);
         if (userFromDb.password === this.password) {
@@ -52,6 +53,41 @@ class UserService {
       }
     } catch (error) {
       console.log(error);
+      return { message: "An error occured", success: false };
+    }
+  }
+
+  public async register(): Promise<AuthReturnData> {
+    try {
+      const userFromDb = users.find((user) => user.email === this.email);
+      if (!userFromDb) {
+        // const hashedPassword = await bcrypt.hash(this.password, 10);
+        // const createdUser = await db.User.create({
+        //     username: this.username,
+        //     password: hashedPassword,
+        //     bio: this.bio,
+        // });
+
+        const newUser = {
+          id: "2",
+          email: this.email,
+          password: this.password,
+          role: this.role,
+        };
+
+        users.push(newUser);
+
+        const data = this.prepareData(newUser.id, newUser.email, newUser.role);
+        return {
+          message: "Successfully registered",
+          success: true,
+          data: data,
+        };
+      } else {
+        return { message: "User already exists", success: false };
+      }
+    } catch (e) {
+      console.log(e);
       return { message: "An error occured", success: false };
     }
   }

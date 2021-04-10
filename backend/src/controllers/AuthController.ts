@@ -30,7 +30,7 @@ class AuthController extends Controller {
   ): Promise<void> {
     try {
       const { email, password } = req.body;
-      const userService = new UserService(email, password);
+      const userService = new UserService(email, password, "");
       const data = await userService.login();
       if (data.success) {
         super.sendSuccess(res, data.data!, data.message);
@@ -49,7 +49,14 @@ class AuthController extends Controller {
     next: express.NextFunction
   ): Promise<void> {
     try {
-      const { email, password } = req.body;
+      const { email, password, role } = req.body;
+      const userService = new UserService(email, password, role);
+      const data = await userService.register();
+      if (data.success) {
+        super.sendSuccess(res, data.data!, data.message);
+      } else {
+        super.sendError(res, data.message);
+      }
     } catch (error) {
       console.error(error);
       super.sendError(res);
