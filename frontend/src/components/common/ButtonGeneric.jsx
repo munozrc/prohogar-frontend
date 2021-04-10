@@ -24,9 +24,14 @@ const Button = styled.button`
   }
 `;
 
-const ButtonGeneric = ({ typeButton = "button", center = false, children }) => {
+const ButtonGeneric = ({
+  typeButton = "button",
+  center = false,
+  children,
+  ...props
+}) => {
   return (
-    <Button type={typeButton} center={center}>
+    <Button type={typeButton} center={center} {...props}>
       {children}
     </Button>
   );
