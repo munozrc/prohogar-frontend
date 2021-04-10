@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import ButtonGeneric from "../components/common/ButtonGeneric";
 import {
   CLIENT_USER,
@@ -8,16 +7,38 @@ import {
 } from "../constants";
 
 class SelectAccountType extends React.Component {
+  constructor(props) {
+    super(props);
+    this.showCreateAccountAsClient = this.showCreateAccountAsClient.bind(this);
+    this.showCreateAccountAsPro = this.showCreateAccountAsPro.bind(this);
+  }
+
+  showCreateAccountAsClient() {
+    this.props.history.push(`${CREATE_ACCOUNT_ROUTE_ACCESS}/${CLIENT_USER}`);
+  }
+
+  showCreateAccountAsPro() {
+    this.props.history.push(
+      `${CREATE_ACCOUNT_ROUTE_ACCESS}/${PROFESSIONAL_USER}`
+    );
+  }
+
   render() {
     return (
       <>
         <h1>Seleccione su tipo de cuenta</h1>
-        <Link to={`${CREATE_ACCOUNT_ROUTE_ACCESS}/${CLIENT_USER}`}>
-          <ButtonGeneric typeButton={"buttom"}>Cliente</ButtonGeneric>
-        </Link>
-        <Link to={`${CREATE_ACCOUNT_ROUTE_ACCESS}/${PROFESSIONAL_USER}`}>
-          <ButtonGeneric typeButton={"buttom"}>Profesional</ButtonGeneric>
-        </Link>
+        <ButtonGeneric
+          typeButton={"buttom"}
+          onClick={this.showCreateAccountAsClient}
+        >
+          Cliente
+        </ButtonGeneric>
+        <ButtonGeneric
+          typeButton={"buttom"}
+          onClick={this.showCreateAccountAsPro}
+        >
+          Profesional
+        </ButtonGeneric>
       </>
     );
   }
