@@ -1,1 +1,1 @@
-export { LOGIN_SUCCESSFUL } from "./messagesServer";
+export { LOGIN_SUCCESSFUL } from "./messages";
