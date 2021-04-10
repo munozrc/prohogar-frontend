@@ -1,5 +1,6 @@
 import React from "react";
 import ButtonGeneric from "../components/common/ButtonGeneric";
+import { USER_DATA, WELCOME_ROUTE } from "../constants";
 import registerService from "../services/registerService";
 
 class CreateAccount extends React.Component {
@@ -21,8 +22,8 @@ class CreateAccount extends React.Component {
         password: this.state.password,
         role: this.state.role,
       });
-      window.localStorage.setItem("AppUser", JSON.stringify(user));
-      this.props.history.push("/welcome");
+      window.localStorage.setItem(USER_DATA, JSON.stringify(user));
+      this.props.history.push(WELCOME_ROUTE);
     } catch (error) {
       console.error("register: ", error);
     }
@@ -54,8 +55,8 @@ class CreateAccount extends React.Component {
         />
         <input
           type="password"
-          name="password"
-          id="password"
+          name="cpassword"
+          id="cpassword"
           placeholder="Confirme Contraseña"
         />
         <ButtonGeneric typeButton="submit" center={true}>

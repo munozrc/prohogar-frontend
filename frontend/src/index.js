@@ -23,7 +23,17 @@ import WelcomePage from "./views/WelcomePage";
 import SelectAccountType from "./views/SelectAccountType";
 
 // Constans
-import { USER_DATA, CLIENT_USER, PROFESSIONAL_USER } from "./constants";
+import {
+  USER_DATA,
+  CLIENT_USER,
+  PROFESSIONAL_USER,
+  HOME_ROUTE,
+  LOGIN_ROUTE,
+  SELECT_ACCOUNT_ROUTE,
+  CREATE_ACCOUNT_ROUTE,
+  DASHBOARD_ROUTE,
+  WELCOME_ROUTE,
+} from "./constants";
 
 // Global Styles Css
 const GlobalStyle = createGlobalStyle`
@@ -68,7 +78,7 @@ const getDashboardByRole = (ClientDashboard, ProDashboard, NotFoundView) => {
 
 const PrivateRoute = ({ path, component, ...props }) => {
   if (isAuthenticated()) {
-    if (path === "/dashboard") {
+    if (path === DASHBOARD_ROUTE) {
       const viewDashboard = getDashboardByRole(
         ClientPage,
         ProfessionalPage,
@@ -79,12 +89,12 @@ const PrivateRoute = ({ path, component, ...props }) => {
       return <Route {...props} path={path} component={component} />;
     }
   } else {
-    return <Redirect to="/login" />;
+    return <Redirect to={LOGIN_ROUTE} />;
   }
 };
 
 const PublicRoute = (props) =>
-  !isAuthenticated() ? <Route {...props} /> : <Redirect to="/dashboard" />;
+  !isAuthenticated() ? <Route {...props} /> : <Redirect to={DASHBOARD_ROUTE} />;
 
 // END Methods
 
@@ -93,16 +103,20 @@ ReactDOM.render(
     <GlobalStyle />
     <Router>
       <Switch>
-        <PublicRoute exact path="/" component={MainPage} />
-        <PublicRoute exact path="/login" component={LoginPage} />
+        <PublicRoute exact path={HOME_ROUTE} component={MainPage} />
+        <PublicRoute exact path={LOGIN_ROUTE} component={LoginPage} />
         <PublicRoute
           exact
-          path="/select-account-type"
+          path={SELECT_ACCOUNT_ROUTE}
           component={SelectAccountType}
         />
-        <PublicRoute exact path="/register/:type" component={CreateAccount} />
-        <PrivateRoute exact path="/dashboard" component={ClientPage} />
-        <PrivateRoute exact path="/welcome" component={WelcomePage} />
+        <PublicRoute
+          exact
+          path={CREATE_ACCOUNT_ROUTE}
+          component={CreateAccount}
+        />
+        <PrivateRoute exact path={DASHBOARD_ROUTE} component={ClientPage} />
+        <PrivateRoute exact path={WELCOME_ROUTE} component={WelcomePage} />
         <Route component={NotFound} />
       </Switch>
     </Router>

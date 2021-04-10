@@ -15,7 +15,9 @@ import InputGeneric from "../components/common/InputGeneric";
 
 // Constants
 import {
+  DASHBOARD_ROUTE,
   FATAL_SERVER_ERROR,
+  HOME_ROUTE,
   INVALID_CREDENTIALS,
   LOGIN_SUCCESSFUL,
   USER_DATA,
@@ -107,7 +109,7 @@ class LoginPage extends React.Component {
         });
         if (dataUser.message === LOGIN_SUCCESSFUL) {
           window.localStorage.setItem(USER_DATA, JSON.stringify(dataUser));
-          this.props.history.push("/dashboard");
+          this.props.history.push(DASHBOARD_ROUTE);
         }
       } else {
         alert("login: campos vacios.");
@@ -124,7 +126,7 @@ class LoginPage extends React.Component {
   render() {
     return (
       <Container>
-        <Link to="/">
+        <Link to={HOME_ROUTE}>
           <LogoIcon src={LogoSVG} />
         </Link>
         <Form onSubmit={this.handleSubmit}>
@@ -149,7 +151,7 @@ class LoginPage extends React.Component {
           <ButtonGeneric typeButton="submit" center={true}>
             Entrar
           </ButtonGeneric>
-          <LinkForm to="/">Recuperar Cuenta</LinkForm>
+          <LinkForm to={HOME_ROUTE}>Recuperar Cuenta</LinkForm>
           <LineItem widthLine={"100%"} marginBottom={"0.6em"} />
         </Form>
         <WaveForm up={false} />
