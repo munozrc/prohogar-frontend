@@ -8,37 +8,80 @@ import {
   CATEGORIES,
 } from "../constants";
 
+// Assets
+import DefaultProfileImage from "../assets/profile-image.jpg";
+
 // Components
 import ButtonGeneric from "../components/common/ButtonGeneric";
 import ComboBoxGeneric from "../components/common/ComboBoxGeneric";
+import ProfilePictureUploader from "../components/common/LoaderProfileImage";
 
 // Services
 import registerService from "../services/registerService";
+import InputGeneric from "../components/common/InputGeneric";
+
+const checkURLProfileImage = (url, defaultURL) => {
+  return url === defaultURL ? "" : url;
+};
 
 class CreateAccount extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: "",
       role: this.props.match.params.type,
-      category: null,
     };
+
+    this.loaderImg = React.createRef();
+    this.nameInput = React.createRef();
+    this.lastNameInput = React.createRef();
+    this.emailInput = React.createRef();
+    this.passwordInput = React.createRef();
+    this.cpasswordInput = React.createRef();
+    this.category = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   async handleSubmit(event) {
     event.preventDefault();
-    try {
-      const user = await registerService({
-        email: this.state.email,
-        password: this.state.password,
-        role: this.state.role,
-      });
-      window.localStorage.setItem(USER_DATA, JSON.stringify(user));
-      this.props.history.push(WELCOME_ROUTE);
-    } catch (error) {
-      console.error("register: ", error);
+
+    const name = this.nameInput.current.value;
+    const lastName = this.lastNameInput.current.value;
+    const email = this.emailInput.current.value;
+    const password = this.passwordInput.current.value;
+    const cpassword = this.cpasswordInput.current.value;
+    // const category = this.category.current.value;
+    const role = this.state.role;
+
+    if (
+      name !== "" &&
+      lastName !== "" &&
+      email !== "" &&
+      password !== "" &&
+      cpassword !== ""
+    ) {
+      if (password === cpassword) {
+        const profileImage = checkURLProfileImage(
+          this.loaderImg.current.src,
+          DefaultProfileImage
+        );
+        try {
+          const user = await registerService({
+            email,
+            password,
+            profileImage,
+            role,
+            category: "", // TODO: Change this
+          });
+          window.localStorage.setItem(USER_DATA, JSON.stringify(user));
+          this.props.history.push(WELCOME_ROUTE);
+        } catch (error) {
+          console.error("register: ", error);
+        }
+      } else {
+        alert("Register: las contraseñas no coinciden");
+      }
+    } else {
+      alert("Register: campos vacios");
     }
   }
   render() {
@@ -53,35 +96,39 @@ class CreateAccount extends React.Component {
         />
       );
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} style={{ backgroundColor: "#444" }}>
         <h2>Registrarse</h2>
         {ComboBoxCatergory}
-        <input type="text" name="name" id="name" placeholder="Ingrese Nombre" />
-        <input
-          type="text"
-          name="lastName"
-          id="lastName"
-          placeholder="Ingrese Apellido"
+        <ProfilePictureUploader ref={this.loaderImg} />
+        <InputGeneric
+          typeInput="text"
+          name="name"
+          placeHolder="Ingrese Nombre"
+          ref={this.nameInput}
         />
-        <input
-          type="email"
+        <InputGeneric
+          typeInput="text"
+          name="lastname"
+          placeHolder="Ingrese Apellido"
+          ref={this.lastNameInput}
+        />
+        <InputGeneric
+          typeInput="email"
           name="email"
-          id="email"
-          placeholder="Ingrese Correo"
-          onChange={({ target }) => this.setState({ email: target.value })}
+          placeHolder="Ingrese Correo Electronico"
+          ref={this.emailInput}
         />
-        <input
-          type="password"
+        <InputGeneric
+          typeInput="password"
           name="password"
-          id="password"
-          placeholder="Ingrese Contraseña"
-          onChange={({ target }) => this.setState({ password: target.value })}
+          placeHolder="Ingrese Contraseña"
+          ref={this.passwordInput}
         />
-        <input
-          type="password"
+        <InputGeneric
+          typeInput="password"
           name="cpassword"
-          id="cpassword"
-          placeholder="Confirme Contraseña"
+          placeHolder="Confirme Contraseña"
+          ref={this.cpasswordInput}
         />
         <ButtonGeneric typeButton="submit" center={true}>
           Crear Cuenta
