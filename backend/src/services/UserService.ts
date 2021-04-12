@@ -1,9 +1,12 @@
 import ISafeData from "../typings/ISafeData";
+import UserModel from "../models/UserModel";
 import jwt from "jsonwebtoken";
 import {
   FATAL_SERVER_ERROR,
   INVALID_CREDENTIALS,
   LOGIN_SUCCESSFUL,
+  SUCCESSFULLY_REGISTERED,
+  USER_ALREADY_EXISTS,
 } from "../constants";
 
 interface AuthReturnData {
@@ -15,15 +18,23 @@ interface AuthReturnData {
 let users = [
   {
     id: "0",
+    name: "Carlos",
+    lastName: "Muñoz",
     email: "carlos@gmail.com",
     password: "12345",
+    profileImage: "",
     role: "client",
+    category: 0,
   },
   {
     id: "1",
-    email: "yiner@gmail.com",
+    name: "David",
+    lastName: "Chicunque",
+    email: "david@gmail.com",
     password: "12345",
+    profileImage: "",
     role: "professional",
+    category: 1,
   },
 ];
 
@@ -31,7 +42,11 @@ class UserService {
   constructor(
     public readonly email: string,
     public readonly password: string,
-    public readonly role: string
+    public readonly name?: string,
+    public readonly lastName?: string,
+    public readonly profileImage?: string,
+    public readonly role?: string,
+    public readonly category?: number
   ) {}
 
   public async login(): Promise<AuthReturnData> {
@@ -40,11 +55,7 @@ class UserService {
       if (userFromDb) {
         // const isPasswordEqual = (userFromDb.password === this.password);
         if (userFromDb.password === this.password) {
-          const data = this.prepareData(
-            userFromDb.id,
-            userFromDb.email,
-            userFromDb.role
-          );
+          const data = this.prepareData(userFromDb);
           return {
             message: LOGIN_SUCCESSFUL,
             success: true,
@@ -74,36 +85,45 @@ class UserService {
         // });
 
         const newUser = {
+          // Temporal Code
           id: "2",
+          name: this.name || "",
+          lastName: this.lastName || "",
           email: this.email,
           password: this.password,
-          role: this.role,
+          profileImage: this.profileImage || "",
+          role: this.role || "",
+          category: this.category || 0,
         };
 
         users.push(newUser);
 
-        const data = this.prepareData(newUser.id, newUser.email, newUser.role);
+        const data = this.prepareData(newUser);
         return {
-          message: "Successfully registered",
+          message: SUCCESSFULLY_REGISTERED,
           success: true,
           data: data,
         };
       } else {
-        return { message: "User already exists", success: false };
+        return { message: USER_ALREADY_EXISTS, success: false };
       }
     } catch (e) {
       console.log(e);
-      return { message: "An error occured", success: false };
+      return { message: FATAL_SERVER_ERROR, success: false };
     }
   }
 
-  private prepareData(id: string, email: string, role: string): ISafeData {
-    const token = jwt.sign({ id }, "cambiarClave", { expiresIn: "30d" });
+  private prepareData(user: UserModel): ISafeData {
+    const token = jwt.sign({ user }, "cambiarClave", { expiresIn: "30d" });
     const data: ISafeData = {
       user: {
-        id,
-        email,
-        role,
+        id: user.id,
+        name: user.name,
+        lastName: user.lastName,
+        email: user.email,
+        profileImage: user.profileImage,
+        role: user.role,
+        category: user.category,
       },
       jwt: token,
     };
