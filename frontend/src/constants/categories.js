@@ -1,26 +1,26 @@
 export const CATEGORIES = [
   {
     name: "Albanil",
-    value: 0,
-  },
-  {
-    name: "Arquitecto",
     value: 1,
   },
   {
-    name: "Herrero",
+    name: "Arquitecto",
     value: 2,
   },
   {
-    name: "Mudanzas",
+    name: "Herrero",
     value: 3,
   },
   {
-    name: "Tapicero",
+    name: "Mudanzas",
     value: 4,
   },
   {
-    name: "Plomero",
+    name: "Tapicero",
     value: 5,
+  },
+  {
+    name: "Plomero",
+    value: 6,
   },
 ];

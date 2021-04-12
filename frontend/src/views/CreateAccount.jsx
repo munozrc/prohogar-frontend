@@ -6,6 +6,9 @@ import {
   USER_DATA,
   WELCOME_ROUTE,
   CATEGORIES,
+  SUCCESSFULLY_REGISTERED,
+  FATAL_SERVER_ERROR,
+  USER_ALREADY_EXISTS,
 } from "../constants";
 
 // Assets
@@ -24,6 +27,22 @@ const checkURLProfileImage = (url, defaultURL) => {
   return url === defaultURL ? "" : url;
 };
 
+const checkCategoryInput = (input) => {
+  let validatedCategory = true;
+  let valueCategory = 0;
+  if (input.current === null) {
+    validatedCategory = true;
+  } else {
+    if (input.current.value === "default") {
+      validatedCategory = false;
+    } else {
+      validatedCategory = true;
+      valueCategory = Number(input.current.value);
+    }
+  }
+  return { validatedCategory, valueCategory };
+};
+
 class CreateAccount extends React.Component {
   constructor(props) {
     super(props);
@@ -37,7 +56,7 @@ class CreateAccount extends React.Component {
     this.emailInput = React.createRef();
     this.passwordInput = React.createRef();
     this.cpasswordInput = React.createRef();
-    this.category = React.createRef();
+    this.categoryInput = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -49,8 +68,10 @@ class CreateAccount extends React.Component {
     const email = this.emailInput.current.value;
     const password = this.passwordInput.current.value;
     const cpassword = this.cpasswordInput.current.value;
-    // const category = this.category.current.value;
     const role = this.state.role;
+    const { validatedCategory, valueCategory } = checkCategoryInput(
+      this.categoryInput
+    );
 
     if (
       name !== "" &&
@@ -60,22 +81,34 @@ class CreateAccount extends React.Component {
       cpassword !== ""
     ) {
       if (password === cpassword) {
-        const profileImage = checkURLProfileImage(
-          this.loaderImg.current.src,
-          DefaultProfileImage
-        );
-        try {
-          const user = await registerService({
-            email,
-            password,
-            profileImage,
-            role,
-            category: "", // TODO: Change this
-          });
-          window.localStorage.setItem(USER_DATA, JSON.stringify(user));
-          this.props.history.push(WELCOME_ROUTE);
-        } catch (error) {
-          console.error("register: ", error);
+        if (validatedCategory) {
+          const profileImage = checkURLProfileImage(
+            this.loaderImg.current.src,
+            DefaultProfileImage
+          );
+          try {
+            const dataUser = await registerService({
+              name,
+              lastName,
+              email,
+              password,
+              profileImage,
+              role,
+              category: valueCategory,
+            });
+            if (dataUser.message === SUCCESSFULLY_REGISTERED) {
+              window.localStorage.setItem(USER_DATA, JSON.stringify(dataUser));
+              this.props.history.push(WELCOME_ROUTE);
+            }
+          } catch (error) {
+            if (error.response.data.message === USER_ALREADY_EXISTS) {
+              alert("login: el email ya existe");
+            } else if (error.response.data.message === FATAL_SERVER_ERROR) {
+              alert("login: error fatal en el server");
+            }
+          }
+        } else {
+          alert("Register: Seleccione una categoria");
         }
       } else {
         alert("Register: las contraseñas no coinciden");
@@ -89,6 +122,7 @@ class CreateAccount extends React.Component {
     if (this.state.role === PROFESSIONAL_USER)
       ComboBoxCatergory = (
         <ComboBoxGeneric
+          ref={this.categoryInput}
           label="Seleccione su Categoria"
           name="category"
           options={CATEGORIES}

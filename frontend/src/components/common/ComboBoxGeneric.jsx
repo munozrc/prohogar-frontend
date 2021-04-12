@@ -11,29 +11,32 @@ const Label = styled.label`
   color: #fff;
 `;
 
-const ComboBoxGeneric = ({ label, name, options, placeHolder }) => {
-  const [selectedValue, setSelectedValue] = React.useState("default");
+const ComboBoxGeneric = React.forwardRef(
+  ({ label, name, options, placeHolder }, ref) => {
+    const [selectedValue, setSelectedValue] = React.useState("default");
 
-  const handleChange = (newValue) => {
-    setSelectedValue(newValue);
-  };
-  return (
-    <>
-      <Label htmlFor={name}>{label}</Label>
-      <Select
-        name={name}
-        value={selectedValue}
-        onChange={({ target }) => handleChange(target.value)}
-      >
-        <Option value={"default"}>{placeHolder}</Option>
-        {options.map((element) => (
-          <Option value={element.value} key={element.name}>
-            {element.name}
-          </Option>
-        ))}
-      </Select>
-    </>
-  );
-};
+    const handleChange = (newValue) => {
+      setSelectedValue(newValue);
+    };
+    return (
+      <>
+        <Label htmlFor={name}>{label}</Label>
+        <Select
+          name={name}
+          ref={ref}
+          value={selectedValue}
+          onChange={({ target }) => handleChange(target.value)}
+        >
+          <Option value={"default"}>{placeHolder}</Option>
+          {options.map((element) => (
+            <Option value={element.value} key={element.name}>
+              {element.name}
+            </Option>
+          ))}
+        </Select>
+      </>
+    );
+  }
+);
 
 export default ComboBoxGeneric;
