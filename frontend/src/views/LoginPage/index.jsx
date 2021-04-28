@@ -80,9 +80,7 @@ class LoginPage extends React.Component {
             ref={this.passwordInput}
             label="Contraseña"
           />
-          <ButtonGeneric typeButton="submit" center={true}>
-            Entrar
-          </ButtonGeneric>
+          <ButtonGeneric typeButton="submit" center={true} value={"Entrar"} />
           <LinkForm to={HOME_ROUTE}>Recuperar Cuenta</LinkForm>
           <LineItem widthLine={"100%"} marginBottom={"0.6em"} />
         </Form>

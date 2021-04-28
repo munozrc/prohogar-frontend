@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Button = styled.button`
   width: 140px;
   max-width: 140px;
+  height: 45px;
   background-color: #7289da;
   padding: 0.6em 0;
   font-size: 1em;
@@ -19,6 +20,11 @@ const Button = styled.button`
     text-decoration: none;
   }
 
+  & {
+    color: #fff;
+    text-decoration: none;
+  }
+
   :hover {
     background-color: #7d92dd;
   }
@@ -27,9 +33,17 @@ const Button = styled.button`
 const ButtonGeneric = ({
   typeButton = "button",
   center = false,
+  value = "",
   children,
   ...props
 }) => {
+  if (value !== "") {
+    return (
+      <Button type={typeButton} center={center} {...props}>
+        {value}
+      </Button>
+    );
+  }
   return (
     <Button type={typeButton} center={center} {...props}>
       {children}
