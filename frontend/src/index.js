@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import decode from "jwt-decode";
 import { createGlobalStyle } from "styled-components";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Redirect,
   Route,
   Switch,
