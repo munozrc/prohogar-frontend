@@ -5,15 +5,16 @@ const Input = styled.input`
   background: rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   margin-bottom: 1.7em;
-  height: 40px;
+  height: 45px;
   border: none;
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: 300;
   padding-left: 0.8em;
   color: #fff;
 
   ::placeholder {
     color: rgba(255, 255, 255, 0.5);
+    font-size: 1em;
   }
 
   :focus {
