@@ -1,9 +1,11 @@
 import axios from "axios";
 import { URL_SERVER } from "../constants";
 
-const baseUrl = `${URL_SERVER}/login`;
-
-export default async function loginService(credentials) {
-  const { data } = await axios.post(baseUrl, credentials);
-  return data;
-}
+export const loginService = async ({ email, password }) => {
+  return axios
+    .post(`${URL_SERVER}/login`, { email, password })
+    .then((response) => {
+      const { data } = response;
+      return data;
+    });
+};

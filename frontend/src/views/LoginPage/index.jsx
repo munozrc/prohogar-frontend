@@ -4,7 +4,7 @@ import React from "react";
 import { Form, LineItem, LinkForm, Title } from "./styles";
 
 // Services
-import loginService from "../../services/loginService";
+import { loginService } from "../../services/loginService";
 
 // Components
 import ButtonGeneric from "../../components/common/ButtonGeneric";
@@ -29,31 +29,32 @@ class LoginPage extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  async handleSubmit(event) {
+  handleSubmit(event) {
     event.preventDefault();
 
     const email = this.emailInput.current.value;
     const password = this.passwordInput.current.value;
 
-    try {
-      if (email !== "" && password !== "") {
-        const dataUser = await loginService({
-          email,
-          password,
+    if (email !== "" && password !== "") {
+      loginService({
+        email,
+        password,
+      })
+        .then((user) => {
+          if (user.message === LOGIN_SUCCESSFUL) {
+            window.localStorage.setItem(USER_DATA, JSON.stringify(user));
+            this.props.history.push(DASHBOARD_ROUTE);
+          }
+        })
+        .catch((error) => {
+          if (error.response.data.message === INVALID_CREDENTIALS) {
+            alert("login: email o password invalidos");
+          } else if (error.response.data.message === FATAL_SERVER_ERROR) {
+            alert("login: error fatal en el server");
+          }
         });
-        if (dataUser.message === LOGIN_SUCCESSFUL) {
-          window.localStorage.setItem(USER_DATA, JSON.stringify(dataUser));
-          this.props.history.push(DASHBOARD_ROUTE);
-        }
-      } else {
-        alert("login: campos vacios.");
-      }
-    } catch (error) {
-      if (error.response.data.message === INVALID_CREDENTIALS) {
-        alert("login: email o password invalidos");
-      } else if (error.response.data.message === FATAL_SERVER_ERROR) {
-        alert("login: error fatal en el server");
-      }
+    } else {
+      alert("login: campos vacios.");
     }
   }
 
