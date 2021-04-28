@@ -24,6 +24,7 @@ import {
   LOGIN_SUCCESSFUL,
   USER_DATA,
 } from "../../constants";
+import ContainerCenter from "../../components/layouts/ContainerCenter";
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -63,10 +64,7 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      <Container>
-        <Link to={HOME_ROUTE}>
-          <LogoIcon src={LogoSVG} />
-        </Link>
+      <ContainerCenter>
         <Form onSubmit={this.handleSubmit}>
           <Title>
             <LineItem widthLine={"85px"} /> Iniciar Sesión
@@ -92,9 +90,7 @@ class LoginPage extends React.Component {
           <LinkForm to={HOME_ROUTE}>Recuperar Cuenta</LinkForm>
           <LineItem widthLine={"100%"} marginBottom={"0.6em"} />
         </Form>
-        <WaveForm up={false} />
-        <WaveForm up={true} />
-      </Container>
+      </ContainerCenter>
     );
   }
 }
