@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.js": "/prohogar/static/js/main.04453719.chunk.js",
-    "main.js.map": "/prohogar/static/js/main.04453719.chunk.js.map",
+    "main.js": "/prohogar/static/js/main.cda127d9.chunk.js",
+    "main.js.map": "/prohogar/static/js/main.cda127d9.chunk.js.map",
     "runtime-main.js": "/prohogar/static/js/runtime-main.2d17e252.js",
     "runtime-main.js.map": "/prohogar/static/js/runtime-main.2d17e252.js.map",
     "static/css/2.679831fc.chunk.css": "/prohogar/static/css/2.679831fc.chunk.css",
-    "static/js/2.85c86272.chunk.js": "/prohogar/static/js/2.85c86272.chunk.js",
-    "static/js/2.85c86272.chunk.js.map": "/prohogar/static/js/2.85c86272.chunk.js.map",
+    "static/js/2.e34d3c2b.chunk.js": "/prohogar/static/js/2.e34d3c2b.chunk.js",
+    "static/js/2.e34d3c2b.chunk.js.map": "/prohogar/static/js/2.e34d3c2b.chunk.js.map",
     "index.html": "/prohogar/index.html",
     "static/css/2.679831fc.chunk.css.map": "/prohogar/static/css/2.679831fc.chunk.css.map",
-    "static/js/2.85c86272.chunk.js.LICENSE.txt": "/prohogar/static/js/2.85c86272.chunk.js.LICENSE.txt",
+    "static/js/2.e34d3c2b.chunk.js.LICENSE.txt": "/prohogar/static/js/2.e34d3c2b.chunk.js.LICENSE.txt",
     "static/media/logo.d1923fc5.svg": "/prohogar/static/media/logo.d1923fc5.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.2d17e252.js",
     "static/css/2.679831fc.chunk.css",
-    "static/js/2.85c86272.chunk.js",
-    "static/js/main.04453719.chunk.js"
+    "static/js/2.e34d3c2b.chunk.js",
+    "static/js/main.cda127d9.chunk.js"
   ]
 }
