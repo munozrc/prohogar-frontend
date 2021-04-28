@@ -1,17 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 // Styles
-import { Container, Form, LineItem, LinkForm, LogoIcon, Title } from "./styles";
+import { Form, LineItem, LinkForm, Title } from "./styles";
 
 // Services
 import loginService from "../../services/loginService";
 
-// Assets
-import LogoSVG from "../../assets/logo.svg";
-
 // Components
-import WaveForm from "../../components/common/WaveForm";
 import ButtonGeneric from "../../components/common/ButtonGeneric";
 import InputGeneric from "../../components/common/InputGeneric";
 
