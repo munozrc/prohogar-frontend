@@ -1,6 +1,6 @@
 import React from "react";
-import ButtonGeneric from "../components/common/ButtonGeneric";
-import { LOGIN_ROUTE, SELECT_ACCOUNT_ROUTE } from "../constants";
+import ButtonGeneric from "../../components/common/ButtonGeneric";
+import { LOGIN_ROUTE, SELECT_ACCOUNT_ROUTE } from "../../constants";
 
 class MainPage extends React.Component {
   constructor(props) {
