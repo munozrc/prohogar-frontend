@@ -51,6 +51,24 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
+
+    &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: white;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 4px;
+    }
+    &::-webkit-scrollbar-thumb:active {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
   }
 
 `;
