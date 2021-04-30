@@ -53,21 +53,22 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
 
     &::-webkit-scrollbar {
-      width: 10px;
-      height: 10px;
+      width: 12px;
+      height: 12px;
     }
     &::-webkit-scrollbar-track {
       background-color: white;
     }
     &::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.7);
-      border-radius: 4px;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 20px;
+      border: 1.5px solid white;
     }
     &::-webkit-scrollbar-thumb:active {
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.6);
     }
     &::-webkit-scrollbar-thumb:hover {
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.6);
     }
   }
 
