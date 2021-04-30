@@ -60,7 +60,7 @@ const GlobalStyle = createGlobalStyle`
       background-color: white;
     }
     &::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.7);
       border-radius: 4px;
     }
     &::-webkit-scrollbar-thumb:active {
