@@ -44,7 +44,7 @@ export const ContainerCards = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin: 20px 0px 10px 0px;
+  margin: 40px 0px 10px 0px;
 `;
 
 export const WaveUpHome = styled.img`
@@ -96,8 +96,8 @@ export const ImageHero = styled.img`
 `;
 
 export const CardSection = styled.div`
-  width: 280px;
-  height: 250px;
+  width: 360px;
+  height: 340px;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0px 4px 15px 1px rgba(0, 0, 0, 0.2);
