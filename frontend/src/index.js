@@ -53,8 +53,8 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
 
     &::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+      width: 10px;
+      height: 10px;
     }
     &::-webkit-scrollbar-track {
       background-color: white;
