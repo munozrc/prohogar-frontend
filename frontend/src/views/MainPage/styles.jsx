@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Section = styled.section`
   width: 100%;
-  height: 600px;
+  height: ${({ width }) => (width ? width : "600px")};
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -38,6 +38,15 @@ export const ContainerHero = styled.div`
   width: 50%;
 `;
 
+export const ContainerCards = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0px 10px 0px;
+`;
+
 export const WaveUpHome = styled.img`
   width: 90%;
   max-width: 1200px;
@@ -45,6 +54,15 @@ export const WaveUpHome = styled.img`
   position: absolute;
   left: 0;
   top: 0;
+  z-index: -1;
+`;
+
+export const WaveUpCards = styled.img`
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 56%;
   z-index: -1;
 `;
 
@@ -58,6 +76,12 @@ export const TitleHero = styled.h2`
   font-size: 2.4em;
 `;
 
+export const TitleSecondary = styled.h3`
+  font-weight: bold;
+  font-size: 2em;
+  margin-top: 30px;
+`;
+
 export const ContentHero = styled.p`
   width: 97%;
   font-weight: 300;
@@ -69,4 +93,13 @@ export const ContentHero = styled.p`
 export const ImageHero = styled.img`
   width: 50%;
   transform: translateX(7%);
+`;
+
+export const CardSection = styled.div`
+  width: 280px;
+  height: 250px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px 1px rgba(0, 0, 0, 0.2);
+  margin: 30px;
 `;
