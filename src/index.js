@@ -3,10 +3,7 @@ import ReactDOM from "react-dom";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./styles/GlobalStyles";
-import { PrivateRoute, PublicRoute } from "./components/Routes";
-
-// Styles Css
-import "normalize.css";
+import { PrivateRoute, PublicRoute } from "./components/Route";
 import { Theme } from "./styles/Theme";
 
 // Views
