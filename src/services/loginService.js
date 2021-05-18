@@ -1,5 +1,6 @@
 import axios from "axios";
-import { URL_SERVER } from "../constants";
+
+const URL_SERVER = "http://localhost:3001/api";
 
 export const loginService = async ({ email, password }) => {
   return axios

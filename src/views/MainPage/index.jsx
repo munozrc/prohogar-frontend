@@ -1,6 +1,5 @@
 import React from "react";
 import ButtonGeneric from "../../components/common/ButtonGeneric";
-import { LOGIN_ROUTE, SELECT_ACCOUNT_ROUTE } from "../../constants";
 import {
   ContainerButtons,
   LogoIcon,
@@ -32,11 +31,11 @@ class MainPage extends React.Component {
   }
 
   showLoginPage() {
-    this.props.history.push(LOGIN_ROUTE);
+    this.props.history.push("/login");
   }
 
   showSelectAccountPage() {
-    this.props.history.push(SELECT_ACCOUNT_ROUTE);
+    this.props.history.push("/select-account-type");
   }
 
   render() {

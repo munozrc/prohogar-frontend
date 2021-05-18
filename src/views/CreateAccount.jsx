@@ -1,13 +1,5 @@
 import React from "react";
 
-// Constants
-import {
-  CATEGORIES,
-  SUCCESSFULLY_REGISTERED,
-  FATAL_SERVER_ERROR,
-  USER_ALREADY_EXISTS,
-} from "../constants";
-
 // Assets
 import DefaultProfileImage from "../assets/profile-image.jpg";
 
@@ -19,6 +11,33 @@ import ProfilePictureUploader from "../components/common/LoaderProfileImage";
 // Services
 import registerService from "../services/registerService";
 import InputGeneric from "../components/common/InputGeneric";
+
+const CATEGORIES = [
+  {
+    name: "Albanil",
+    value: 1,
+  },
+  {
+    name: "Arquitecto",
+    value: 2,
+  },
+  {
+    name: "Herrero",
+    value: 3,
+  },
+  {
+    name: "Mudanzas",
+    value: 4,
+  },
+  {
+    name: "Tapicero",
+    value: 5,
+  },
+  {
+    name: "Plomero",
+    value: 6,
+  },
+];
 
 const checkURLProfileImage = (url, defaultURL) => {
   return url === defaultURL ? "" : url;
@@ -93,7 +112,7 @@ class CreateAccount extends React.Component {
               role,
               category: valueCategory,
             });
-            if (dataUser.message === SUCCESSFULLY_REGISTERED) {
+            if (dataUser.message === "SUCCESSFULLY_REGISTERED") {
               window.localStorage.setItem(
                 "USER_DATA",
                 JSON.stringify(dataUser)
@@ -101,9 +120,9 @@ class CreateAccount extends React.Component {
               this.props.history.push("/welcome");
             }
           } catch (error) {
-            if (error.response.data.message === USER_ALREADY_EXISTS) {
+            if (error.response.data.message === "USER_ALREADY_EXISTS") {
               alert("login: el email ya existe");
-            } else if (error.response.data.message === FATAL_SERVER_ERROR) {
+            } else if (error.response.data.message === "FATAL_SERVER_ERROR") {
               alert("login: error fatal en el server");
             }
           }
