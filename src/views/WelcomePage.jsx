@@ -1,6 +1,5 @@
 import React from "react";
 import ButtonGeneric from "../components/common/ButtonGeneric";
-import { DASHBOARD_ROUTE } from "../constants";
 
 class WelcomePage extends React.Component {
   constructor(props) {
@@ -9,7 +8,7 @@ class WelcomePage extends React.Component {
   }
 
   showDashboard() {
-    this.props.history.push(DASHBOARD_ROUTE);
+    this.props.history.push("/dashboard");
   }
 
   render() {

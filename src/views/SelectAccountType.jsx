@@ -1,10 +1,5 @@
 import React from "react";
 import ButtonGeneric from "../components/common/ButtonGeneric";
-import {
-  CLIENT_USER,
-  PROFESSIONAL_USER,
-  CREATE_ACCOUNT_ROUTE_ACCESS,
-} from "../constants";
 
 class SelectAccountType extends React.Component {
   constructor(props) {
@@ -14,13 +9,11 @@ class SelectAccountType extends React.Component {
   }
 
   showCreateAccountAsClient() {
-    this.props.history.push(`${CREATE_ACCOUNT_ROUTE_ACCESS}/${CLIENT_USER}`);
+    this.props.history.push(`/create-account/client`);
   }
 
   showCreateAccountAsPro() {
-    this.props.history.push(
-      `${CREATE_ACCOUNT_ROUTE_ACCESS}/${PROFESSIONAL_USER}`
-    );
+    this.props.history.push(`/create-account/professional`);
   }
 
   render() {

@@ -12,12 +12,9 @@ import InputGeneric from "../../components/common/InputGeneric";
 
 // Constants
 import {
-  DASHBOARD_ROUTE,
   FATAL_SERVER_ERROR,
-  HOME_ROUTE,
   INVALID_CREDENTIALS,
   LOGIN_SUCCESSFUL,
-  USER_DATA,
 } from "../../constants";
 import ContainerCenter from "../../components/layouts/ContainerCenter";
 
@@ -42,8 +39,8 @@ class LoginPage extends React.Component {
       })
         .then((user) => {
           if (user.message === LOGIN_SUCCESSFUL) {
-            window.localStorage.setItem(USER_DATA, JSON.stringify(user));
-            this.props.history.push(DASHBOARD_ROUTE);
+            window.localStorage.setItem("USER_DATA", JSON.stringify(user));
+            this.props.history.push("/dashboard");
           }
         })
         .catch((error) => {
@@ -81,7 +78,7 @@ class LoginPage extends React.Component {
             label="Contraseña"
           />
           <ButtonGeneric typeButton="submit" center={true} value={"Entrar"} />
-          <LinkForm to={HOME_ROUTE}>Recuperar Cuenta</LinkForm>
+          <LinkForm to={"/"}>Recuperar Cuenta</LinkForm>
           <LineItem widthLine={"100%"} marginBottom={"0.6em"} />
         </Form>
       </ContainerCenter>

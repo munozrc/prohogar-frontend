@@ -2,9 +2,6 @@ import React from "react";
 
 // Constants
 import {
-  PROFESSIONAL_USER,
-  USER_DATA,
-  WELCOME_ROUTE,
   CATEGORIES,
   SUCCESSFULLY_REGISTERED,
   FATAL_SERVER_ERROR,
@@ -97,8 +94,11 @@ class CreateAccount extends React.Component {
               category: valueCategory,
             });
             if (dataUser.message === SUCCESSFULLY_REGISTERED) {
-              window.localStorage.setItem(USER_DATA, JSON.stringify(dataUser));
-              this.props.history.push(WELCOME_ROUTE);
+              window.localStorage.setItem(
+                "USER_DATA",
+                JSON.stringify(dataUser)
+              );
+              this.props.history.push("/welcome");
             }
           } catch (error) {
             if (error.response.data.message === USER_ALREADY_EXISTS) {
@@ -119,7 +119,7 @@ class CreateAccount extends React.Component {
   }
   render() {
     let ComboBoxCatergory;
-    if (this.state.role === PROFESSIONAL_USER)
+    if (this.state.role === "professional")
       ComboBoxCatergory = (
         <ComboBoxGeneric
           ref={this.categoryInput}

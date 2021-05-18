@@ -1,7 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import decode from "jwt-decode";
-import { createGlobalStyle } from "styled-components";
 import {
   HashRouter as Router,
   Redirect,
@@ -24,9 +22,6 @@ import SelectAccountType from "./views/SelectAccountType";
 
 // Constans
 import {
-  USER_DATA,
-  CLIENT_USER,
-  PROFESSIONAL_USER,
   HOME_ROUTE,
   LOGIN_ROUTE,
   SELECT_ACCOUNT_ROUTE,
@@ -34,109 +29,30 @@ import {
   DASHBOARD_ROUTE,
   WELCOME_ROUTE,
 } from "./constants";
-
-// Global Styles Css
-const GlobalStyle = createGlobalStyle`
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 16px;
-
-    &::-webkit-scrollbar {
-      width: 12px;
-      height: 12px;
-    }
-    &::-webkit-scrollbar-track {
-      background-color: white;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.8);
-      border-radius: 20px;
-      border: 1.5px solid white;
-    }
-    &::-webkit-scrollbar-thumb:active {
-      background-color: rgba(0, 0, 0, 0.6);
-    }
-    &::-webkit-scrollbar-thumb:hover {
-      background-color: rgba(0, 0, 0, 0.6);
-    }
-  }
-
-`;
-
-// Methods
-const isAuthenticated = () => {
-  try {
-    const dataUser = JSON.parse(window.localStorage.getItem(USER_DATA));
-    return decode(dataUser.data.jwt);
-  } catch (error) {
-    return false;
-  }
-};
-
-const getDashboardByRole = (ClientDashboard, ProDashboard, NotFoundView) => {
-  try {
-    const dataUser = JSON.parse(window.localStorage.getItem(USER_DATA));
-    const role = dataUser.data.user.role;
-    if (role === CLIENT_USER) return ClientDashboard;
-    else if (role === PROFESSIONAL_USER) return ProDashboard;
-    else return NotFoundView;
-  } catch (error) {
-    return NotFoundView;
-  }
-};
-
-const PrivateRoute = ({ path, component, ...props }) => {
-  if (isAuthenticated()) {
-    if (path === DASHBOARD_ROUTE) {
-      const viewDashboard = getDashboardByRole(
-        ClientPage,
-        ProfessionalPage,
-        NotFound
-      );
-      return <Route {...props} path={path} component={viewDashboard} />;
-    } else {
-      return <Route {...props} path={path} component={component} />;
-    }
-  } else {
-    return <Redirect to={LOGIN_ROUTE} />;
-  }
-};
-
-const PublicRoute = (props) =>
-  !isAuthenticated() ? <Route {...props} /> : <Redirect to={DASHBOARD_ROUTE} />;
+import { GlobalStyles } from "./styles/GlobalStyles";
+import { PrivateRoute, PublicRoute } from "./components/Routes";
 
 // END Methods
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle />
+    <GlobalStyles />
     <Router>
       <Switch>
-        <PublicRoute exact path={HOME_ROUTE} component={MainPage} />
-        <PublicRoute exact path={LOGIN_ROUTE} component={LoginPage} />
+        <PublicRoute exact path={"/"} component={MainPage} />
+        <PublicRoute exact path={"/login"} component={LoginPage} />
         <PublicRoute
           exact
-          path={SELECT_ACCOUNT_ROUTE}
+          path={"/select-account-type"}
           component={SelectAccountType}
         />
         <PublicRoute
           exact
-          path={CREATE_ACCOUNT_ROUTE}
+          path={"/create-account/:type"}
           component={CreateAccount}
         />
-        <PrivateRoute exact path={DASHBOARD_ROUTE} component={ClientPage} />
-        <PrivateRoute exact path={WELCOME_ROUTE} component={WelcomePage} />
+        <PrivateRoute exact path={"/dashboard"} component={ClientPage} />
+        <PrivateRoute exact path={"/welcome"} component={WelcomePage} />
         <Route component={NotFound} />
       </Switch>
     </Router>
