@@ -1,5 +1,5 @@
 import { Redirect, Route } from "react-router";
-import { isAuthenticated } from "../services/isAuthenticated";
+import { isAuthenticated } from "../utils/isAuthenticated";
 
 // Views
 import ClientPage from "../views/ClientPage";
