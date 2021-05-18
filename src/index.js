@@ -15,8 +15,6 @@ import CreateAccount from "./views/CreateAccount";
 import WelcomePage from "./views/WelcomePage";
 import SelectAccountType from "./views/SelectAccountType";
 
-// END Methods
-
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={Theme}>
