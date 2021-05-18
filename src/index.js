@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { GlobalStyles } from "./styles/GlobalStyles";
+import { PrivateRoute, PublicRoute } from "./components/Routes";
 
 // Normalice Styles Css
 import "normalize.css";
@@ -13,9 +15,6 @@ import NotFound from "./views/NotFound";
 import CreateAccount from "./views/CreateAccount";
 import WelcomePage from "./views/WelcomePage";
 import SelectAccountType from "./views/SelectAccountType";
-
-import { GlobalStyles } from "./styles/GlobalStyles";
-import { PrivateRoute, PublicRoute } from "./components/Routes";
 
 // END Methods
 
