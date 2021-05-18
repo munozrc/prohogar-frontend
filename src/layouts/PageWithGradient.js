@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import LogoIcon from "../assets/LogoIcon.png";
+import WaveForm from "../components/WaveForm";
 
 export default function PageWithGradient({ children }) {
   return (
     <WrapperSimple>
+      <WaveForm up={true} />
+      <WaveForm />
       <ContainerSimple>
         <HeaderSimple>
           <Link to={"/"}>

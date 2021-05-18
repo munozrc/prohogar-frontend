@@ -1,8 +1,6 @@
-import React from "react";
 import styled from "styled-components";
-
-import WaveImg from "../../assets/wave_001.png";
-import WaveImg2 from "../../assets/wave_002.png";
+import WaveImg from "../assets/wave_001.png";
+import WaveImg2 from "../assets/wave_002.png";
 
 const WaveFormDown = styled.img`
   width: 98%;
