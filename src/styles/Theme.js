@@ -10,4 +10,5 @@ export const Theme = {
   borderLightColor: "rgba(255, 255, 255, 0.05)",
   bgColor: "rgba(35, 39, 42, 0.3)",
   bgContent: "rgba(153, 170, 181, 0.1)",
+  bgWhite: "#fff",
 };
