@@ -2,8 +2,10 @@ import decode from "jwt-decode";
 
 export const isAuthenticated = () => {
   try {
-    const dataUser = JSON.parse(window.localStorage.getItem("USER_DATA"));
-    return decode(dataUser.data.jwt);
+    const { jwt } = JSON.parse(
+      window.localStorage.getItem("loggedProhogarUser")
+    );
+    return decode(jwt);
   } catch (error) {
     return false;
   }

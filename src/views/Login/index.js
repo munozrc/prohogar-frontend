@@ -10,6 +10,7 @@ import Input from "../../components/Input";
 import TextLink from "../../components/TextLink";
 import Button from "../../components/Button";
 import { useHistory } from "react-router";
+import { saveDataUser } from "../../utils/saveDataUser";
 
 export default function Login() {
   const history = useHistory();
@@ -27,9 +28,9 @@ export default function Login() {
         email,
         password,
       })
-        .then((user) => {
-          if (user.message === "LOGIN_SUCCESSFUL") {
-            window.localStorage.setItem("USER_DATA", JSON.stringify(user));
+        .then((response) => {
+          if (response.message === "LOGIN_SUCCESSFUL") {
+            saveDataUser(response);
             history.push("/dashboard");
           }
         })
@@ -63,11 +64,11 @@ export default function Login() {
             label={"Contraseña"}
             ref={PasswordInput}
           />
-          <TextLink to={"/reset-password"}>¿Olvidaste tu contraseña?</TextLink>
+          <TextLink to={"/restorepassword"}>¿Olvidaste tu contraseña?</TextLink>
           <Button>Entrar</Button>
           <span>
             ¿necesito una cuenta?{" "}
-            <TextLink to={"/reset-password"}>Registrarse</TextLink>
+            <TextLink to={"/select-account-type"}>Registrarse</TextLink>
           </span>
         </Form>
       </Container>

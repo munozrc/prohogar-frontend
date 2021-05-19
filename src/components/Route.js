@@ -8,8 +8,9 @@ import ProfessionalPage from "../views/ProfessionalPage";
 
 const getDashboardByRole = (ClientDashboard, ProDashboard, NotFoundView) => {
   try {
-    const dataUser = JSON.parse(window.localStorage.getItem("USER_DATA"));
-    const role = dataUser.data.user.role;
+    const { role } = JSON.parse(
+      window.localStorage.getItem("loggedProhogarUser")
+    );
     if (role === "client") return ClientDashboard;
     else if (role === "professional") return ProDashboard;
     else return NotFoundView;
