@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const TextLink = styled(Link)`
+  max-width: fit-content;
   color: #7289da;
   text-decoration: none;
   font-weight: 500;
