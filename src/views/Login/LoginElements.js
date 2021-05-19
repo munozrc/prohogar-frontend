@@ -21,9 +21,9 @@ export const Form = styled.form`
   height: fit-content;
   max-width: 26.58em;
   min-height: 22.58em;
-  background: rgba(153, 170, 181, 0.1);
+  background: ${({ theme }) => theme.bgContent};
   border-radius: 4px;
-  border: solid 1px rgba(255, 255, 255, 0.05);
+  border: solid 1px ${({ theme }) => theme.borderLightColor};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,14 +39,13 @@ export const Form = styled.form`
   }
 
   & > span {
-    color: rgba(255, 255, 255, 0.4);
+    color: ${({ theme }) => theme.labelColor};
   }
 `;
 
 export const Title = styled.h2`
-  display: block;
   text-align: center;
   font-size: 1.8em;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
+  color: ${({ theme }) => theme.lightColor};
 `;
