@@ -1,12 +1,26 @@
 import { forwardRef, useState } from "react";
 import styled from "styled-components";
 
-const Input = forwardRef(({ name = "", label = "", ...props }, ref) => {
-  const [value, setValue] = useState("");
+const Input = forwardRef(
+  ({ name = "", label = "", marginTop = "20px", ...props }, ref) => {
+    const [value, setValue] = useState("");
 
-  const inputWithLabel = () => (
-    <div>
-      <LabelElement htmlFor={name}>{label}</LabelElement>
+    const inputWithLabel = () => (
+      <Container>
+        <LabelElement htmlFor={name} marginTop={marginTop}>
+          {label}
+        </LabelElement>
+        <InputElement
+          name={name}
+          ref={ref}
+          value={value}
+          onChange={({ target }) => setValue(target.value)}
+          {...props}
+        />
+      </Container>
+    );
+
+    const onlyInput = () => (
       <InputElement
         name={name}
         ref={ref}
@@ -14,32 +28,27 @@ const Input = forwardRef(({ name = "", label = "", ...props }, ref) => {
         onChange={({ target }) => setValue(target.value)}
         {...props}
       />
-    </div>
-  );
+    );
 
-  const onlyInput = () => (
-    <InputElement
-      name={name}
-      ref={ref}
-      value={value}
-      onChange={({ target }) => setValue(target.value)}
-      {...props}
-    />
-  );
+    return label !== "" ? inputWithLabel() : onlyInput();
+  }
+);
 
-  return label !== "" ? inputWithLabel() : onlyInput();
-});
-
-export const LabelElement = styled.label`
+const LabelElement = styled.label`
   display: block;
   color: ${({ theme }) => theme.labelColor};
   font-size: 1.1em;
   font-weight: 400;
-  margin-top: 30px;
+  margin-top: ${({ marginTop }) => marginTop};
   margin-bottom: 6px;
 `;
 
-export const InputElement = styled.input`
+const Container = styled.div`
+  width: 100%;
+  height: fit-content;
+`;
+
+const InputElement = styled.input`
   height: 2.4em;
   min-height: 2.4em;
   width: 100%;
