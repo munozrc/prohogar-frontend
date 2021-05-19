@@ -1,9 +1,9 @@
-import { useRef, useState } from "react";
+import { forwardRef, useRef, useState } from "react";
 import styled from "styled-components";
 import imageDefault from "../assets/profile-image.jpg";
 import Input from "./Input";
 
-export default function PhotoPreview({ title }) {
+const PhotoPreview = forwardRef(({ title }, ref) => {
   const UrlInput = useRef(null);
   const [value, setValue] = useState("");
 
@@ -20,6 +20,7 @@ export default function PhotoPreview({ title }) {
       <ImgElement
         src={value === "" ? imageDefault : value}
         onError={handleError}
+        ref={ref}
       />
       <Title>{`Registro de ${title}`}</Title>
       <Input
@@ -33,7 +34,7 @@ export default function PhotoPreview({ title }) {
       />
     </Wrapper>
   );
-}
+});
 
 const Wrapper = styled.div`
   width: 100%;
@@ -57,3 +58,5 @@ const Title = styled.h2`
   color: ${({ theme }) => theme.lightColor};
   margin: 10px 0px;
 `;
+
+export default PhotoPreview;
