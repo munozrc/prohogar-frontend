@@ -10,6 +10,10 @@ export const Container = styled.div`
   @media (min-width: 1400px) {
     padding: 120px 30px 0px 30px;
   }
+
+  @media (max-width: 320px) {
+    padding: 0px 20px 0px 20px;
+  }
 `;
 
 export const Form = styled.form`
