@@ -7,6 +7,7 @@ import Button from "../../components/Button";
 import PhotoPreview from "../../components/PhotoPreview";
 import CheckBox from "../../components/CheckBox";
 import TextLink from "../../components/TextLink";
+import ComboBox from "../../components/ComboBox";
 
 export default function CreateAccount() {
   const { type } = useParams();
@@ -19,6 +20,12 @@ export default function CreateAccount() {
         <Form>
           <PhotoPreview
             title={type === "professional" ? "profesional" : "cliente"}
+          />
+          <ComboBox
+            name={"Categoria"}
+            label={"Seleccione categoria"}
+            marginTop="12px"
+            options={["Albanil", "Mudanzas", "Plomero", "Tapicero"]}
           />
           <Input
             name={"name-user"}

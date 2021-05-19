@@ -30,6 +30,10 @@ const CheckElement = styled.input`
   margin-right: 10px;
   outline: none;
   background-color: ${({ theme }) => theme.brandPrimary};
+
+  &:focus {
+    box-shadow: 0px 0px 0px 2px ${({ theme }) => theme.brandPrimary};
+  }
 `;
 
 const LabelElement = styled.label`

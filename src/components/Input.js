@@ -52,14 +52,14 @@ const InputElement = styled.input`
   height: 2.4em;
   min-height: 2.4em;
   width: 100%;
-  color: #fff;
+  color: ${({ theme }) => theme.bgWhite};
   font-size: 1.2em;
   padding: 0.5em;
   border: 2px solid ${({ theme }) => theme.borderDarkColor};
   border-radius: 4px;
   background: ${({ theme }) => theme.bgColor};
   outline: none;
-  color: #fff;
+  color: ${({ theme }) => theme.bgWhite};
 
   &::placeholder {
     color: ${({ theme }) => theme.placeholderColor};
