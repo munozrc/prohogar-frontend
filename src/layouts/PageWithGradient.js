@@ -24,6 +24,7 @@ const WrapperSimple = styled.div`
   position: relative;
   width: 100vw;
   height: 100vh;
+  min-height: 800px;
   background: ${({ theme }) => theme.brandGradient};
   display: flex;
   justify-content: center;
@@ -52,6 +53,11 @@ const HeaderSimple = styled.header`
     padding: 0 30px;
     height: 120px;
   }
+
+  @media (max-width: 320px) {
+    padding: 0 20px;
+    height: 100px;
+  }
 `;
 
 const Logo = styled.img`
@@ -59,5 +65,9 @@ const Logo = styled.img`
 
   @media (max-width: 500px) {
     max-width: 150px;
+  }
+
+  @media (max-width: 320px) {
+    max-width: 120px;
   }
 `;
