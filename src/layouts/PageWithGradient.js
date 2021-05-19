@@ -1,13 +1,10 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import LogoIcon from "../assets/LogoIcon.png";
-import WaveForm from "../components/WaveForm";
 
-export default function PageWithGradient({ children }) {
+export default function PageWithGradient({ children, minHeight = "800px" }) {
   return (
-    <WrapperSimple>
-      <WaveForm up={true} />
-      <WaveForm />
+    <WrapperSimple minHeight={minHeight}>
       <ContainerSimple>
         <HeaderSimple>
           <Link to={"/"}>
@@ -24,7 +21,7 @@ const WrapperSimple = styled.div`
   position: relative;
   width: 100vw;
   height: 100vh;
-  min-height: 800px;
+  min-height: ${({ minHeight }) => minHeight};
   background: ${({ theme }) => theme.brandGradient};
   display: flex;
   justify-content: center;

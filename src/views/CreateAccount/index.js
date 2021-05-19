@@ -15,7 +15,7 @@ export default function CreateAccount() {
   const EmailInput = useRef(null);
   const PasswordInput = useRef(null);
   return (
-    <PageWithGradient>
+    <PageWithGradient minHeight={"840px"}>
       <Container>
         <Form>
           <PhotoPreview
