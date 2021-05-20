@@ -6,7 +6,7 @@ export const saveDataUser = (response) => {
       role: response.data.user.role,
       name: response.data.user.name,
       category: response.data.user.category,
-      img: response.data.user.profileImage,
+      img: response.data.user.photo,
     })
   );
 };
