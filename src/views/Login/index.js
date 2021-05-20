@@ -68,7 +68,7 @@ export default function Login() {
           <Button>Entrar</Button>
           <span>
             ¿necesito una cuenta?{" "}
-            <TextLink to={"/select-account-type"}>Registrarse</TextLink>
+            <TextLink to={"/register"}>Registrarse</TextLink>
           </span>
         </Form>
       </Container>

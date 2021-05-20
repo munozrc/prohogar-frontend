@@ -9,11 +9,11 @@ class SelectAccountType extends React.Component {
   }
 
   showCreateAccountAsClient() {
-    this.props.history.push(`/create-account/client`);
+    this.props.history.push(`/register/client`);
   }
 
   showCreateAccountAsPro() {
-    this.props.history.push(`/create-account/professional`);
+    this.props.history.push(`/register/professional`);
   }
 
   render() {

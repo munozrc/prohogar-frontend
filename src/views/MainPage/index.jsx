@@ -35,7 +35,7 @@ class MainPage extends React.Component {
   }
 
   showSelectAccountPage() {
-    this.props.history.push("/select-account-type");
+    this.props.history.push("/register");
   }
 
   render() {

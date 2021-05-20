@@ -43,7 +43,7 @@ export default function CreateAccount() {
             password,
             photo: checkDefaultImage(photo),
             role: type,
-            category,
+            category: category === "" ? undefined : category,
           })
             .then((response) => {
               if (response.message === "SUCCESSFULLY_REGISTERED") {
@@ -71,6 +71,9 @@ export default function CreateAccount() {
       alert("Campos vacíos");
     }
   };
+
+  // type no validated
+  if (type !== "client" && type !== "professional") history.push("/");
 
   return (
     <PageWithGradient minHeight={type === "professional" ? "860px" : "800px"}>

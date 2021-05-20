@@ -23,14 +23,10 @@ ReactDOM.render(
         <Switch>
           <PublicRoute exact path={"/"} component={MainPage} />
           <PublicRoute exact path={"/login"} component={Login} />
+          <PublicRoute exact path={"/register"} component={SelectAccountType} />
           <PublicRoute
             exact
-            path={"/select-account-type"}
-            component={SelectAccountType}
-          />
-          <PublicRoute
-            exact
-            path={"/create-account/:type"}
+            path={"/register/:type"}
             component={CreateAccount}
           />
           <PrivateRoute exact path={"/dashboard"} component={ClientPage} />
