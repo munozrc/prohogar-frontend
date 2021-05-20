@@ -7,7 +7,7 @@ const Button = styled.button`
   font-size: 1.1em;
   font-weight: 500;
   color: ${({ theme }) => theme.bgWhite};
-  padding: 0.87em 1.625em;
+  padding: 0.8em 1.625em;
   transition: background 0.3s ease;
   outline: none;
   cursor: pointer;

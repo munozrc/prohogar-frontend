@@ -5,14 +5,15 @@ export const Container = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  padding: 30px 30px 0px 30px;
+  padding: 20px 20px 0px 20px;
 
   @media (min-width: 1400px) {
     padding: 120px 30px 0px 30px;
   }
 
   @media (max-width: 320px) {
-    padding: 0px 20px 0px 20px;
+    padding: 0px 10px 0px 10px;
+    font-size: 12px;
   }
 `;
 
@@ -27,19 +28,20 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 30px;
+  padding: 20px;
+  margin-bottom: 30px;
 
   & > button {
-    margin-top: 30px;
+    margin-top: 15px;
   }
 
-  & > a,
-  span {
-    margin-top: 10px;
+  & > a {
+    margin-top: 5px;
   }
 
   & > span {
     color: ${({ theme }) => theme.labelColor};
+    margin-top: 5px;
   }
 `;
 

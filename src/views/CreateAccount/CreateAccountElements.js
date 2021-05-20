@@ -5,10 +5,14 @@ export const Container = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  padding: 0px 30px 0px 30px;
+  padding: 0px 20px 0px 20px;
 
-  @media (max-width: 500px) {
-    padding: 0px 20px 0px 20px;
+  @media (min-width: 1400px) {
+    padding: 0px 30px 0px 30px;
+  }
+
+  @media (max-width: 320px) {
+    padding: 0px 10px 0px 10px;
   }
 `;
 
@@ -22,7 +26,7 @@ export const Form = styled.form`
   background: ${({ theme }) => theme.bgContent};
   border-radius: 4px;
   border: solid 1px ${({ theme }) => theme.borderLightColor};
-  padding: 30px;
+  padding: 20px;
 
   & > button {
     margin: 5px 0px;

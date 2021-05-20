@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import LogoIcon from "../assets/LogoIcon.png";
 
-export default function PageWithGradient({ children, minHeight = "800px" }) {
+export default function PageWithGradient({ children, minHeight = "600px" }) {
   return (
     <WrapperSimple minHeight={minHeight}>
       <ContainerSimple>
@@ -47,7 +47,7 @@ const HeaderSimple = styled.header`
   }
 
   @media (max-width: 500px) {
-    padding: 0 30px;
+    padding: 0 20px;
     height: 120px;
   }
 
