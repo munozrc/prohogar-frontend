@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const URL_SERVER = process.env.REACT_APP_URL_API;
+const URL_SERVER =
+  process.env.REACT_APP_URL_API | "https://prohogar-backend.herokuapp.com/";
 console.log(URL_SERVER);
 
 export default async function loginService({ email, password }) {
