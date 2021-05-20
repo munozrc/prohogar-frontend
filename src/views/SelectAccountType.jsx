@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonGeneric from "../components/common/ButtonGeneric";
+import Button from "../components/Button";
 
 class SelectAccountType extends React.Component {
   constructor(props) {
@@ -20,18 +20,8 @@ class SelectAccountType extends React.Component {
     return (
       <>
         <h1>Seleccione su tipo de cuenta</h1>
-        <ButtonGeneric
-          typeButton={"buttom"}
-          onClick={this.showCreateAccountAsClient}
-        >
-          Cliente
-        </ButtonGeneric>
-        <ButtonGeneric
-          typeButton={"buttom"}
-          onClick={this.showCreateAccountAsPro}
-        >
-          Profesional
-        </ButtonGeneric>
+        <Button onClick={this.showCreateAccountAsClient}>Cliente</Button>
+        <Button onClick={this.showCreateAccountAsPro}>Profesional</Button>
       </>
     );
   }

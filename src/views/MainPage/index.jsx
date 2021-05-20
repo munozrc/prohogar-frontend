@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonGeneric from "../../components/common/ButtonGeneric";
+import Button from "../../components/Button";
 import {
   ContainerButtons,
   LogoIcon,
@@ -45,16 +45,8 @@ class MainPage extends React.Component {
           <Row>
             <LogoIcon src={LogoSVG} />
             <ContainerButtons>
-              <ButtonGeneric
-                typeButton={"buttom"}
-                onClick={this.showLoginPage}
-                value={"Iniciar Sesión"}
-              />
-              <ButtonGeneric
-                typeButton={"buttom"}
-                onClick={this.showSelectAccountPage}
-                value={"Crear Cuenta"}
-              />
+              <Button onClick={this.showLoginPage}>Login</Button>
+              <Button onClick={this.showSelectAccountPage}>Registrarse</Button>
             </ContainerButtons>
           </Row>
           <Hero>
