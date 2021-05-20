@@ -12,7 +12,7 @@ const PhotoPreview = forwardRef(({ title }, ref) => {
   const [value, setValue] = useState("");
 
   const handlePaste = (newUrl) => {
-    newUrl !== "" && setValue(newUrl.getData("Text"));
+    newUrl !== "" && setValue(newUrl.getData("text/plain"));
   };
 
   const handleError = () => {
@@ -44,7 +44,6 @@ const PhotoPreview = forwardRef(({ title }, ref) => {
 
 const Wrapper = styled.div`
   width: 100%;
-  min-width: 310.11px;
   height: fit-content;
   max-height: 20em;
   display: flex;
@@ -53,7 +52,7 @@ const Wrapper = styled.div`
 `;
 
 const ImgElement = styled.img`
-  height: 100%;
+  max-height: 100%;
 `;
 
 const WrapperImg = styled.div`
@@ -66,6 +65,7 @@ const WrapperImg = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background: ${({ theme }) => theme.lightColor};
 `;
 
 const Title = styled.h2`
