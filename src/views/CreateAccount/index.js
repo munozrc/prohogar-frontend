@@ -19,6 +19,7 @@ export default function CreateAccount() {
   const PasswordInput = useRef(null);
   const PhotoInput = useRef(null);
   const CInput = useRef(null);
+  const CheckBoxInput = useRef(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,37 +29,46 @@ export default function CreateAccount() {
     const password = PasswordInput.current.value;
     const photo = PhotoInput.current.currentSrc;
     const category = CInput.current !== null ? CInput.current.value : "";
+    const checkbox = CheckBoxInput.current.checked;
 
     if (name !== "" && email !== "" && password !== "") {
-      if (
-        type === "client" ||
-        (category !== "default" && type === "professional")
-      ) {
-        loginService({
-          name,
-          email,
-          password,
-          photo: checkDefaultImage(photo),
-          role: type,
-          category,
-        })
-          .then((response) => {
-            if (response.message === "SUCCESSFULLY_REGISTERED") {
-              saveDataUser(response);
-              history.push("/dashboard");
-            }
+      if (checkbox) {
+        if (
+          type === "client" ||
+          (category !== "default" && type === "professional")
+        ) {
+          loginService({
+            name,
+            email,
+            password,
+            photo: checkDefaultImage(photo),
+            role: type,
+            category,
           })
-          .catch((error) => {
-            const { message } = error.response.data;
-            if (message === "USER_ALREADY_EXISTS") {
-              alert("login: el email ya esta registrado");
-            } else if (message === "FATAL_SERVER_ERROR") {
-              alert("login: error fatal en el server");
-            }
-          });
+            .then((response) => {
+              if (response.message === "SUCCESSFULLY_REGISTERED") {
+                saveDataUser(response);
+                history.push("/dashboard");
+              }
+            })
+            .catch((error) => {
+              const { message } = error.response.data;
+              if (message === "USER_ALREADY_EXISTS") {
+                alert("login: el email ya esta registrado");
+              } else if (message === "FATAL_SERVER_ERROR") {
+                alert("login: error fatal en el server");
+              }
+            });
+        } else {
+          alert("Falta seleccionar categoria");
+        }
       } else {
-        alert("Falta seleccionar categoria");
+        alert(
+          "Para continuar debe aceptar las Condiciones del Servicio y la Política de Privacidad de Prohogar"
+        );
       }
+    } else {
+      alert("Campos vacíos");
     }
   };
 
@@ -100,7 +110,10 @@ export default function CreateAccount() {
             ref={PasswordInput}
             marginTop={"12px"}
           />
-          <CheckBox />
+          <CheckBox ref={CheckBoxInput}>
+            He leído y acepto las Condiciones del Servicio y la Política de
+            Privacidad de Prohogar
+          </CheckBox>
           <Button>Continuar</Button>
           <TextLink to={"/login"}>¿Ya tienes una cuenta?</TextLink>
         </Form>

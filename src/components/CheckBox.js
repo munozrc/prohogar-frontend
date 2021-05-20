@@ -1,16 +1,14 @@
+import { forwardRef } from "react";
 import styled from "styled-components";
 
-export default function CheckBox() {
+const CheckBox = forwardRef(({ children }, ref) => {
   return (
     <Container>
-      <CheckElement type={"checkbox"} />
-      <LabelElement>
-        He leído y acepto las Condiciones del Servicio y la Política de
-        Privacidad de Prohogar
-      </LabelElement>
+      <CheckElement ref={ref} type={"checkbox"} />
+      <LabelElement>{children}</LabelElement>
     </Container>
   );
-}
+});
 
 const Container = styled.div`
   width: 100%;
@@ -40,3 +38,5 @@ const LabelElement = styled.label`
   font-size: 0.85em;
   color: ${({ theme }) => theme.labelColor};
 `;
+
+export default CheckBox;
