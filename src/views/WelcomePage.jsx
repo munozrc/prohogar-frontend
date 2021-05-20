@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonGeneric from "../components/common/ButtonGeneric";
+import Button from "../components/Button";
 
 class WelcomePage extends React.Component {
   constructor(props) {
@@ -15,9 +15,7 @@ class WelcomePage extends React.Component {
     return (
       <>
         <h2>WelcomePage</h2>
-        <ButtonGeneric typeButton={"buttom"} onClick={this.showDashboard}>
-          Continuar
-        </ButtonGeneric>
+        <Button onClick={this.showDashboard}>Continuar</Button>
       </>
     );
   }
