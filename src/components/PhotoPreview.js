@@ -32,7 +32,7 @@ const PhotoPreview = forwardRef(({ title }, ref) => {
       <Input
         name={"image-user"}
         type={"url"}
-        label={`Imagen de ${title}`}
+        label={`Imagen de ${title} (opcional)`}
         ref={UrlInput}
         marginTop={"10px"}
         placeholder={"https://example.com/image"}
