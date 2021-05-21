@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import LogoIcon from "../assets/LogoIcon.png";
 
-export default function PageWithGradient({ children, minHeight = "600px" }) {
+export default function PageWithGradient({ children }) {
   return (
-    <WrapperSimple minHeight={minHeight}>
+    <WrapperSimple>
       <HeaderSimple>
         <Link to={"/"}>
           <Logo src={LogoIcon} />
