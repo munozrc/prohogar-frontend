@@ -14,6 +14,9 @@ import NotFound from "./views/NotFound";
 import CreateAccount from "./views/CreateAccount";
 import WelcomePage from "./views/WelcomePage";
 import SelectAccountType from "./views/SelectAccountType";
+import { ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -34,6 +37,7 @@ ReactDOM.render(
           <Route component={NotFound} />
         </Switch>
       </Router>
+      <ToastContainer />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

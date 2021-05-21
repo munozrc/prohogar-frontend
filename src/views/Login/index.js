@@ -6,6 +6,7 @@ import loginService from "../../services/loginService";
 // Components
 import PageWithGradient from "../../layouts/PageWithGradient";
 import { Container, Form, Title } from "./LoginElements";
+import { toast } from "react-toastify";
 import Input from "../../components/Input";
 import TextLink from "../../components/TextLink";
 import Button from "../../components/Button";
@@ -37,13 +38,13 @@ export default function Login() {
         .catch((error) => {
           const { message } = error.response.data;
           if (message === "INVALID_CREDENTIALS")
-            alert("login: email o password invalidos");
+            toast.error("Email o password invalidos");
 
           if (message === "FATAL_SERVER_ERROR")
-            alert("login: error fatal en el server");
+            toast.error("Error fatal en el server");
         });
     } else {
-      alert("login: campos vacios.");
+      toast.error("Campos vacíos.");
     }
   };
 

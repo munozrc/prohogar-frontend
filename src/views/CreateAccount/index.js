@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useHistory, useParams } from "react-router";
 import { Container, Form } from "./CreateAccountElements";
+import { toast } from "react-toastify";
 import PageWithGradient from "../../layouts/PageWithGradient";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
@@ -54,21 +55,21 @@ export default function CreateAccount() {
             .catch((error) => {
               const { message } = error.response.data;
               if (message === "USER_ALREADY_EXISTS") {
-                alert("login: el email ya esta registrado");
+                toast.error("El email ya esta registrado");
               } else if (message === "FATAL_SERVER_ERROR") {
-                alert("login: error fatal en el server");
+                toast.error("Error fatal en el server");
               }
             });
         } else {
-          alert("Falta seleccionar categoria");
+          toast.warn("Seleccione una Categoria");
         }
       } else {
-        alert(
+        toast.warn(
           "Para continuar debe aceptar las Condiciones del Servicio y la Política de Privacidad de Prohogar"
         );
       }
     } else {
-      alert("Campos vacíos");
+      toast.warn("Campos vacíos");
     }
   };
 
