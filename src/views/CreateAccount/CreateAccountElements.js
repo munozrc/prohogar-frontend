@@ -27,6 +27,7 @@ export const Form = styled.form`
   border-radius: 4px;
   border: solid 1px ${({ theme }) => theme.borderLightColor};
   padding: 20px;
+  margin-bottom: 30px;
 
   & > button {
     margin: 5px 0px;
