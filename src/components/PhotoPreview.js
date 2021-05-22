@@ -61,10 +61,10 @@ const ImgElement = styled.img`
 `;
 
 const WrapperImg = styled.div`
-  width: 25vh;
-  max-width: 110px;
-  height: 25vh;
-  max-height: 110px;
+  width: 110px;
+  height: 110px;
+  min-width: 110px;
+  min-height: 110px;
   border-radius: 50%;
   overflow: hidden;
   display: flex;
