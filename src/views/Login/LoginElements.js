@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const Form = styled.form`
   width: 100%;
   height: fit-content;
-  max-width: 400px;
+  max-width: 380px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,7 +20,7 @@ export const Form = styled.form`
   border-radius: 4px;
   border: solid 1px ${({ theme }) => theme.borderLightColor};
   box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
-  padding: 20px;
+  padding: 30px;
   margin: 30px 0px;
 
   & > button {
@@ -33,6 +33,7 @@ export const Form = styled.form`
 
   & > span {
     color: ${({ theme }) => theme.labelColor};
+    font-size: 14px;
     margin-top: 5px;
   }
 `;

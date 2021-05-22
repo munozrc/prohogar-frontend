@@ -6,6 +6,7 @@ const TextLink = styled(Link)`
   color: ${({ theme }) => theme.brandSecondary};
   text-decoration: none;
   font-weight: 500;
+  font-size: 14px;
   transition: color 0.3s ease;
   outline: none;
 
