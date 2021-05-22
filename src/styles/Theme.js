@@ -5,6 +5,7 @@ export const Theme = {
     "linear-gradient(180deg, rgba(87, 105, 170, 0.25) 0%,rgba(35, 39, 42, 0.25) 100%),#23272a",
   lightColor: "rgba(255, 255, 255, 0.8)",
   labelColor: "rgba(255, 255, 255, 0.4)",
+  textNormal: "#dcddde",
   placeholderColor: "rgba(255, 255, 255, 0.3)",
   borderDarkColor: "rgba(35, 39, 42, 0.7)",
   borderLightColor: "rgba(255, 255, 255, 0.05)",

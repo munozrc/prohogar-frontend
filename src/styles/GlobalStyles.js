@@ -15,10 +15,5 @@ export const GlobalStyles = createGlobalStyle`
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: 12px;
-
-    @media (min-width: 1400px) {
-      font-size: 14px;
-    }
   }
 `;

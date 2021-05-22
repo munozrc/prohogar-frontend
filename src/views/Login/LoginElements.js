@@ -3,33 +3,25 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   height: 100%;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  padding: 20px 20px 0px 20px;
-
-  @media (min-width: 1400px) {
-    padding: 120px 30px 0px 30px;
-  }
-
-  @media (max-width: 320px) {
-    padding: 0px 10px 0px 10px;
-    font-size: 12px;
-  }
+  align-items: center;
 `;
 
 export const Form = styled.form`
   width: 100%;
   height: fit-content;
-  max-width: 26.58em;
-  min-height: 22.58em;
-  background: ${({ theme }) => theme.bgContent};
-  border-radius: 4px;
-  border: solid 1px ${({ theme }) => theme.borderLightColor};
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: ${({ theme }) => theme.bgContent};
+  border-radius: 4px;
+  border: solid 1px ${({ theme }) => theme.borderLightColor};
+  box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
   padding: 20px;
-  margin-bottom: 30px;
+  margin: 30px 0px;
 
   & > button {
     margin-top: 15px;
@@ -47,7 +39,7 @@ export const Form = styled.form`
 
 export const Title = styled.h2`
   text-align: center;
-  font-size: 1.8em;
-  font-weight: 400;
+  font-size: 24px;
+  font-weight: 600;
   color: ${({ theme }) => theme.lightColor};
 `;

@@ -35,12 +35,14 @@ const Input = forwardRef(
 );
 
 const LabelElement = styled.label`
-  display: block;
+  display: inline-block;
   color: ${({ theme }) => theme.labelColor};
-  font-size: 1.1em;
-  font-weight: 400;
   margin-top: ${({ marginTop }) => marginTop};
   margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  text-transform: uppercase;
 `;
 
 const Container = styled.div`
@@ -49,24 +51,19 @@ const Container = styled.div`
 `;
 
 const InputElement = styled.input`
-  height: 2.4em;
-  min-height: 2.4em;
+  height: 40px;
   width: 100%;
-  color: ${({ theme }) => theme.bgWhite};
-  font-size: 1.2em;
-  padding: 0.5em;
+  min-height: 40px;
+  font-size: 16px;
+  padding: 10px;
   border: 2px solid ${({ theme }) => theme.borderDarkColor};
   border-radius: 4px;
   background: ${({ theme }) => theme.bgColor};
+  color: ${({ theme }) => theme.textNormal};
   outline: none;
-  color: ${({ theme }) => theme.bgWhite};
-
-  &::placeholder {
-    color: ${({ theme }) => theme.placeholderColor};
-  }
 
   &:focus {
-    box-shadow: 0px 0px 0px 3px ${({ theme }) => theme.brandPrimary};
+    box-shadow: 0px 0px 0px 2px ${({ theme }) => theme.brandPrimary};
   }
 `;
 
