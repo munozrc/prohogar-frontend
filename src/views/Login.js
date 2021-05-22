@@ -1,19 +1,19 @@
 import styled from "styled-components";
 import { useRef } from "react";
 import { useHistory } from "react-router";
+import { toast } from "react-toastify";
 
 // Utils and Hooks
-import loginService from "../../services/loginService";
-import { saveDataUser } from "../../utils/saveDataUser";
+import loginService from "../services/loginService";
+import { saveDataUser } from "../utils/saveDataUser";
 
 // Custom Components
-import PageWithGradient from "../../layouts/PageWithGradient";
-import Input from "../../components/Input";
-import TextLink from "../../components/TextLink";
-import Button from "../../components/Button";
-import { toast } from "react-toastify";
-import { ContainerSimple } from "../../layouts/ContainerSimple";
-import { TitleForm } from "../../layouts/TitleForm";
+import PageWithGradient from "../layouts/PageWithGradient";
+import Input from "../components/Input";
+import TextLink from "../components/TextLink";
+import Button from "../components/Button";
+import { ContainerSimple } from "../layouts/ContainerSimple";
+import { TitleForm } from "../layouts/TitleForm";
 
 export default function Login() {
   const history = useHistory();

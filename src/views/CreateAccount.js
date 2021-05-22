@@ -4,18 +4,18 @@ import { useHistory, useParams } from "react-router";
 import { toast } from "react-toastify";
 
 // Custom Components
-import { ContainerSimple } from "../../layouts/ContainerSimple";
-import PhotoPreview, { checkDefaultImage } from "../../components/PhotoPreview";
-import PageWithGradient from "../../layouts/PageWithGradient";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
-import CheckBox from "../../components/CheckBox";
-import TextLink from "../../components/TextLink";
-import ComboBox from "../../components/ComboBox";
+import { ContainerSimple } from "../layouts/ContainerSimple";
+import PhotoPreview, { checkDefaultImage } from "../components/PhotoPreview";
+import PageWithGradient from "../layouts/PageWithGradient";
+import Input from "../components/Input";
+import Button from "../components/Button";
+import CheckBox from "../components/CheckBox";
+import TextLink from "../components/TextLink";
+import ComboBox from "../components/ComboBox";
 
 // Utils and Hooks
-import loginService from "../../services/registerService";
-import { saveDataUser } from "../../utils/saveDataUser";
+import loginService from "../services/registerService";
+import { saveDataUser } from "../utils/saveDataUser";
 
 export default function CreateAccount() {
   const { type } = useParams();
