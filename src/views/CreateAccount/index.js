@@ -1,14 +1,19 @@
+import styled from "styled-components";
 import { useRef } from "react";
 import { useHistory, useParams } from "react-router";
-import { Container, Form } from "./CreateAccountElements";
 import { toast } from "react-toastify";
+
+// Custom Components
+import { ContainerSimple } from "../../layouts/ContainerSimple";
+import PhotoPreview, { checkDefaultImage } from "../../components/PhotoPreview";
 import PageWithGradient from "../../layouts/PageWithGradient";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import PhotoPreview, { checkDefaultImage } from "../../components/PhotoPreview";
 import CheckBox from "../../components/CheckBox";
 import TextLink from "../../components/TextLink";
 import ComboBox from "../../components/ComboBox";
+
+// Utils and Hooks
 import loginService from "../../services/registerService";
 import { saveDataUser } from "../../utils/saveDataUser";
 
@@ -77,8 +82,8 @@ export default function CreateAccount() {
   if (type !== "client" && type !== "professional") history.push("/");
 
   return (
-    <PageWithGradient minHeight={type === "professional" ? "860px" : "800px"}>
-      <Container>
+    <PageWithGradient>
+      <ContainerSimple>
         <Form onSubmit={handleSubmit}>
           <PhotoPreview
             title={type === "professional" ? "profesional" : "cliente"}
@@ -121,7 +126,26 @@ export default function CreateAccount() {
           <Button>Continuar</Button>
           <TextLink to={"/login"}>¿Ya tienes una cuenta?</TextLink>
         </Form>
-      </Container>
+      </ContainerSimple>
     </PageWithGradient>
   );
 }
+
+const Form = styled.form`
+  width: 100%;
+  height: fit-content;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: ${({ theme }) => theme.bgContent};
+  border-radius: 4px;
+  border: solid 1px ${({ theme }) => theme.borderLightColor};
+  box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
+  padding: 30px;
+  margin: 30px 0px;
+
+  & > button {
+    margin: 5px 0px;
+  }
+`;

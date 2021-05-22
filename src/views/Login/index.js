@@ -1,17 +1,19 @@
+import styled from "styled-components";
 import { useRef } from "react";
+import { useHistory } from "react-router";
 
-// Services
+// Utils and Hooks
 import loginService from "../../services/loginService";
+import { saveDataUser } from "../../utils/saveDataUser";
 
-// Components
+// Custom Components
 import PageWithGradient from "../../layouts/PageWithGradient";
-import { Container, Form, Title } from "./LoginElements";
-import { toast } from "react-toastify";
 import Input from "../../components/Input";
 import TextLink from "../../components/TextLink";
 import Button from "../../components/Button";
-import { useHistory } from "react-router";
-import { saveDataUser } from "../../utils/saveDataUser";
+import { toast } from "react-toastify";
+import { ContainerSimple } from "../../layouts/ContainerSimple";
+import { TitleForm } from "../../layouts/TitleForm";
 
 export default function Login() {
   const history = useHistory();
@@ -50,9 +52,9 @@ export default function Login() {
 
   return (
     <PageWithGradient>
-      <Container>
+      <ContainerSimple>
         <Form onSubmit={handleSubmit}>
-          <Title>Iniciar Sesión</Title>
+          <TitleForm>Iniciar Sesión</TitleForm>
           <Input
             name={"email"}
             type={"email"}
@@ -72,7 +74,36 @@ export default function Login() {
             <TextLink to={"/register"}>Registrarse</TextLink>
           </span>
         </Form>
-      </Container>
+      </ContainerSimple>
     </PageWithGradient>
   );
 }
+
+const Form = styled.form`
+  width: 100%;
+  height: fit-content;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: ${({ theme }) => theme.bgContent};
+  border-radius: 4px;
+  border: solid 1px ${({ theme }) => theme.borderLightColor};
+  box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
+  padding: 30px;
+  margin: 30px 0px;
+
+  & > button {
+    margin-top: 15px;
+  }
+
+  & > a {
+    margin-top: 5px;
+  }
+
+  & > span {
+    color: ${({ theme }) => theme.labelColor};
+    font-size: 14px;
+    margin-top: 5px;
+  }
+`;
