@@ -86,7 +86,7 @@ export default function CreateAccount() {
       <ContainerSimple>
         <Form onSubmit={handleSubmit}>
           <PhotoPreview
-            title={type === "professional" ? "profesional" : "cliente"}
+            title={type === "professional" ? "Profesional" : "Cliente"}
             ref={PhotoInput}
           />
           {type === "professional" && (
