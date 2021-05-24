@@ -79,7 +79,7 @@ const MenuSection = styled.div`
 const MenuTitle = styled.h3`
   width: 100%;
   color: ${({ theme }) => theme.lightColor};
-  font-weight: 600;
+  font-weight: 300;
   text-align: left;
   margin-bottom: 10px;
   font-size: 16px;
@@ -94,7 +94,7 @@ const MenuItem = styled(Link)`
   align-items: center;
   text-decoration: none;
   color: ${({ theme }) => theme.lightColor};
-  font-weight: 400;
+  font-weight: 500;
   font-size: 16px;
   border-radius: 4px;
   padding-left: 15px;
