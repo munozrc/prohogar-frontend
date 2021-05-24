@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "./styles/GlobalStyles";
+import { GlobalStyles, StyledToastContainer } from "./styles/GlobalStyles";
 import { PrivateRoute, PublicRoute } from "./components/Route";
 import { Theme } from "./styles/Theme";
 
@@ -14,7 +14,6 @@ import NotFound from "./views/NotFound";
 import CreateAccount from "./views/CreateAccount";
 import WelcomePage from "./views/WelcomePage";
 import SelectAccountType from "./views/SelectAccountType";
-import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -37,7 +36,7 @@ ReactDOM.render(
           <Route component={NotFound} />
         </Switch>
       </Router>
-      <ToastContainer />
+      <StyledToastContainer />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

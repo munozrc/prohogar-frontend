@@ -1,4 +1,24 @@
-import { createGlobalStyle } from "styled-components";
+import { ToastContainer } from "react-toastify";
+import styled, { createGlobalStyle } from "styled-components";
+
+export const StyledToastContainer = styled(ToastContainer).attrs({
+  className: "toast-container",
+  toastClassName: "toast",
+  bodyClassName: "body",
+  progressClassName: "progress",
+})`
+  .Toastify__toast--success {
+    background: #2cb978;
+  }
+
+  .Toastify__toast--warning {
+    background: #ed733f;
+  }
+
+  .Toastify__toast--error {
+    background: #c03546;
+  }
+`;
 
 export const GlobalStyles = createGlobalStyle`
   *,
