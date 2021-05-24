@@ -3,14 +3,9 @@ import { Link } from "react-router-dom";
 
 // Assets
 import LogoIcon from "../assets/LogoIcon.png";
-import DefaultImage from "../assets/profile-image.jpg";
+import { Avatar } from "../components/Avatar";
 
-export default function PageDashboard({
-  children,
-  photo = "",
-  name = "Username",
-  type = "type",
-}) {
+export default function PageDashboard({ children, photo, name, type }) {
   return (
     <WrapperElement>
       <HeaderElement>
@@ -20,13 +15,7 @@ export default function PageDashboard({
       </HeaderElement>
       <MenuSection>Menu</MenuSection>
       <SectionUser>
-        <UserImageWrapper>
-          <UserImage src={photo === "" ? DefaultImage : photo} />
-        </UserImageWrapper>
-        <UserData>
-          <UserName>{name}</UserName>
-          <UserType>{type}</UserType>
-        </UserData>
+        <Avatar photo={photo} name={name} type={type} />
       </SectionUser>
       <SectionContent>{children}</SectionContent>
     </WrapperElement>
@@ -64,7 +53,6 @@ const MenuSection = styled.div`
 `;
 
 // Section User
-
 const SectionUser = styled.div`
   position: relative;
   grid-area: user;
@@ -73,43 +61,7 @@ const SectionUser = styled.div`
   align-items: center;
 `;
 
-const UserImageWrapper = styled.span`
-  display: block;
-  position: relative;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: ${({ theme }) => theme.brandPrimary};
-`;
-
-const UserImage = styled.img`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: ${({ theme }) => theme.brandPrimary};
-  border-radius: 50%;
-  object-fit: cover;
-`;
-
-const UserData = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  margin-left: 15px;
-`;
-
-const UserName = styled.h3`
-  color: ${({ theme }) => theme.bgWhite};
-  font-weight: 600;
-`;
-const UserType = styled.p`
-  color: ${({ theme }) => theme.lightColor};
-  font-weight: 300;
-`;
-
 // Section Content
-
 const SectionContent = styled.div`
   grid-area: content;
 `;
