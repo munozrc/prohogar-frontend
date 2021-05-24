@@ -13,7 +13,7 @@ import ClientPage from "./pages/ClientPage";
 import NotFound from "./pages/NotFound";
 import CreateAccount from "./pages/CreateAccount";
 import WelcomePage from "./pages/WelcomePage";
-import SelectAccountType from "./pages/SelectAccountType";
+import AccountType from "./pages/AccountType";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -25,7 +25,7 @@ ReactDOM.render(
         <Switch>
           <PublicRoute exact path={"/"} component={MainPage} />
           <PublicRoute exact path={"/login"} component={Login} />
-          <PublicRoute exact path={"/register"} component={SelectAccountType} />
+          <PublicRoute exact path={"/register"} component={AccountType} />
           <PublicRoute
             exact
             path={"/register/:type"}
