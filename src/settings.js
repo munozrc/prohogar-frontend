@@ -25,3 +25,16 @@ export const LINK_PRO = [
     text: "Cerrar Sesion",
   },
 ];
+
+export const LINK_CLIENT = [
+  {
+    path: "/dashboard",
+    icon: OverviewIcon,
+    text: "Información General",
+  },
+  {
+    path: "/logout",
+    icon: LogoutIcon,
+    text: "Cerrar Sesion",
+  },
+];
