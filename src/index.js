@@ -6,14 +6,14 @@ import { GlobalStyles, StyledToastContainer } from "./styles/GlobalStyles";
 import { PrivateRoute, PublicRoute } from "./components/Route";
 import { Theme } from "./styles/Theme";
 
-// Views
-import MainPage from "./views/MainPage";
-import Login from "./views/Login";
-import ClientPage from "./views/ClientPage";
-import NotFound from "./views/NotFound";
-import CreateAccount from "./views/CreateAccount";
-import WelcomePage from "./views/WelcomePage";
-import SelectAccountType from "./views/SelectAccountType";
+// Pages
+import MainPage from "./pages/MainPage";
+import Login from "./pages/Login";
+import ClientPage from "./pages/ClientPage";
+import NotFound from "./pages/NotFound";
+import CreateAccount from "./pages/CreateAccount";
+import WelcomePage from "./pages/WelcomePage";
+import SelectAccountType from "./pages/SelectAccountType";
 
 import "react-toastify/dist/ReactToastify.css";
 

@@ -1,10 +1,10 @@
 import { Redirect, Route } from "react-router";
 import { isAuthenticated } from "../utils/isAuthenticated";
 
-// Views
-import ClientPage from "../views/ClientPage";
-import NotFound from "../views/NotFound";
-import ProfessionalPage from "../views/ProfessionalPage";
+// Pages
+import ClientPage from "../pages/ClientPage";
+import NotFound from "../pages/NotFound";
+import ProfessionalPage from "../pages/ProfessionalPage";
 
 const getDashboardByRole = (ClientDashboard, ProDashboard, NotFoundView) => {
   try {
