@@ -15,6 +15,9 @@ import CreateAccount from "./pages/CreateAccount";
 import WelcomePage from "./pages/WelcomePage";
 import AccountType from "./pages/AccountType";
 
+// Utils functions
+import clearDataUser from "./utils/clearDataUser";
+
 import "react-toastify/dist/ReactToastify.css";
 
 ReactDOM.render(
@@ -31,6 +34,7 @@ ReactDOM.render(
             path={"/register/:type"}
             component={CreateAccount}
           />
+          <PrivateRoute exact path={"/logout"} component={clearDataUser} />
           <PrivateRoute exact path={"/dashboard"} component={ClientDashboard} />
           <PrivateRoute exact path={"/welcome"} component={WelcomePage} />
           <Route component={NotFound} />
