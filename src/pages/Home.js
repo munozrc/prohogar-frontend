@@ -1,8 +1,8 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 // Custom Components
 import PageWithCenter from "../layouts/PageWithCenter";
-import Button from "../components/Button";
 
 // Assets
 import ComputerSVG from "../assets/app.svg";
@@ -20,7 +20,7 @@ export default function Home() {
             Prohogar te permite crear solicitudes de servicio a profesionales
             adecuados según las necesidades de reparación que requiera tu hogar.
           </HeroParagraph>
-          <Button>Crear Cuenta</Button>
+          <ButtonAction to={"/register"}>Crear Cuenta</ButtonAction>
         </HeroContent>
         <HeroImages>
           <HouseImg src={HouseSVG} />
@@ -55,7 +55,7 @@ const HeroContent = styled.div`
   padding: 90px 20px;
   z-index: 1;
 
-  & > button {
+  & > a {
     margin: 40px 0px 30px 0px;
   }
 `;
@@ -118,14 +118,45 @@ const HouseImg = styled.img`
 const ComputerImg = styled.img`
   position: absolute;
   bottom: 0px;
-  left: -540px;
-  max-width: 80%;
+  left: -590px;
+  max-width: 70%;
   user-select: none;
   transform: scaleX(-1);
+
+  @media (min-width: 1400px) {
+    left: -480px;
+  }
 
   @media (max-width: 720px) {
     position: relative;
     max-width: 400px;
     left: -300%;
+  }
+`;
+
+const ButtonAction = styled(Link)`
+  height: 55px;
+  min-width: 230px;
+  min-height: 55px;
+  background: ${({ theme }) => theme.brandPrimary};
+  border: solid 3px ${({ theme }) => theme.brandPrimary};
+  border-radius: 40px;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  color: ${({ theme }) => theme.bgWhite};
+  padding: 12px 16px;
+  transition: background 0.3s ease;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    background: ${({ theme }) => theme.brandSecondary};
+  }
+
+  &:focus {
+    box-shadow: 0px 0px 0px 2px ${({ theme }) => theme.lightColor};
   }
 `;

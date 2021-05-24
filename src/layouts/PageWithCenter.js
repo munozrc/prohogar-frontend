@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 // Assets
 import LogoIcon from "../assets/LogoIcon.png";
-import Button from "../components/Button";
 
 export default function PageWithCenter({ children }) {
   return (
@@ -13,7 +12,7 @@ export default function PageWithCenter({ children }) {
           <Link to={"/"}>
             <Logo src={LogoIcon} />
           </Link>
-          <Button>Login</Button>
+          <ButtonLogin to={"/login"}>Login</ButtonLogin>
         </HeaderContainer>
       </HeaderElement>
       {children}
@@ -52,4 +51,29 @@ const HeaderContainer = styled.div`
 
 const Logo = styled.img`
   max-width: 130px;
+`;
+
+const ButtonLogin = styled(Link)`
+  height: 35px;
+  min-height: 35px;
+  background: ${({ theme }) => theme.brandPrimary};
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  text-decoration: none;
+  color: ${({ theme }) => theme.bgWhite};
+  padding: 5px 16px;
+  transition: background 0.3s ease;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    background: ${({ theme }) => theme.brandSecondary};
+  }
+
+  &:focus {
+    box-shadow: 0px 0px 0px 2px ${({ theme }) => theme.lightColor};
+  }
 `;
