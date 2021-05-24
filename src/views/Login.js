@@ -106,4 +106,8 @@ const Form = styled.form`
     font-size: 14px;
     margin-top: 5px;
   }
+
+  @media (max-width: 520px) {
+    margin: 100px 0px 30px 0px;
+  }
 `;

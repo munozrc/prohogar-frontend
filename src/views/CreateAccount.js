@@ -143,9 +143,13 @@ const Form = styled.form`
   border: solid 1px ${({ theme }) => theme.borderLightColor};
   box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
   padding: 30px;
-  margin: 100px 0px 30px 0px;
+  margin: 30px 0px;
 
   & > button {
     margin: 5px 0px;
+  }
+
+  @media (max-width: 520px) {
+    margin: 100px 0px 30px 0px;
   }
 `;
