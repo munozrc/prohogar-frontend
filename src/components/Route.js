@@ -2,7 +2,7 @@ import { Redirect, Route } from "react-router";
 import { isAuthenticated } from "../utils/isAuthenticated";
 
 // Pages
-import ClientPage from "../pages/ClientPage";
+import ClientDashboard from "../pages/ClientDashboard";
 import NotFound from "../pages/NotFound";
 import ProfessionalPage from "../pages/ProfessionalPage";
 
@@ -23,7 +23,7 @@ export const PrivateRoute = ({ path, component, ...props }) => {
   if (isAuthenticated()) {
     if (path === "/dashboard") {
       const viewDashboard = getDashboardByRole(
-        ClientPage,
+        ClientDashboard,
         ProfessionalPage,
         NotFound
       );

@@ -9,7 +9,7 @@ import { Theme } from "./styles/Theme";
 // Pages
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import ClientPage from "./pages/ClientPage";
+import ClientDashboard from "./pages/ClientDashboard";
 import NotFound from "./pages/NotFound";
 import CreateAccount from "./pages/CreateAccount";
 import WelcomePage from "./pages/WelcomePage";
@@ -31,7 +31,7 @@ ReactDOM.render(
             path={"/register/:type"}
             component={CreateAccount}
           />
-          <PrivateRoute exact path={"/dashboard"} component={ClientPage} />
+          <PrivateRoute exact path={"/dashboard"} component={ClientDashboard} />
           <PrivateRoute exact path={"/welcome"} component={WelcomePage} />
           <Route component={NotFound} />
         </Switch>
