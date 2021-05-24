@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 // Custom Components
 import Avatar from "../components/Avatar";
+import LogoLink from "./LogoLink";
 
 // Assets
-import LogoIcon from "../assets/LogoIcon.png";
 import OverviewIcon from "../assets/OverviewIcon";
 import JobIcon from "../assets/JobIcon";
 
@@ -13,9 +13,7 @@ export default function PageDashboard({ children, photo, name, type }) {
   return (
     <WrapperElement>
       <HeaderElement>
-        <Link to={"/"}>
-          <Logo src={LogoIcon} />
-        </Link>
+        <LogoLink />
       </HeaderElement>
       <MenuSection>
         <MenuTitle>Menu</MenuTitle>
@@ -56,10 +54,6 @@ const HeaderElement = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const Logo = styled.img`
-  max-width: 130px;
 `;
 
 // Section Menu

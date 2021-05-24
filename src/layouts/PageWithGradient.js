@@ -1,16 +1,13 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
-// Assets
-import LogoIcon from "../assets/LogoIcon.png";
+// Custom Components
+import LogoLink from "./LogoLink";
 
 export default function PageWithGradient({ children }) {
   return (
     <WrapperSimple>
       <HeaderSimple>
-        <Link to={"/"}>
-          <Logo src={LogoIcon} />
-        </Link>
+        <LogoLink />
       </HeaderSimple>
       {children}
     </WrapperSimple>
@@ -40,8 +37,4 @@ const HeaderSimple = styled.header`
   @media (max-width: 320px) {
     padding: 0 20px;
   }
-`;
-
-const Logo = styled.img`
-  max-width: 130px;
 `;

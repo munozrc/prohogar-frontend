@@ -1,17 +1,15 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-// Assets
-import LogoIcon from "../assets/LogoIcon.png";
+// Custom Components
+import LogoLink from "./LogoLink";
 
 export default function PageWithCenter({ children }) {
   return (
     <WrapperMain>
       <HeaderElement>
         <HeaderContainer>
-          <Link to={"/"}>
-            <Logo src={LogoIcon} />
-          </Link>
+          <LogoLink />
           <ButtonLogin to={"/login"}>Login</ButtonLogin>
         </HeaderContainer>
       </HeaderElement>
@@ -47,10 +45,6 @@ const HeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-`;
-
-const Logo = styled.img`
-  max-width: 130px;
 `;
 
 const ButtonLogin = styled(Link)`
