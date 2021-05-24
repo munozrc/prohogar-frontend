@@ -4,7 +4,7 @@ import { isAuthenticated } from "../utils/isAuthenticated";
 // Pages
 import ClientDashboard from "../pages/ClientDashboard";
 import NotFound from "../pages/NotFound";
-import ProfessionalPage from "../pages/ProfessionalPage";
+import ProDashboard from "../pages/ProDashboard";
 
 const getDashboardByRole = (ClientDashboard, ProDashboard, NotFoundView) => {
   try {
@@ -24,7 +24,7 @@ export const PrivateRoute = ({ path, component, ...props }) => {
     if (path === "/dashboard") {
       const viewDashboard = getDashboardByRole(
         ClientDashboard,
-        ProfessionalPage,
+        ProDashboard,
         NotFound
       );
       return <Route {...props} path={path} component={viewDashboard} />;
