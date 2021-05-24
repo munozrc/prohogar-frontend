@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 // Assets
 import LogoIcon from "../assets/LogoIcon.png";
+import Button from "../components/Button";
 
 export default function PageWithCenter({ children }) {
   return (
@@ -12,6 +13,7 @@ export default function PageWithCenter({ children }) {
           <Link to={"/"}>
             <Logo src={LogoIcon} />
           </Link>
+          <Button>Login</Button>
         </HeaderContainer>
       </HeaderElement>
       {children}
@@ -33,9 +35,9 @@ const WrapperMain = styled.div`
 const HeaderElement = styled.header`
   width: 100%;
   height: 80px;
-  background: ${({ theme }) => theme.brandDark};
   display: flex;
   justify-content: center;
+  background: ${({ theme }) => theme.brandDark};
 `;
 
 const HeaderContainer = styled.div`
@@ -44,6 +46,7 @@ const HeaderContainer = styled.div`
   max-width: 1200px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 20px;
 `;
 
