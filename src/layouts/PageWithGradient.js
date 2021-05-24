@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
+// Assets
 import LogoIcon from "../assets/LogoIcon.png";
 
 export default function PageWithGradient({ children }) {

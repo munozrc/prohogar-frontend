@@ -7,7 +7,7 @@ import { PrivateRoute, PublicRoute } from "./components/Route";
 import { Theme } from "./styles/Theme";
 
 // Pages
-import MainPage from "./pages/MainPage";
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import ClientPage from "./pages/ClientPage";
 import NotFound from "./pages/NotFound";
@@ -23,7 +23,7 @@ ReactDOM.render(
       <GlobalStyles />
       <Router>
         <Switch>
-          <PublicRoute exact path={"/"} component={MainPage} />
+          <PublicRoute exact path={"/"} component={Home} />
           <PublicRoute exact path={"/login"} component={Login} />
           <PublicRoute exact path={"/register"} component={AccountType} />
           <PublicRoute
