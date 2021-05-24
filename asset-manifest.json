@@ -1,21 +1,24 @@
 {
   "files": {
-    "main.js": "/prohogar-frontend/static/js/main.44f569bd.chunk.js",
-    "main.js.map": "/prohogar-frontend/static/js/main.44f569bd.chunk.js.map",
+    "main.js": "/prohogar-frontend/static/js/main.731fa226.chunk.js",
+    "main.js.map": "/prohogar-frontend/static/js/main.731fa226.chunk.js.map",
     "runtime-main.js": "/prohogar-frontend/static/js/runtime-main.191951b1.js",
     "runtime-main.js.map": "/prohogar-frontend/static/js/runtime-main.191951b1.js.map",
-    "static/js/2.d241fa85.chunk.js": "/prohogar-frontend/static/js/2.d241fa85.chunk.js",
-    "static/js/2.d241fa85.chunk.js.map": "/prohogar-frontend/static/js/2.d241fa85.chunk.js.map",
+    "static/css/2.97503911.chunk.css": "/prohogar-frontend/static/css/2.97503911.chunk.css",
+    "static/js/2.bd857e9f.chunk.js": "/prohogar-frontend/static/js/2.bd857e9f.chunk.js",
+    "static/js/2.bd857e9f.chunk.js.map": "/prohogar-frontend/static/js/2.bd857e9f.chunk.js.map",
     "index.html": "/prohogar-frontend/index.html",
-    "static/js/2.d241fa85.chunk.js.LICENSE.txt": "/prohogar-frontend/static/js/2.d241fa85.chunk.js.LICENSE.txt",
-    "static/media/img-home.e8cbcb1a.svg": "/prohogar-frontend/static/media/img-home.e8cbcb1a.svg",
-    "static/media/logo.121e3b8f.svg": "/prohogar-frontend/static/media/logo.121e3b8f.svg",
-    "static/media/wave_003.7255d7cc.svg": "/prohogar-frontend/static/media/wave_003.7255d7cc.svg",
-    "static/media/wave_004.149303d6.svg": "/prohogar-frontend/static/media/wave_004.149303d6.svg"
+    "static/css/2.97503911.chunk.css.map": "/prohogar-frontend/static/css/2.97503911.chunk.css.map",
+    "static/js/2.bd857e9f.chunk.js.LICENSE.txt": "/prohogar-frontend/static/js/2.bd857e9f.chunk.js.LICENSE.txt",
+    "static/media/app.6dca0cb6.svg": "/prohogar-frontend/static/media/app.6dca0cb6.svg",
+    "static/media/client-icon.ccbbb176.svg": "/prohogar-frontend/static/media/client-icon.ccbbb176.svg",
+    "static/media/home-img.d22046bf.svg": "/prohogar-frontend/static/media/home-img.d22046bf.svg",
+    "static/media/professional-icon.828b683b.svg": "/prohogar-frontend/static/media/professional-icon.828b683b.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.191951b1.js",
-    "static/js/2.d241fa85.chunk.js",
-    "static/js/main.44f569bd.chunk.js"
+    "static/css/2.97503911.chunk.css",
+    "static/js/2.bd857e9f.chunk.js",
+    "static/js/main.731fa226.chunk.js"
   ]
 }
