@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import DefaultImage from "../assets/profile-image.jpg";
 
-export function Avatar({ photo = "", name = "", type = "" }) {
+export default function Avatar({ photo = "", name = "", type = "" }) {
   return (
     <>
       <UserImageWrapper>
