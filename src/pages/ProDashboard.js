@@ -2,10 +2,27 @@ import styled from "styled-components";
 import PageDashboard from "../layouts/PageDashboard";
 import loadDataUser from "../utils/loadDataUser";
 
+// Assets
+import OverviewIcon from "../assets/OverviewIcon";
+import JobIcon from "../assets/JobIcon";
+
+const links = [
+  {
+    path: "/dashboard",
+    icon: OverviewIcon,
+    text: "Información General",
+  },
+  {
+    path: "/",
+    icon: JobIcon,
+    text: "Solicitudes",
+  },
+];
+
 export default function ProDashboard() {
   const { name, photo, category } = loadDataUser();
   return (
-    <PageDashboard photo={photo} name={name} type={category}>
+    <PageDashboard photo={photo} name={name} type={category} links={links}>
       <GreetingsSection>
         <GreetingsName>{`Hola ${name},`}</GreetingsName>
         <GreetingsDisplay>Bienvenido de nuevo ✋</GreetingsDisplay>

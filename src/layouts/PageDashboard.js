@@ -1,31 +1,23 @@
-import styled, { css } from "styled-components";
-import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 // Custom Components
 import Avatar from "../components/Avatar";
 import LogoLink from "./LogoLink";
 
 // Assets
-import OverviewIcon from "../assets/OverviewIcon";
-import JobIcon from "../assets/JobIcon";
+import MenuIcon from "../assets/MenuIcon";
+import Navbar from "../components/Navbar";
 
-export default function PageDashboard({ children, photo, name, type }) {
+export default function PageDashboard({ children, photo, name, type, links }) {
   return (
     <WrapperElement>
       <HeaderElement>
         <LogoLink />
+        <HeaderMenuIcon>
+          <MenuIcon />
+        </HeaderMenuIcon>
       </HeaderElement>
-      <MenuSection>
-        <MenuTitle>Menu</MenuTitle>
-        <MenuItem to="/" active>
-          <OverviewIcon />
-          Informacion General
-        </MenuItem>
-        <MenuItem to="/">
-          <JobIcon />
-          Solicitudes
-        </MenuItem>
-      </MenuSection>
+      <Navbar links={links} />
       <SectionUser>
         <Avatar photo={photo} name={name} type={type} />
       </SectionUser>
@@ -47,6 +39,14 @@ const WrapperElement = styled.div`
     "logo content"
     "menu content"
     "user content";
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 1fr;
+    grid-template-areas:
+      "logo"
+      "content";
+  }
 `;
 
 const HeaderElement = styled.header`
@@ -54,53 +54,30 @@ const HeaderElement = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
 
-// Section Menu
-const MenuSection = styled.div`
-  grid-area: menu;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0px 20px;
-
-  & > a {
-    margin-bottom: 10px;
+  @media (max-width: 1000px) {
+    justify-content: space-between;
+    padding: 0px 30px;
+    border-bottom: solid 1px ${({ theme }) => theme.borderLightColor};
   }
 `;
 
-const MenuTitle = styled.h3`
-  width: 100%;
-  color: ${({ theme }) => theme.lightColor};
-  font-weight: 300;
-  text-align: left;
-  margin-bottom: 10px;
-  font-size: 16px;
-  padding-left: 15px;
-`;
-
-const MenuItem = styled(Link)`
-  width: 100%;
-  height: 45px;
-  display: flex;
-  justify-content: flex-start;
+const HeaderMenuIcon = styled.button`
+  display: none;
+  justify-content: center;
   align-items: center;
-  text-decoration: none;
-  color: ${({ theme }) => theme.lightColor};
-  font-weight: 500;
-  font-size: 16px;
+  font-size: 32px;
+  border: none;
   border-radius: 4px;
-  padding-left: 15px;
+  padding: 5px;
+  color: ${({ theme }) => theme.lightColor};
   background: transparent;
   transition: background 0.3s ease;
   outline: none;
+  cursor: pointer;
 
-  & > svg {
-    font-size: 24px;
-    fill: ${({ theme }) => theme.lightColor};
-    stroke: ${({ theme }) => theme.lightColor};
-    margin-right: 10px;
+  @media (max-width: 1000px) {
+    display: flex;
   }
 
   &:hover {
@@ -110,13 +87,9 @@ const MenuItem = styled(Link)`
   &:focus {
     box-shadow: 0px 0px 0px 2px ${({ theme }) => theme.lightColor};
   }
-
-  ${({ active }) =>
-    active &&
-    css`
-      background: ${({ theme }) => theme.brandPrimary};
-    `}
 `;
+
+// Section Menu
 
 // Section User
 const SectionUser = styled.div`
@@ -126,6 +99,10 @@ const SectionUser = styled.div`
   justify-content: center;
   align-items: center;
   padding-right: 15px;
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 // Section Content
