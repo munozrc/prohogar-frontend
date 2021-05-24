@@ -1,5 +1,5 @@
 import PageDashboard from "../layouts/PageDashboard";
-import { loadDataUser } from "../utils/saveDataUser";
+import loadDataUser from "../utils/loadDataUser";
 
 export default function ClientDashboard() {
   const { name, photo } = loadDataUser();

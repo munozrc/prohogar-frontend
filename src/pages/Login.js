@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 // Utils and Hooks
 import loginService from "../services/loginService";
-import { saveDataUser } from "../utils/saveDataUser";
+import saveDataUser from "../utils/saveDataUser";
 
 // Custom Components
 import PageWithGradient from "../layouts/PageWithGradient";

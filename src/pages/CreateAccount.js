@@ -15,7 +15,7 @@ import ComboBox from "../components/ComboBox";
 
 // Utils and Hooks
 import loginService from "../services/registerService";
-import { saveDataUser } from "../utils/saveDataUser";
+import saveDataUser from "../utils/saveDataUser";
 
 export default function CreateAccount() {
   const { type } = useParams();

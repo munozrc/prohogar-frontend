@@ -1,4 +1,4 @@
-export const saveDataUser = (response) => {
+export default function saveDataUser(response) {
   window.localStorage.setItem(
     "loggedProhogarUser",
     JSON.stringify({
@@ -9,17 +9,4 @@ export const saveDataUser = (response) => {
       photo: response.data.user.photo,
     })
   );
-};
-
-export const loadDataUser = () => {
-  const dataUser = JSON.parse(
-    window.localStorage.getItem("loggedProhogarUser")
-  );
-  return {
-    jwt: dataUser.jwt,
-    role: dataUser.role,
-    name: dataUser.name,
-    category: dataUser.category,
-    photo: dataUser.photo,
-  };
-};
+}
