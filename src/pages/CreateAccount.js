@@ -1,27 +1,26 @@
 import styled from "styled-components";
-import { useRef, useState } from "react";
-import { useHistory, useParams } from "react-router";
+import { useEffect, useRef } from "react";
+import { useParams } from "react-router";
 import { toast } from "react-toastify";
 
 // Custom Components
 import { ContainerSimple } from "../layouts/ContainerSimple";
-import PhotoPreview, { checkDefaultImage } from "../components/PhotoPreview";
+import PhotoPreview from "../components/PhotoPreview";
 import PageWithGradient from "../layouts/PageWithGradient";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import CheckBox from "../components/CheckBox";
 import TextLink from "../components/TextLink";
 import ComboBox from "../components/ComboBox";
-
-// Utils and Hooks
-import loginService from "../services/registerService";
-import saveDataUser from "../utils/saveDataUser";
 import Welcome from "./Welcome";
 
-export default function CreateAccount() {
+// Custom Hooks
+import useUser from "../hooks/useUser";
+
+export default function CreateAccount(props) {
+  const { register, clearError, isLoading, messageError, showWelcome } =
+    useUser();
   const { type } = useParams();
-  const [showMessage, setShowMessage] = useState(false);
-  const history = useHistory();
   const NameInput = useRef(null);
   const EmailInput = useRef(null);
   const PasswordInput = useRef(null);
@@ -29,64 +28,42 @@ export default function CreateAccount() {
   const CInput = useRef(null);
   const CheckBoxInput = useRef(null);
 
+  useEffect(() => {
+    if (messageError !== "") {
+      toast.error(messageError);
+      clearError();
+    }
+  }, [messageError, clearError]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const name = NameInput.current.value;
-    const email = EmailInput.current.value;
-    const password = PasswordInput.current.value;
-    const photo = PhotoInput.current.currentSrc;
-    const category = CInput.current !== null ? CInput.current.value : "";
-    const checkbox = CheckBoxInput.current.checked;
-
-    if (name !== "" && email !== "" && password !== "") {
-      if (checkbox) {
-        if (
-          type === "client" ||
-          (category !== "default" && type === "professional")
-        ) {
-          loginService({
-            name,
-            email,
-            password,
-            photo: checkDefaultImage(photo),
-            role: type,
-            category: category === "" ? undefined : category,
-          })
-            .then((response) => {
-              if (response.message === "SUCCESSFULLY_REGISTERED") {
-                saveDataUser(response);
-                setShowMessage(true);
-              }
-            })
-            .catch((error) => {
-              const { message } = error.response.data;
-              if (message === "USER_ALREADY_EXISTS") {
-                toast.error("El email ya esta registrado");
-              } else if (message === "FATAL_SERVER_ERROR") {
-                toast.error("Error fatal en el server");
-              }
-            });
-        } else {
-          toast.warn("Seleccione una Categoria");
-        }
-      } else {
-        toast.warn(
-          "Para continuar debe aceptar las Condiciones del Servicio y la Política de Privacidad de Prohogar"
-        );
-      }
-    } else {
-      toast.warn("Campos vacíos");
+    if (!isLoading) {
+      const name = NameInput.current.value;
+      const email = EmailInput.current.value;
+      const password = PasswordInput.current.value;
+      const photo = PhotoInput.current.currentSrc;
+      const category = CInput.current !== null ? CInput.current.value : "";
+      const checkbox = CheckBoxInput.current.checked;
+      register({
+        name,
+        email,
+        password,
+        checkbox,
+        type,
+        category,
+        photo,
+      });
     }
   };
 
   // type no validated
-  if (type !== "client" && type !== "professional") history.push("/");
+  if (type !== "client" && type !== "professional") props.history.push("/");
 
   return (
     <PageWithGradient>
       <ContainerSimple>
-        {showMessage ? (
+        {showWelcome ? (
           <Welcome />
         ) : (
           <Form onSubmit={handleSubmit}>
@@ -128,7 +105,7 @@ export default function CreateAccount() {
               He leído y acepto las Condiciones del Servicio y la Política de
               Privacidad de Prohogar
             </CheckBox>
-            <Button>Continuar</Button>
+            <Button>{isLoading ? "Cargando..." : "Continuar"}</Button>
             <TextLink to={"/login"}>¿Ya tienes una cuenta?</TextLink>
           </Form>
         )}
