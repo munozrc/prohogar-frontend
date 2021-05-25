@@ -93,12 +93,13 @@ const HeaderMenuIcon = styled.button`
 
 // Section User
 const SectionUser = styled.div`
-  position: relative;
+  height: 100%;
+  min-width: 100%;
   grid-area: user;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  padding-right: 15px;
+  padding-left: 30px;
 
   @media (max-width: 1000px) {
     display: none;
