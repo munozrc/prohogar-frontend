@@ -35,7 +35,7 @@ ReactDOM.render(
             component={CreateAccount}
           />
           <PrivateRoute exact path={"/logout"} component={clearDataUser} />
-          <PrivateRoute exact path={"/dashboard"} component={ClientDashboard} />
+          <PrivateRoute path={"/dashboard"} component={ClientDashboard} />
           <PrivateRoute exact path={"/welcome"} component={WelcomePage} />
           <Route component={NotFound} />
         </Switch>
