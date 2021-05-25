@@ -2,6 +2,8 @@
 import OverviewIcon from "./assets/OverviewIcon";
 import JobIcon from "./assets/JobIcon";
 import LogoutIcon from "./assets/LogoutIcon";
+import ServicesIcon from "./assets/ServicesIcon";
+import SettingsIcon from "./assets/SettingsIcon";
 
 export const URL_SERVER =
   process.env.NODE_ENV === "production"
@@ -20,6 +22,11 @@ export const LINK_PRO = [
     text: "Solicitudes",
   },
   {
+    path: "/dashboard/settings",
+    icon: SettingsIcon,
+    text: "Configuración",
+  },
+  {
     path: "/logout",
     icon: LogoutIcon,
     text: "Cerrar Sesion",
@@ -31,6 +38,16 @@ export const LINK_CLIENT = [
     path: "/dashboard",
     icon: OverviewIcon,
     text: "Información General",
+  },
+  {
+    path: "/dashboard/services",
+    icon: ServicesIcon,
+    text: "Servicios",
+  },
+  {
+    path: "/dashboard/settings",
+    icon: SettingsIcon,
+    text: "Configuración",
   },
   {
     path: "/logout",
