@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/prohogar-frontend/static/js/main.a4fe47be.chunk.js",
-    "main.js.map": "/prohogar-frontend/static/js/main.a4fe47be.chunk.js.map",
+    "main.js": "/prohogar-frontend/static/js/main.6f708990.chunk.js",
+    "main.js.map": "/prohogar-frontend/static/js/main.6f708990.chunk.js.map",
     "runtime-main.js": "/prohogar-frontend/static/js/runtime-main.191951b1.js",
     "runtime-main.js.map": "/prohogar-frontend/static/js/runtime-main.191951b1.js.map",
     "static/css/2.97503911.chunk.css": "/prohogar-frontend/static/css/2.97503911.chunk.css",
-    "static/js/2.6b0ea124.chunk.js": "/prohogar-frontend/static/js/2.6b0ea124.chunk.js",
-    "static/js/2.6b0ea124.chunk.js.map": "/prohogar-frontend/static/js/2.6b0ea124.chunk.js.map",
+    "static/js/2.bdd99c6e.chunk.js": "/prohogar-frontend/static/js/2.bdd99c6e.chunk.js",
+    "static/js/2.bdd99c6e.chunk.js.map": "/prohogar-frontend/static/js/2.bdd99c6e.chunk.js.map",
     "index.html": "/prohogar-frontend/index.html",
     "static/css/2.97503911.chunk.css.map": "/prohogar-frontend/static/css/2.97503911.chunk.css.map",
-    "static/js/2.6b0ea124.chunk.js.LICENSE.txt": "/prohogar-frontend/static/js/2.6b0ea124.chunk.js.LICENSE.txt",
+    "static/js/2.bdd99c6e.chunk.js.LICENSE.txt": "/prohogar-frontend/static/js/2.bdd99c6e.chunk.js.LICENSE.txt",
     "static/media/app.6dca0cb6.svg": "/prohogar-frontend/static/media/app.6dca0cb6.svg",
     "static/media/client-icon.ccbbb176.svg": "/prohogar-frontend/static/media/client-icon.ccbbb176.svg",
     "static/media/home-img.d22046bf.svg": "/prohogar-frontend/static/media/home-img.d22046bf.svg",
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.191951b1.js",
     "static/css/2.97503911.chunk.css",
-    "static/js/2.6b0ea124.chunk.js",
-    "static/js/main.a4fe47be.chunk.js"
+    "static/js/2.bdd99c6e.chunk.js",
+    "static/js/main.6f708990.chunk.js"
   ]
 }
