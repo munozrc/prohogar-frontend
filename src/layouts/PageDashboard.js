@@ -1,21 +1,36 @@
-import styled from "styled-components";
+import { useState } from "react";
+import styled, { css } from "styled-components";
 
 // Custom Components
 import Avatar from "../components/Avatar";
 import LogoLink from "./LogoLink";
+import Navbar from "../components/Navbar";
 
 // Assets
 import MenuIcon from "../assets/MenuIcon";
-import Navbar from "../components/Navbar";
+import CloseIcon from "../assets/CloseIcon";
 
 export default function PageDashboard({ children, photo, name, type, links }) {
+  const [showMenu, setShowMenu] = useState(false);
   return (
     <WrapperElement>
       <HeaderElement>
         <LogoLink />
-        <HeaderMenuIcon>
-          <MenuIcon />
+        <HeaderMenuIcon onClick={() => setShowMenu((prev) => !prev)}>
+          {showMenu ? <CloseIcon /> : <MenuIcon />}
         </HeaderMenuIcon>
+        {showMenu && (
+          <HeaderMenu>
+            <SectionUser active>
+              <Avatar photo={photo} name={name} type={type} />
+            </SectionUser>
+            <Navbar
+              links={links}
+              active
+              onClick={() => setShowMenu((prev) => !prev)}
+            />
+          </HeaderMenu>
+        )}
       </HeaderElement>
       <Navbar links={links} />
       <SectionUser>
@@ -50,6 +65,7 @@ const WrapperElement = styled.div`
 `;
 
 const HeaderElement = styled.header`
+  position: relative;
   grid-area: logo;
   display: flex;
   justify-content: center;
@@ -60,6 +76,18 @@ const HeaderElement = styled.header`
     padding: 0px 30px;
     border-bottom: solid 1px ${({ theme }) => theme.borderLightColor};
   }
+`;
+
+const HeaderMenu = styled.div`
+  position: fixed;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: ${({ theme }) => theme.brandGradient};
+  padding-top: 30px;
 `;
 
 const HeaderMenuIcon = styled.button`
@@ -89,11 +117,8 @@ const HeaderMenuIcon = styled.button`
   }
 `;
 
-// Section Menu
-
 // Section User
 const SectionUser = styled.div`
-  height: 100%;
   min-width: 100%;
   grid-area: user;
   display: flex;
@@ -103,6 +128,12 @@ const SectionUser = styled.div`
 
   @media (max-width: 1000px) {
     display: none;
+    ${({ active }) =>
+      active &&
+      css`
+        display: flex;
+        margin-bottom: 30px;
+      `}
   }
 `;
 

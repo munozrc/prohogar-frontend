@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 
-export default function Navbar({ links = [] }) {
+export default function Navbar({ links = [], ...props }) {
   let location = useLocation();
   return (
-    <Nav>
+    <Nav {...props}>
       <Title>Menu</Title>
       {links.map((link) => (
         <NavItem
@@ -34,6 +34,11 @@ const Nav = styled.nav`
 
   @media (max-width: 1000px) {
     display: none;
+    ${({ active }) =>
+      active &&
+      css`
+        display: flex;
+      `}
   }
 `;
 
