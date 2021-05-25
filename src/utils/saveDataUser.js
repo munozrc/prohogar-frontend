@@ -4,7 +4,7 @@ export default function saveDataUser(response) {
     JSON.stringify({
       jwt: response.data.jwt,
       role: response.data.user.role,
-      name: response.data.user.name,
+      name: response.data.user.name.replace(/\b\w/g, (l) => l.toUpperCase()),
       category: response.data.user.category,
       photo: response.data.user.photo,
     })

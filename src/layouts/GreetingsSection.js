@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function GreetingsSection({ name = "" }) {
   return (
     <SectionElement>
-      <NameUser>{`Hola ${name},`}</NameUser>
+      <NameUser>{`Hola ${name}`}</NameUser>
       <GreetingsDisplay>Bienvenido de nuevo ✋</GreetingsDisplay>
     </SectionElement>
   );

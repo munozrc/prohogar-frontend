@@ -16,7 +16,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import ClientDashboard from "./pages/ClientDashboard";
 import CreateAccount from "./pages/CreateAccount";
-import WelcomePage from "./pages/WelcomePage";
+import Welcome from "./pages/Welcome";
 import AccountType from "./pages/AccountType";
 
 // Utils functions
@@ -40,7 +40,7 @@ ReactDOM.render(
           />
           <PrivateRoute exact path={"/logout"} component={clearDataUser} />
           <PrivateRoute path={"/dashboard"} component={ClientDashboard} />
-          <PrivateRoute exact path={"/welcome"} component={WelcomePage} />
+          <PrivateRoute exact path={"/welcome"} component={Welcome} />
           <Route render={() => <Redirect to={"/"} />} />
         </Switch>
       </Router>

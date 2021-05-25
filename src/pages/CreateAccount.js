@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { toast } from "react-toastify";
 
@@ -16,9 +16,11 @@ import ComboBox from "../components/ComboBox";
 // Utils and Hooks
 import loginService from "../services/registerService";
 import saveDataUser from "../utils/saveDataUser";
+import Welcome from "./Welcome";
 
 export default function CreateAccount() {
   const { type } = useParams();
+  const [showMessage, setShowMessage] = useState(false);
   const history = useHistory();
   const NameInput = useRef(null);
   const EmailInput = useRef(null);
@@ -54,7 +56,7 @@ export default function CreateAccount() {
             .then((response) => {
               if (response.message === "SUCCESSFULLY_REGISTERED") {
                 saveDataUser(response);
-                history.push("/dashboard");
+                setShowMessage(true);
               }
             })
             .catch((error) => {
@@ -84,48 +86,52 @@ export default function CreateAccount() {
   return (
     <PageWithGradient>
       <ContainerSimple>
-        <Form onSubmit={handleSubmit}>
-          <PhotoPreview
-            title={type === "professional" ? "Profesional" : "Cliente"}
-            ref={PhotoInput}
-          />
-          {type === "professional" && (
-            <ComboBox
-              name={"Categoria"}
-              label={"Seleccione categoria"}
-              marginTop="12px"
-              options={["Albanil", "Mudanzas", "Plomero", "Tapicero"]}
-              ref={CInput}
+        {showMessage ? (
+          <Welcome />
+        ) : (
+          <Form onSubmit={handleSubmit}>
+            <PhotoPreview
+              title={type === "professional" ? "Profesional" : "Cliente"}
+              ref={PhotoInput}
             />
-          )}
-          <Input
-            name={"name-user"}
-            type={"text"}
-            label={"Nombres"}
-            ref={NameInput}
-            marginTop={"12px"}
-          />
-          <Input
-            name={"email"}
-            type={"email"}
-            label={"Correo electrónico"}
-            ref={EmailInput}
-            marginTop={"12px"}
-          />
-          <Input
-            name={"password"}
-            type={"password"}
-            label={"Contraseña"}
-            ref={PasswordInput}
-            marginTop={"12px"}
-          />
-          <CheckBox ref={CheckBoxInput}>
-            He leído y acepto las Condiciones del Servicio y la Política de
-            Privacidad de Prohogar
-          </CheckBox>
-          <Button>Continuar</Button>
-          <TextLink to={"/login"}>¿Ya tienes una cuenta?</TextLink>
-        </Form>
+            {type === "professional" && (
+              <ComboBox
+                name={"Categoria"}
+                label={"Seleccione categoria"}
+                marginTop="12px"
+                options={["Albanil", "Mudanzas", "Plomero", "Tapicero"]}
+                ref={CInput}
+              />
+            )}
+            <Input
+              name={"name-user"}
+              type={"text"}
+              label={"Nombres"}
+              ref={NameInput}
+              marginTop={"12px"}
+            />
+            <Input
+              name={"email"}
+              type={"email"}
+              label={"Correo electrónico"}
+              ref={EmailInput}
+              marginTop={"12px"}
+            />
+            <Input
+              name={"password"}
+              type={"password"}
+              label={"Contraseña"}
+              ref={PasswordInput}
+              marginTop={"12px"}
+            />
+            <CheckBox ref={CheckBoxInput}>
+              He leído y acepto las Condiciones del Servicio y la Política de
+              Privacidad de Prohogar
+            </CheckBox>
+            <Button>Continuar</Button>
+            <TextLink to={"/login"}>¿Ya tienes una cuenta?</TextLink>
+          </Form>
+        )}
       </ContainerSimple>
     </PageWithGradient>
   );
