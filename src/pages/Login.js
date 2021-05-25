@@ -1,11 +1,9 @@
 import styled from "styled-components";
-import { useRef } from "react";
-import { useHistory } from "react-router";
+import { useEffect, useRef } from "react";
 import { toast } from "react-toastify";
 
-// Utils and Hooks
-import loginService from "../services/loginService";
-import saveDataUser from "../utils/saveDataUser";
+// Custom Hooks
+import useUser from "../hooks/useUser";
 
 // Custom Components
 import PageWithGradient from "../layouts/PageWithGradient";
@@ -16,37 +14,25 @@ import { ContainerSimple } from "../layouts/ContainerSimple";
 import { TitleForm } from "../layouts/TitleForm";
 
 export default function Login() {
-  const history = useHistory();
+  const { login, clearError, isLoading, messageError } = useUser();
+
   const EmailInput = useRef(null);
   const PasswordInput = useRef(null);
+
+  useEffect(() => {
+    if (messageError !== "") {
+      toast.error(messageError);
+      clearError();
+    }
+  }, [messageError, clearError]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const email = EmailInput.current.value;
-    const password = PasswordInput.current.value;
-
-    if (email !== "" && password !== "") {
-      loginService({
-        email,
-        password,
-      })
-        .then((response) => {
-          if (response.message === "LOGIN_SUCCESSFUL") {
-            saveDataUser(response);
-            history.push("/dashboard");
-          }
-        })
-        .catch((error) => {
-          const { message } = error.response.data;
-          if (message === "INVALID_CREDENTIALS")
-            toast.error("Email o password invalidos");
-
-          if (message === "FATAL_SERVER_ERROR")
-            toast.error("Error fatal en el server");
-        });
-    } else {
-      toast.error("Campos vacíos.");
+    if (!isLoading) {
+      const email = EmailInput.current.value;
+      const password = PasswordInput.current.value;
+      login({ email, password });
     }
   };
 
@@ -68,7 +54,7 @@ export default function Login() {
             ref={PasswordInput}
           />
           <TextLink to={"/restorepassword"}>¿Olvidaste tu contraseña?</TextLink>
-          <Button>Entrar</Button>
+          <Button>{isLoading ? "Cargando..." : "Entrar"}</Button>
           <span>
             ¿necesito una cuenta?{" "}
             <TextLink to={"/register"}>Registrarse</TextLink>
@@ -92,6 +78,7 @@ const Form = styled.form`
   box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
   padding: 30px;
   margin: 30px 0px;
+  transition: opacity 0.3s ease;
 
   & > button {
     margin-top: 15px;
