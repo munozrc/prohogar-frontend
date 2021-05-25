@@ -1,6 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles, StyledToastContainer } from "./styles/GlobalStyles";
 import { PrivateRoute, PublicRoute } from "./components/Route";
@@ -10,7 +15,6 @@ import { Theme } from "./styles/Theme";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import ClientDashboard from "./pages/ClientDashboard";
-import NotFound from "./pages/NotFound";
 import CreateAccount from "./pages/CreateAccount";
 import WelcomePage from "./pages/WelcomePage";
 import AccountType from "./pages/AccountType";
@@ -37,7 +41,7 @@ ReactDOM.render(
           <PrivateRoute exact path={"/logout"} component={clearDataUser} />
           <PrivateRoute path={"/dashboard"} component={ClientDashboard} />
           <PrivateRoute exact path={"/welcome"} component={WelcomePage} />
-          <Route component={NotFound} />
+          <Route render={() => <Redirect to={"/"} />} />
         </Switch>
       </Router>
       <StyledToastContainer />

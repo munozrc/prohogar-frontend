@@ -3,30 +3,25 @@ import { isAuthenticated } from "../utils/isAuthenticated";
 
 // Pages
 import ClientDashboard from "../pages/ClientDashboard";
-import NotFound from "../pages/NotFound";
 import ProDashboard from "../pages/ProDashboard";
 
-const getDashboardByRole = (ClientDashboard, ProDashboard, NotFoundView) => {
+const getDashboardByRole = (ClientDashboard, ProDashboard) => {
   try {
     const { role } = JSON.parse(
       window.localStorage.getItem("loggedProhogarUser")
     );
     if (role === "client") return ClientDashboard;
     else if (role === "professional") return ProDashboard;
-    else return NotFoundView;
+    else return <Redirect to={"/"} />;
   } catch (error) {
-    return NotFoundView;
+    return <Redirect to={"/"} />;
   }
 };
 
 export const PrivateRoute = ({ path, component, ...props }) => {
   if (isAuthenticated()) {
     if (path === "/dashboard") {
-      const viewDashboard = getDashboardByRole(
-        ClientDashboard,
-        ProDashboard,
-        NotFound
-      );
+      const viewDashboard = getDashboardByRole(ClientDashboard, ProDashboard);
       return <Route {...props} path={path} component={viewDashboard} />;
     } else {
       return <Route {...props} path={path} component={component} />;
