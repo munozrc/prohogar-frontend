@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { useEffect, useRef } from "react";
 import { toast } from "react-toastify";
 
@@ -7,6 +6,7 @@ import useUser from "../hooks/useUser";
 
 // Custom Components
 import PageWithGradient from "../layouts/PageWithGradient";
+import FormElement from "../components/Form";
 import Input from "../components/Input";
 import TextLink from "../components/TextLink";
 import Button from "../components/Button";
@@ -39,7 +39,7 @@ export default function Login() {
   return (
     <PageWithGradient>
       <ContainerSimple>
-        <Form onSubmit={handleSubmit}>
+        <FormElement login onSubmit={handleSubmit}>
           <TitleForm>Iniciar Sesión</TitleForm>
           <Input
             name={"email"}
@@ -59,42 +59,8 @@ export default function Login() {
             ¿necesito una cuenta?{" "}
             <TextLink to={"/register"}>Registrarse</TextLink>
           </span>
-        </Form>
+        </FormElement>
       </ContainerSimple>
     </PageWithGradient>
   );
 }
-
-const Form = styled.form`
-  width: 100%;
-  height: fit-content;
-  max-width: 380px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: ${({ theme }) => theme.bgContent};
-  border-radius: 4px;
-  border: solid 1px ${({ theme }) => theme.borderLightColor};
-  box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
-  padding: 30px;
-  margin: 30px 0px;
-  transition: opacity 0.3s ease;
-
-  & > button {
-    margin-top: 15px;
-  }
-
-  & > a {
-    margin-top: 5px;
-  }
-
-  & > span {
-    color: ${({ theme }) => theme.labelColor};
-    font-size: 14px;
-    margin-top: 5px;
-  }
-
-  @media (max-width: 520px) {
-    margin: 100px 0px 30px 0px;
-  }
-`;

@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { useEffect, useRef } from "react";
 import { useParams } from "react-router";
 import { toast } from "react-toastify";
@@ -12,6 +11,7 @@ import Button from "../components/Button";
 import CheckBox from "../components/CheckBox";
 import TextLink from "../components/TextLink";
 import ComboBox from "../components/ComboBox";
+import FormElement from "../components/Form";
 import Welcome from "./Welcome";
 
 // Custom Hooks
@@ -66,7 +66,7 @@ export default function CreateAccount(props) {
         {showWelcome ? (
           <Welcome />
         ) : (
-          <Form onSubmit={handleSubmit}>
+          <FormElement register onSubmit={handleSubmit}>
             <PhotoPreview
               title={type === "professional" ? "Profesional" : "Cliente"}
               ref={PhotoInput}
@@ -107,32 +107,9 @@ export default function CreateAccount(props) {
             </CheckBox>
             <Button>{isLoading ? "Cargando..." : "Continuar"}</Button>
             <TextLink to={"/login"}>¿Ya tienes una cuenta?</TextLink>
-          </Form>
+          </FormElement>
         )}
       </ContainerSimple>
     </PageWithGradient>
   );
 }
-
-const Form = styled.form`
-  width: 100%;
-  height: fit-content;
-  max-width: 380px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: ${({ theme }) => theme.bgContent};
-  border-radius: 4px;
-  border: solid 1px ${({ theme }) => theme.borderLightColor};
-  box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
-  padding: 30px;
-  margin: 30px 0px;
-
-  & > button {
-    margin: 5px 0px;
-  }
-
-  @media (max-width: 520px) {
-    margin: 100px 0px 30px 0px;
-  }
-`;
