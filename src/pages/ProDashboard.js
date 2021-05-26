@@ -13,7 +13,7 @@ export default function ProDashboard() {
           <GreetingsSection name={name} />
         </Route>
         <Route exact path={LINK_PRO[1].path}>
-          <h1>Services</h1>
+          <h1>Solicitudes</h1>
         </Route>
         <Route render={() => <Redirect to={"/dashboard"} />} />
       </Switch>
