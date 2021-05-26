@@ -14,7 +14,7 @@ export const LINK_PRO = [
   {
     path: "/dashboard",
     icon: OverviewIcon,
-    text: "Información General",
+    text: "Información",
   },
   {
     path: "/dashboard/services",
@@ -37,7 +37,7 @@ export const LINK_CLIENT = [
   {
     path: "/dashboard",
     icon: OverviewIcon,
-    text: "Información General",
+    text: "Información",
   },
   {
     path: "/dashboard/services",
