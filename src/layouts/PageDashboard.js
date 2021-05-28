@@ -88,6 +88,10 @@ const HeaderMenu = styled.div`
   flex-direction: column;
   background: ${({ theme }) => theme.brandGradient};
   padding-top: 30px;
+
+  @media (min-width: 1000px) {
+    display: none;
+  }
 `;
 
 const HeaderMenuIcon = styled.button`
