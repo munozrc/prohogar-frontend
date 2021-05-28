@@ -30,6 +30,7 @@ const WrapperElement = styled.div`
   border-radius: 4px;
   border: solid 1px ${({ theme }) => theme.borderLightColor};
   padding: 20px;
+  margin-bottom: 15px;
 
   @media (max-width: 360px) {
     padding: 15px;
@@ -39,6 +40,8 @@ const WrapperElement = styled.div`
 const IconCategory = styled.img`
   max-width: 50px;
   max-height: 50px;
+  min-width: 50px;
+  min-height: 50px;
   padding: 5px;
   border-radius: 50%;
   background: ${({ theme }) => theme.bgWhite};
@@ -67,12 +70,16 @@ const CategoryText = styled.span`
   color: ${({ theme }) => theme.labelColor};
 `;
 
-const TitleCard = styled.h4`
+const TitleCard = styled.p`
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
   width: 100%;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   text-align: left;
   color: ${({ theme }) => theme.bgWhite};
+  overflow: hidden;
 `;
 
 const DescriptionArea = styled.p`
