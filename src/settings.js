@@ -55,3 +55,14 @@ export const LINK_CLIENT = [
     text: "Cerrar Sesion",
   },
 ];
+
+export const CategoryIcons = {
+  Albanil:
+    "https://s3.amazonaws.com/timbrit-produccion/icono_albanil_thumb.png",
+  Mudanzas:
+    "https://s3.amazonaws.com/timbrit-produccion/icono_mudanzas_thumb.png",
+  Plomero:
+    "https://s3.amazonaws.com/timbrit-produccion/icono_plomero_thumb.png",
+  Tapicero:
+    "https://s3.amazonaws.com/timbrit-produccion/icono_tapicero_thumb.png",
+};

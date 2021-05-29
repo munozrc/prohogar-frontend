@@ -1,26 +1,23 @@
 import styled from "styled-components";
 import DescriptionIcon from "../assets/DescriptionIcon";
 import LocationIcon from "../assets/LocationIcon";
+import { CategoryIcons } from "../settings";
 
 export default function CardService(props) {
-  const { title, description } = props;
+  const { title, description, location, category } = props;
   return (
     <WrapperElement>
       <HeaderCard>
-        <IconCategory
-          src={
-            "https://s3.amazonaws.com/timbrit-produccion/icono_tapicero_thumb.png"
-          }
-        />
+        <IconCategory src={CategoryIcons[category]} />
         <WrapperTextHeader>
           <TitleCard>{title}</TitleCard>
-          <CategoryText>Tapicero</CategoryText>
+          <CategoryText>{category}</CategoryText>
         </WrapperTextHeader>
       </HeaderCard>
       <DetailOptions>
         <ItemOption>
           <LocationIcon />
-          <ItemText>Carrera 31# 13-12 B/ Esmeralda</ItemText>
+          <ItemText>{location}</ItemText>
         </ItemOption>
         <ItemOption>
           <DescriptionIcon />

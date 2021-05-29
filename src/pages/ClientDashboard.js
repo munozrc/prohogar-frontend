@@ -35,6 +35,8 @@ export default function ClientDashboard() {
                 key={service.id}
                 title={service.title}
                 description={service.description}
+                location={service.location}
+                category={service.category}
               />
             ))}
           </ServicesTab>
