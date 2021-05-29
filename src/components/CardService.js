@@ -1,18 +1,20 @@
 import styled from "styled-components";
 import DescriptionIcon from "../assets/DescriptionIcon";
 import LocationIcon from "../assets/LocationIcon";
+import MoreOptionsIcon from "../assets/MoreOptionsIcon";
 import { CategoryIcons } from "../settings";
 
 export default function CardService(props) {
   const { title, description, location, category } = props;
   return (
-    <WrapperElement>
+    <Card>
       <HeaderCard>
         <IconCategory src={CategoryIcons[category]} />
         <WrapperTextHeader>
           <TitleCard>{title}</TitleCard>
           <CategoryText>{category}</CategoryText>
         </WrapperTextHeader>
+        <MoreOptions />
       </HeaderCard>
       <DetailOptions>
         <ItemOption>
@@ -24,11 +26,11 @@ export default function CardService(props) {
           <ItemText>{description}</ItemText>
         </ItemOption>
       </DetailOptions>
-    </WrapperElement>
+    </Card>
   );
 }
 
-const WrapperElement = styled.div`
+const Card = styled.div`
   width: 100%;
   height: fit-content;
   min-height: 120px;
@@ -120,5 +122,21 @@ const ItemOption = styled.div`
   & > svg {
     font-size: 20px;
     margin-right: 5px;
+  }
+`;
+
+const MoreOptions = styled(MoreOptionsIcon)`
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  color: ${({ theme }) => theme.bgWhite};
+  font-size: 20px;
+  margin-left: auto;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: ${({ theme }) => theme.bgContent};
   }
 `;
