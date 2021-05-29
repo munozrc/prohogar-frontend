@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import DescriptionIcon from "../assets/DescriptionIcon";
+import LocationIcon from "../assets/LocationIcon";
 
 export default function CardService(props) {
   const { title, description } = props;
@@ -15,7 +17,16 @@ export default function CardService(props) {
           <CategoryText>Tapicero</CategoryText>
         </WrapperTextHeader>
       </HeaderCard>
-      <DescriptionArea>{description}</DescriptionArea>
+      <DetailOptions>
+        <ItemOption>
+          <LocationIcon />
+          <ItemText>Carrera 31# 13-12 B/ Esmeralda</ItemText>
+        </ItemOption>
+        <ItemOption>
+          <DescriptionIcon />
+          <ItemText>{description}</ItemText>
+        </ItemOption>
+      </DetailOptions>
     </WrapperElement>
   );
 }
@@ -53,7 +64,7 @@ const HeaderCard = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 `;
 
 const WrapperTextHeader = styled.div`
@@ -82,8 +93,35 @@ const TitleCard = styled.p`
   overflow: hidden;
 `;
 
-const DescriptionArea = styled.p`
+const DetailOptions = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  font-size: 16px;
-  color: ${({ theme }) => theme.lightColor};
+  border-radius: 4px;
+  border: solid 1px ${({ theme }) => theme.borderLightColor};
+  padding: 10px;
+  color: ${({ theme }) => theme.labelColor};
+`;
+
+const ItemText = styled.p`
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+`;
+
+const ItemOption = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+
+  & > svg {
+    font-size: 20px;
+    margin-right: 5px;
+  }
 `;
