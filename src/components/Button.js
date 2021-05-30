@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Button = styled.button`
   height: 44px;
@@ -23,6 +23,18 @@ const Button = styled.button`
   &:focus {
     box-shadow: 0px 0px 0px 2px ${({ theme }) => theme.lightColor};
   }
+
+  ${(p) =>
+    p.variant === "subtn" &&
+    css`
+      width: fit-content;
+      height: 32px;
+      min-width: fit-content;
+      min-height: 32px;
+      font-size: 14px;
+      padding: 5px 16px;
+      margin-left: auto;
+    `}
 `;
 
 export default Button;
