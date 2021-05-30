@@ -88,6 +88,7 @@ const HeaderMenu = styled.div`
   flex-direction: column;
   background: ${({ theme }) => theme.brandGradient};
   padding-top: 30px;
+  z-index: 3;
 
   @media (min-width: 1000px) {
     display: none;
