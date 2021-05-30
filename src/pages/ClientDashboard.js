@@ -52,7 +52,7 @@ const ServicesTab = styled.div`
   padding: 20px;
 
   @media (max-width: 360px) {
-    padding: 15px;
+    padding: 10px;
   }
 `;
 
