@@ -38,6 +38,7 @@ export default function CardService(props) {
       <DetailOptions>
         <DetailtLabel>
           Ofertas
+          <BadgeCounter>2</BadgeCounter>
           <MoreDetail
             onClick={() => setShowOffers((prev) => !prev)}
             rotate={showOffers ? "rotate(90deg)" : ""}
@@ -136,6 +137,7 @@ const DetailOptions = styled.div`
 `;
 
 const DetailtLabel = styled(DetailOptions)`
+  position: relative;
   flex-direction: row;
   border-radius: 0px;
   border: none;
@@ -220,4 +222,19 @@ const OffersItem = styled.div`
   &:last-child {
     margin-bottom: 0px;
   }
+`;
+
+const BadgeCounter = styled.span`
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  background: #f85959;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(15%);
+  color: ${({ theme }) => theme.bgWhite};
+  margin-left: 6px;
 `;
