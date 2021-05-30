@@ -23,6 +23,7 @@ const UserImageWrapper = styled.span`
   height: ${(p) => p.height};
   border-radius: 50%;
   background: ${({ theme }) => theme.brandPrimary};
+  box-shadow: 0px 0px 0px 3px ${({ theme }) => theme.brandPrimary};
 `;
 
 const UserImage = styled.img`
