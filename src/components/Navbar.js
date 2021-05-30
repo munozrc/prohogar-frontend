@@ -12,7 +12,6 @@ export default function Navbar({ links = [], ...props }) {
           to={link.path}
           variant={link.path === location.pathname ? "isActive" : ""}
         >
-          {link.path === "/dashboard/services" && <Badge>4</Badge>}
           <link.icon />
           {link.text}
         </NavItem>
@@ -91,22 +90,4 @@ const NavItem = styled(Link)`
     css`
       background: ${({ theme }) => theme.brandPrimary};
     `}
-`;
-
-const Badge = styled.span`
-  display: inline-flex;
-  position: absolute;
-  top: calc(50% - 10px);
-  left: 20px;
-  width: 16px;
-  height: 16px;
-  background: #f85959;
-  z-index: 1;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  font-size: 12px;
-  font-weight: 700;
-  justify-content: center;
-  align-items: center;
-  color: ${({ theme }) => theme.bgWhite};
 `;
