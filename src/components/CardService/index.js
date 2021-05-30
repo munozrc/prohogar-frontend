@@ -9,7 +9,8 @@ import Offers from "./Offers";
 import MoreOptionsIcon from "../../assets/MoreOptionsIcon";
 
 export default function CardService(props) {
-  const { title, description, location, category } = props;
+  const { title, description, location, category, offers, professional } =
+    props;
   return (
     <Wrapper>
       <Header>
@@ -20,8 +21,12 @@ export default function CardService(props) {
         </WrapperTextHeader>
         <OptionsButton />
       </Header>
-      <Details location={location} description={description} />
-      <Offers />
+      <Details
+        location={location}
+        description={description}
+        professional={professional}
+      />
+      <Offers offers={offers} />
     </Wrapper>
   );
 }

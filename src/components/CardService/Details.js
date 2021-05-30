@@ -6,7 +6,7 @@ import LocationIcon from "../../assets/LocationIcon";
 import UserIcon from "../../assets/UserIcon";
 
 export default function Details(props) {
-  const { location, description } = props;
+  const { location, description, professional } = props;
   return (
     <WrapperWithBorder>
       <ItemSimple>
@@ -15,7 +15,9 @@ export default function Details(props) {
       </ItemSimple>
       <ItemSimple>
         <UserIcon />
-        <ItemText>Profesional no contratado</ItemText>
+        <ItemText>
+          {professional ? professional.id : "Profesional no contratado."}
+        </ItemText>
       </ItemSimple>
       <ItemSimple>
         <DescriptionIcon />

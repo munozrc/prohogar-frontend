@@ -37,6 +37,8 @@ export default function ClientDashboard() {
                 description={service.description}
                 location={service.location}
                 category={service.category}
+                offers={service.professionals}
+                professional={service.professional}
               />
             ))}
           </ServicesTab>

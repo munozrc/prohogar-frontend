@@ -11,28 +11,30 @@ import { WrapperWithBorder } from "./Details";
 // Assets
 import ArrowIcon from "../../assets/ArrowIcon";
 
-export default function Offers() {
+export default function Offers({ offers }) {
   const [showOffers, setShowOffers] = useState(false);
+  const offersList = offers.filter((pro) => pro.acceptRequest === true);
   return (
     <WrapperWithBorder>
-      <Header>
-        Ofertas
-        <BadgeCounter>2</BadgeCounter>
-        <OffersButton
-          onClick={() => setShowOffers((prev) => !prev)}
-          rotate={showOffers ? "rotate(90deg)" : ""}
-        />
-      </Header>
+      {offersList.length !== 0 ? (
+        <Header>
+          Ofertas <BadgeCounter>{offersList.length}</BadgeCounter>
+          <OffersButton
+            onClick={() => setShowOffers((prev) => !prev)}
+            rotate={showOffers ? "rotate(90deg)" : ""}
+          />
+        </Header>
+      ) : (
+        <Header>Sin ofertas</Header>
+      )}
       {showOffers && (
         <>
-          <OffersUser>
-            <Avatar name={"Roberto Martinez"} maxWH={"30px"} />
-            <Button variant={"subtn"}>Contratar</Button>
-          </OffersUser>
-          <OffersUser>
-            <Avatar name={"Roberto Martinez"} maxWH={"30px"} />
-            <Button variant={"subtn"}>Contratar</Button>
-          </OffersUser>
+          {offersList.map((pro) => (
+            <OffersUser key={pro.id}>
+              <Avatar name={"Roberto Martinez"} maxWH={"30px"} />
+              <Button variant={"subtn"}>Contratar</Button>
+            </OffersUser>
+          ))}
         </>
       )}
     </WrapperWithBorder>
