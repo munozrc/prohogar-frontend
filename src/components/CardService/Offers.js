@@ -31,7 +31,7 @@ export default function Offers({ offers }) {
         <>
           {offersList.map((pro) => (
             <OffersUser key={pro.id}>
-              <Avatar name={pro.name} maxWH={"30px"} />
+              <Avatar name={pro.name} photo={pro.photo} maxWH={"30px"} />
               <Button variant={"subtn"}>Contratar</Button>
             </OffersUser>
           ))}
