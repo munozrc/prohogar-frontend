@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import DefaultImage from "../assets/profile-image.jpg";
 
-export default function Avatar({ photo = "", name = "", type = "" }) {
+export default function Avatar(props) {
+  const { photo = "", name = "", type = "", maxWH = "50px" } = props;
   return (
     <>
-      <UserImageWrapper>
+      <UserImageWrapper width={maxWH} height={maxWH}>
         <UserImage src={photo === "" ? DefaultImage : photo} />
       </UserImageWrapper>
       <UserData>
@@ -18,8 +19,8 @@ export default function Avatar({ photo = "", name = "", type = "" }) {
 const UserImageWrapper = styled.span`
   display: block;
   position: relative;
-  width: 50px;
-  height: 50px;
+  width: ${(p) => p.width};
+  height: ${(p) => p.height};
   border-radius: 50%;
   background: ${({ theme }) => theme.brandPrimary};
 `;
