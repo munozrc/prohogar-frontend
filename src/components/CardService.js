@@ -1,11 +1,16 @@
+import { useState } from "react";
 import styled from "styled-components";
+import ArrowIcon from "../assets/ArrowIcon";
 import DescriptionIcon from "../assets/DescriptionIcon";
 import LocationIcon from "../assets/LocationIcon";
 import MoreOptionsIcon from "../assets/MoreOptionsIcon";
+import UserIcon from "../assets/UserIcon";
 import { CategoryIcons } from "../settings";
+import Avatar from "./Avatar";
 
 export default function CardService(props) {
   const { title, description, location, category } = props;
+  const [showOffers, setShowOffers] = useState(false);
   return (
     <Card>
       <HeaderCard>
@@ -22,9 +27,32 @@ export default function CardService(props) {
           <ItemText>{location}</ItemText>
         </ItemOption>
         <ItemOption>
+          <UserIcon />
+          <ItemText>Profesional no asignado</ItemText>
+        </ItemOption>
+        <ItemOption>
           <DescriptionIcon />
           <ItemText>{description}</ItemText>
         </ItemOption>
+      </DetailOptions>
+      <DetailOptions>
+        <DetailtLabel>
+          Ofertas
+          <MoreDetail
+            onClick={() => setShowOffers((prev) => !prev)}
+            rotate={showOffers ? "rotate(90deg)" : ""}
+          />
+        </DetailtLabel>
+        {showOffers && (
+          <>
+            <OffersItem>
+              <Avatar name={"Roberto Martinez"} maxWH={"30px"} />
+            </OffersItem>
+            <OffersItem>
+              <Avatar name={"Roberto Martinez"} maxWH={"30px"} />
+            </OffersItem>
+          </>
+        )}
       </DetailOptions>
     </Card>
   );
@@ -43,7 +71,7 @@ const Card = styled.div`
   margin-bottom: 15px;
 
   @media (max-width: 360px) {
-    padding: 15px;
+    padding: 10px;
   }
 `;
 
@@ -100,6 +128,19 @@ const DetailOptions = styled.div`
   border: solid 1px ${({ theme }) => theme.borderLightColor};
   padding: 10px;
   color: ${({ theme }) => theme.labelColor};
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+`;
+
+const DetailtLabel = styled(DetailOptions)`
+  flex-direction: row;
+  border-radius: 0px;
+  border: none;
+  padding: 0;
+  margin-bottom: 10px;
 `;
 
 const ItemText = styled.p`
@@ -111,8 +152,7 @@ const ItemText = styled.p`
 
 const ItemOption = styled.div`
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  flex-direction: row;
   margin-bottom: 10px;
 
   &:last-child {
@@ -138,5 +178,46 @@ const MoreOptions = styled(MoreOptionsIcon)`
 
   &:hover {
     background: ${({ theme }) => theme.bgContent};
+  }
+`;
+
+const MoreDetail = styled(ArrowIcon)`
+  width: 22px;
+  height: 22px;
+  padding: 2px;
+  color: ${({ theme }) => theme.bgWhite};
+  font-size: 20px;
+  margin-left: auto;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: ${({ theme }) => theme.bgContent};
+  }
+
+  transform: ${(p) => p.rotate};
+`;
+
+const OffersItem = styled.div`
+  width: 100%;
+  display: flex;
+  color: ${({ theme }) => theme.labelColor};
+  background: ${({ theme }) => theme.bgContent};
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 10px;
+
+  & h3 {
+    font-size: 16px;
+    color: ${({ theme }) => theme.labelColor};
+  }
+
+  & div {
+    margin-left: 10px;
+  }
+
+  &:last-child {
+    margin-bottom: 0px;
   }
 `;
