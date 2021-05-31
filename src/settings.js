@@ -17,7 +17,7 @@ export const LINK_PRO = [
     text: "Información",
   },
   {
-    path: "/dashboard/services",
+    path: "/dashboard/requests",
     icon: JobIcon,
     text: "Solicitudes",
   },
