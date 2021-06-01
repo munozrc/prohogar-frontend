@@ -63,9 +63,18 @@ const CategoryItem = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 
   & > img {
     margin-bottom: 5px;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:hover > img {
+    box-shadow: 0px 0px 0px 3px ${({ theme }) => theme.brandSecondary};
   }
 `;
 
@@ -78,4 +87,5 @@ const CategoryImg = styled.img`
   border-radius: 4px;
   background: ${({ theme }) => theme.bgWhite};
   overflow: hidden;
+  transition: box-shadow 0.3s ease;
 `;
