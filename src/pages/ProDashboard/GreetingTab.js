@@ -6,7 +6,7 @@ export default function GreetingTab() {
   return (
     <SectionElement>
       <Title>
-        Hola<NameUser>{name}</NameUser> 👋
+        Hola <NameUser>{name}</NameUser>
       </Title>
     </SectionElement>
   );
