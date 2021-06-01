@@ -1,9 +1,11 @@
 import axios from "axios";
+import loadDataUser from "../utils/loadDataUser";
 import { URL_SERVER } from "../settings";
 
-export async function getServices({ token }) {
+export default async function getServices() {
+  const { jwt } = loadDataUser();
   const { data } = await axios.get(`${URL_SERVER}/services`, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { Authorization: `Bearer ${jwt}` },
   });
   return data;
 }
