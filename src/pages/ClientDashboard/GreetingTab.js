@@ -15,16 +15,28 @@ export default function GreetingTab() {
 
 const SectionElement = styled.section`
   width: 100%;
-  height: fit-content;
+  height: 100%;
   padding: 50px;
+
+  @media (max-width: 800px) {
+    padding: 15px;
+  }
 `;
 
 const NameUser = styled.h3`
   color: ${({ theme }) => theme.bgWhite};
   font-size: 24px;
   font-weight: 400;
+
+  @media (max-width: 800px) {
+    font-size: 18px;
+  }
 `;
 const GreetingsDisplay = styled.h4`
   color: ${({ theme }) => theme.bgWhite};
   font-size: 42px;
+
+  @media (max-width: 800px) {
+    font-size: 32px;
+  }
 `;
