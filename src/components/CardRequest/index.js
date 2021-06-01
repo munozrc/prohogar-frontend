@@ -72,7 +72,8 @@ const UserImageWrapper = styled.span`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.brandPrimary};
+  background: ${({ theme }) => theme.brandSecondary};
+  padding: 3px;
 `;
 
 const UserImage = styled.img`
