@@ -9,7 +9,7 @@ import { LINK_CLIENT } from "../../settings";
 
 // Local Custom Components
 import ServicesTab from "./ServicesTab";
-import GreetingsSection from "../../layouts/GreetingsSection";
+import GreetingTab from "./GreetingTab";
 
 export default function ClientDashboard() {
   const { name, photo } = loadDataUser();
@@ -21,9 +21,7 @@ export default function ClientDashboard() {
       links={LINK_CLIENT}
     >
       <Switch>
-        <Route exact path={"/dashboard"}>
-          <GreetingsSection name={name} />
-        </Route>
+        <Route exact path={"/dashboard"} component={GreetingTab} />
         <Route exact path={"/dashboard/services"} component={ServicesTab} />
         <Route render={() => <Redirect to={"/dashboard"} />} />
       </Switch>

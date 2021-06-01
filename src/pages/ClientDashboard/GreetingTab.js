@@ -1,10 +1,14 @@
 import styled from "styled-components";
+import ServiceForm from "../../components/ServiceForm";
+import loadDataUser from "../../utils/loadDataUser";
 
-export default function GreetingsSection({ name = "" }) {
+export default function GreetingTab() {
+  const { name } = loadDataUser();
   return (
     <SectionElement>
       <NameUser>{`Hola ${name}`}</NameUser>
-      <GreetingsDisplay>Bienvenido de nuevo ✋</GreetingsDisplay>
+      <GreetingsDisplay>Bienvenido de nuevo 👋</GreetingsDisplay>
+      <ServiceForm />
     </SectionElement>
   );
 }
