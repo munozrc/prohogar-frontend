@@ -33,7 +33,7 @@ export default function Offers({ offers, professionalName }) {
           {offersList.map((pro) => (
             <OffersUser key={pro.id}>
               <Avatar
-                name={pro.name === professionalName ? "Tu" : pro.name}
+                name={pro.name === professionalName ? "Tú" : pro.name}
                 photo={pro.photo}
                 maxWH={"30px"}
               />
