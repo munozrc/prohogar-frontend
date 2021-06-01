@@ -2,12 +2,12 @@
 
 > Also, check out the [backend](https://github.com/iamcarlosmunoz/prohogar-backend) of the app.
 
-### Used technologies:
+## Used technologies:
 
 - frontend framework: **React**
 - routing: **React Router**
 
-### Available Scripts
+## Available Scripts
 
 Start development server
 
