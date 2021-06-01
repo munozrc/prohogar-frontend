@@ -4,6 +4,7 @@ export default function loadDataUser() {
   );
   return {
     jwt: dataUser.jwt,
+    id: dataUser.id,
     role: dataUser.role,
     name: dataUser.name,
     category: dataUser.category,
