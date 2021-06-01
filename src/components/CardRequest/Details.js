@@ -68,7 +68,7 @@ const ItemText = styled.p`
 `;
 
 const ItemTitle = styled(ItemText)`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   color: ${({ theme }) => theme.lightColor};
 `;
