@@ -6,8 +6,9 @@ export default function GreetingTab() {
   const { name } = loadDataUser();
   return (
     <SectionElement>
-      <NameUser>{`Hola ${name}`}</NameUser>
-      <GreetingsDisplay>Bienvenido de nuevo 👋</GreetingsDisplay>
+      <Title>
+        Hola <NameUser>{name}</NameUser>
+      </Title>
       <ServiceForm />
     </SectionElement>
   );
@@ -23,20 +24,22 @@ const SectionElement = styled.section`
   }
 `;
 
-const NameUser = styled.h3`
-  color: ${({ theme }) => theme.bgWhite};
-  font-size: 24px;
-  font-weight: 400;
+const Title = styled.h3`
+  color: ${({ theme }) => theme.lightColor};
+  font-size: 28px;
+  font-weight: 300;
 
   @media (max-width: 800px) {
-    font-size: 18px;
+    font-size: 20px;
   }
 `;
-const GreetingsDisplay = styled.h4`
+
+const NameUser = styled.span`
   color: ${({ theme }) => theme.bgWhite};
-  font-size: 42px;
+  font-size: 28px;
+  font-weight: 700;
 
   @media (max-width: 800px) {
-    font-size: 32px;
+    font-size: 20px;
   }
 `;
