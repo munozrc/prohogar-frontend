@@ -16,7 +16,6 @@ export default function ServiceForm() {
 const WrapperElement = styled.div`
   width: 100%;
   height: fit-content;
-  max-width: 500px;
   min-height: 500px;
   padding: 20px;
   margin-top: 20px;
