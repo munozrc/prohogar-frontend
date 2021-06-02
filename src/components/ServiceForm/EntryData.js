@@ -52,7 +52,7 @@ export default function EntryData({ category = "", changeStep }) {
       <Input label="Ubicacion" marginTop="12px" type="text" ref={LocationRef} />
       <Input
         label="Descripción"
-        type="area"
+        isArea={true}
         marginTop="12px"
         ref={DescriptionRef}
       />

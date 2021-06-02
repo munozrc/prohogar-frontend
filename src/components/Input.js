@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Input = forwardRef(
   (
-    { name = "", label = "", marginTop = "20px", type = "input", ...props },
+    { name = "", label = "", marginTop = "20px", isArea = false, ...props },
     ref
   ) => {
     const [value, setValue] = useState("");
@@ -48,7 +48,7 @@ const Input = forwardRef(
       </Container>
     );
 
-    return type !== "area"
+    return !isArea
       ? label !== ""
         ? inputWithLabel()
         : onlyInput()
@@ -92,6 +92,7 @@ const InputElement = styled.input`
 const TextArea = styled.textarea`
   width: 100%;
   font-size: 16px;
+  font-family: inherit;
   padding: 10px;
   border: 2px solid ${({ theme }) => theme.borderDarkColor};
   border-radius: 4px;
