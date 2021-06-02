@@ -3,12 +3,18 @@ import styled from "styled-components";
 
 // Local Custom Components
 import SelectCategory from "./SelectCategory";
+import EntryData from "./EntryData";
 
 export default function ServiceForm() {
-  const [state, setState] = useState("select-category");
+  const [state, setState] = useState({ step: "select-category", value: null });
   return (
     <WrapperElement>
-      {state === "select-category" && <SelectCategory />}
+      {state.step === "select-category" && (
+        <SelectCategory changeStep={setState} />
+      )}
+      {state.step === "entry-data" && (
+        <EntryData changeStep={setState} category={state.value} />
+      )}
     </WrapperElement>
   );
 }
