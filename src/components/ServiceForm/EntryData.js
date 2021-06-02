@@ -1,29 +1,81 @@
 import styled from "styled-components";
 import Input from "../Input";
 import Button from "../Button";
+import useClient from "../../hooks/useClient";
+import { useEffect, useRef } from "react";
+import { toast } from "react-toastify";
 
 export default function EntryData({ category = "", changeStep }) {
+  const { isCreated, isLoading, messageError, clearError, createNewService } =
+    useClient();
+  const TitleRef = useRef(null);
+  const LocationRef = useRef(null);
+  const DescriptionRef = useRef(null);
+
+  useEffect(() => {
+    if (messageError !== "") {
+      toast.error(messageError);
+      clearError();
+    }
+  }, [messageError, clearError]);
+
   const handleBack = () => {
-    changeStep({ step: "select-category", value: null });
+    if (!isLoading) changeStep({ step: "select-category", value: null });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const title = TitleRef.current.value;
+    const location = LocationRef.current.value;
+    const description = DescriptionRef.current.value;
+
+    if (!isLoading) {
+      createNewService({
+        title,
+        location,
+        description,
+        category,
+      });
+    }
   };
 
-  return (
+  const FormCreateService = () => (
     <Container onSubmit={handleSubmit}>
       <Title>¿Que necesitas de un {category}?</Title>
-      <Input label="Titulo del servicio" marginTop="12px" type="text" />
-      <Input label="Ubicacion" marginTop="12px" type="text" />
-      <Input label="Descripción" type="area" marginTop="12px" />
+      <Input
+        label="Titulo del servicio"
+        marginTop="12px"
+        type="text"
+        ref={TitleRef}
+      />
+      <Input label="Ubicacion" marginTop="12px" type="text" ref={LocationRef} />
+      <Input
+        label="Descripción"
+        type="area"
+        marginTop="12px"
+        ref={DescriptionRef}
+      />
       <WrapperButtons>
-        <Button type="submit">Crear</Button>
+        <Button type="submit">{isLoading ? "Creando..." : "Crear"}</Button>
         <Button type="button" variant="outline" onClick={handleBack}>
           Atrás
         </Button>
       </WrapperButtons>
     </Container>
+  );
+
+  const RenderMessageConfirmation = () => (
+    <Container>
+      <Title>Servicio Creado</Title>
+      <Button type="button" onClick={handleBack}>
+        Entendido
+      </Button>
+    </Container>
+  );
+
+  return (
+    <>{isCreated ? <RenderMessageConfirmation /> : <FormCreateService />}</>
   );
 }
 
