@@ -35,6 +35,24 @@ const Button = styled.button`
       padding: 5px 16px;
       margin-left: auto;
     `}
+
+  ${(p) =>
+    p.variant === "outline" &&
+    css`
+      background-color: transparent;
+      border: solid 2px ${({ theme }) => theme.lightColor};
+      color: ${({ theme }) => theme.lightColor};
+
+      &:hover {
+        background: ${({ theme }) => theme.brandPrimary};
+        border: solid 2px ${({ theme }) => theme.brandPrimary};
+        color: ${({ theme }) => theme.bgwhite};
+      }
+
+      @media (max-width: 380px) {
+        min-width: 100px;
+      }
+    `}
 `;
 
 export default Button;
