@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { getCategories } from "../../services/getCategories";
 import { CategoryIcons } from "../../settings";
 
-export default function SelectCategory() {
+export default function SelectCategory({ changeStep }) {
   const [categories, setCategories] = useState({});
 
   useEffect(() => {
@@ -14,12 +14,19 @@ export default function SelectCategory() {
     });
   }, []);
 
+  const handleOnClick = (value) => {
+    changeStep({ step: "entry-data", value });
+  };
+
   return (
     <Container>
       <Title>¿Qué necesitas?</Title>
       <Center>
         {Object.keys(categories).map((category) => (
-          <CategoryItem key={category + "-item"}>
+          <CategoryItem
+            key={category + "-item"}
+            onClick={() => handleOnClick(category)}
+          >
             <CategoryImg src={CategoryIcons[category]} />
             Tapicero
           </CategoryItem>
