@@ -48,7 +48,7 @@ const Input = forwardRef(
       </Container>
     );
 
-    return type === "input"
+    return type !== "area"
       ? label !== ""
         ? inputWithLabel()
         : onlyInput()
