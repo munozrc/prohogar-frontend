@@ -146,4 +146,6 @@ const SectionUser = styled.div`
 const SectionContent = styled.div`
   grid-area: content;
   border-left: solid 1px ${({ theme }) => theme.borderLightColor};
+  max-height: 100vh;
+  overflow-y: auto;
 `;
