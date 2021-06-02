@@ -2,7 +2,10 @@ import { forwardRef, useState } from "react";
 import styled from "styled-components";
 
 const Input = forwardRef(
-  ({ name = "", label = "", marginTop = "20px", ...props }, ref) => {
+  (
+    { name = "", label = "", marginTop = "20px", type = "input", ...props },
+    ref
+  ) => {
     const [value, setValue] = useState("");
 
     const inputWithLabel = () => (
@@ -30,7 +33,26 @@ const Input = forwardRef(
       />
     );
 
-    return label !== "" ? inputWithLabel() : onlyInput();
+    const textAreaInput = () => (
+      <Container>
+        <LabelElement htmlFor={name} marginTop={marginTop}>
+          {label}
+        </LabelElement>
+        <TextArea
+          name={name}
+          ref={ref}
+          value={value}
+          onChange={({ target }) => setValue(target.value)}
+          {...props}
+        />
+      </Container>
+    );
+
+    return type === "input"
+      ? label !== ""
+        ? inputWithLabel()
+        : onlyInput()
+      : textAreaInput();
   }
 );
 
@@ -61,6 +83,22 @@ const InputElement = styled.input`
   background: ${({ theme }) => theme.bgColor};
   color: ${({ theme }) => theme.textNormal};
   outline: none;
+
+  &:focus {
+    box-shadow: 0px 0px 0px 2px ${({ theme }) => theme.brandPrimary};
+  }
+`;
+
+const TextArea = styled.textarea`
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  border: 2px solid ${({ theme }) => theme.borderDarkColor};
+  border-radius: 4px;
+  background: ${({ theme }) => theme.bgColor};
+  color: ${({ theme }) => theme.textNormal};
+  outline: none;
+  resize: none;
 
   &:focus {
     box-shadow: 0px 0px 0px 2px ${({ theme }) => theme.brandPrimary};
