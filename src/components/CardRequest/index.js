@@ -22,7 +22,7 @@ export default function CardRequest(props) {
   const { answerRequest } = useProfessional();
 
   const handleAnswerRequest = useCallback(() => {
-    answerRequest({ service: props.id, id });
+    answerRequest({ service: props.id, id, value: true });
     setOffersService((prev) =>
       prev.map((offer) => {
         if (offer.id === id) offer.acceptRequest = true;

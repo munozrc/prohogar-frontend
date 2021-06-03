@@ -29,11 +29,11 @@ export async function getRequests() {
   return data;
 }
 
-export async function answerRequestByPro({ service, id }) {
+export async function answerRequestByPro({ service, id, value }) {
   const { jwt } = loadDataUser();
   const { data } = await axios.put(
     `${URL_SERVER}/requests`,
-    { service, id },
+    { service, id, value },
     { headers: { Authorization: `Bearer ${jwt}` } }
   );
   return data;

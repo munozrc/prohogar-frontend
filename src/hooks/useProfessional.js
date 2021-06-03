@@ -12,9 +12,9 @@ export default function useProfessional() {
     });
   }, []);
 
-  const answerRequest = useCallback(({ service, id }) => {
+  const answerRequest = useCallback(({ service, id, value }) => {
     setState({ isLoading: true, error: "" });
-    answerRequestByPro({ service, id })
+    answerRequestByPro({ service, id, value })
       .then((response) => {
         if (response.message === "SUCCESSFUL_UPDATE_REQUEST")
           setState({ isLoading: false, error: "" });
