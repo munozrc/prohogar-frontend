@@ -16,6 +16,7 @@ export default function ServicesTab() {
 
   return (
     <TabContainer>
+      {/* <NewContent onClick={getAllServices}>Nuevos Servicios</NewContent> */}
       <TabTitle>Mis servicios</TabTitle>
       {services.map((service) => (
         <CardService
