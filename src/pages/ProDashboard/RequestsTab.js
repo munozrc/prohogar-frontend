@@ -20,6 +20,7 @@ export default function RequestsTab() {
       {requests.map((request) => (
         <CardRequest
           key={request.id}
+          id={request.id}
           title={request.title}
           description={request.description}
           location={request.location}

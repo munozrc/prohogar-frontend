@@ -20,3 +20,21 @@ export async function getServices() {
   });
   return data;
 }
+
+export async function getRequests() {
+  const { jwt } = loadDataUser();
+  const { data } = await axios.get(`${URL_SERVER}/requests`, {
+    headers: { Authorization: `Bearer ${jwt}` },
+  });
+  return data;
+}
+
+export async function answerRequestByPro({ service, id }) {
+  const { jwt } = loadDataUser();
+  const { data } = await axios.put(
+    `${URL_SERVER}/requests`,
+    { service, id },
+    { headers: { Authorization: `Bearer ${jwt}` } }
+  );
+  return data;
+}

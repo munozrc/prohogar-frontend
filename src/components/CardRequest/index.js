@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import styled from "styled-components";
 
 // Custom Components
@@ -13,17 +13,34 @@ import loadDataUser from "../../utils/loadDataUser";
 
 // Assets
 import MoreOptionsIcon from "../../assets/MoreOptionsIcon";
+import useProfessional from "../../hooks/useProfessional";
 
 export default function CardRequest(props) {
-  const { title, description, location, offers, professional, client } = props;
+  const { title, description, location, professional, client } = props;
+  const [offersService, setOffersService] = useState(props.offers);
   const { name, id } = loadDataUser();
+  const { answerRequest } = useProfessional();
+
+  const handleAnswerRequest = useCallback(() => {
+    answerRequest({ service: props.id, id });
+    setOffersService((prev) =>
+      prev.map((offer) => {
+        if (offer.id === id) offer.acceptRequest = true;
+        return offer;
+      })
+    );
+  }, [answerRequest, id, props.id]);
 
   const RenderButtonOffer = useCallback(() => {
-    const proFind = offers.find((pro) => pro.id === id && pro.acceptRequest);
-    if (!proFind || offers.length === 0)
-      return <Button>Realizar una oferta.</Button>;
+    const proFind = offersService.find(
+      (pro) => pro.id === id && pro.acceptRequest
+    );
+    if (!proFind || offersService.length === 0)
+      return (
+        <Button onClick={handleAnswerRequest}>Realizar una oferta.</Button>
+      );
     return null;
-  }, [id, offers]);
+  }, [id, offersService, handleAnswerRequest]);
 
   return (
     <Wrapper>
@@ -43,7 +60,7 @@ export default function CardRequest(props) {
         description={description}
         professional={professional}
       />
-      <Offers offers={offers} professionalName={name} />
+      <Offers offers={offersService} professionalName={name} />
       <RenderButtonOffer />
     </Wrapper>
   );
