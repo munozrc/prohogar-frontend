@@ -11,9 +11,9 @@ import { WrapperWithBorder } from "./Details";
 // Assets
 import ArrowIcon from "../../assets/ArrowIcon";
 
-export default function Offers({ offers, professionalName }) {
-  const [showOffers, setShowOffers] = useState(false);
+export default function Offers({ offers, idProfessional, cancelOffer }) {
   const offersList = offers.filter((pro) => pro.acceptRequest === true);
+  const [showOffers, setShowOffers] = useState(false);
 
   return (
     <WrapperWithBorder>
@@ -33,11 +33,15 @@ export default function Offers({ offers, professionalName }) {
           {offersList.map((pro) => (
             <OffersUser key={pro.id}>
               <Avatar
-                name={pro.name === professionalName ? "Tú" : pro.name}
+                name={pro.id === idProfessional ? "Tú" : pro.name}
                 photo={pro.photo}
                 maxWH={"30px"}
               />
-              <Button variant={"subtn"}>Cancelar Oferta</Button>
+              {pro.id === idProfessional && (
+                <Button variant={"subtn"} onClick={() => cancelOffer(false)}>
+                  Cancelar Oferta
+                </Button>
+              )}
             </OffersUser>
           ))}
         </>

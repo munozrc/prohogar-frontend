@@ -8,28 +8,31 @@ import Button from "../Button";
 import Details from "./Details";
 import Offers from "./Offers";
 
-// Utils
+// Custom Hooks and Utils
+import useProfessional from "../../hooks/useProfessional";
 import loadDataUser from "../../utils/loadDataUser";
 
 // Assets
 import MoreOptionsIcon from "../../assets/MoreOptionsIcon";
-import useProfessional from "../../hooks/useProfessional";
 
 export default function CardRequest(props) {
   const { title, description, location, professional, client } = props;
   const [offersService, setOffersService] = useState(props.offers);
-  const { name, id } = loadDataUser();
+  const { id } = loadDataUser();
   const { answerRequest } = useProfessional();
 
-  const handleAnswerRequest = useCallback(() => {
-    answerRequest({ service: props.id, id, value: true });
-    setOffersService((prev) =>
-      prev.map((offer) => {
-        if (offer.id === id) offer.acceptRequest = true;
-        return offer;
-      })
-    );
-  }, [answerRequest, id, props.id]);
+  const handleAnswerRequest = useCallback(
+    (value) => {
+      answerRequest({ service: props.id, id, value });
+      setOffersService((prev) =>
+        prev.map((offer) => {
+          if (offer.id === id) offer.acceptRequest = value;
+          return offer;
+        })
+      );
+    },
+    [answerRequest, id, props.id]
+  );
 
   const RenderButtonOffer = useCallback(() => {
     const proFind = offersService.find(
@@ -37,7 +40,9 @@ export default function CardRequest(props) {
     );
     if (!proFind || offersService.length === 0)
       return (
-        <Button onClick={handleAnswerRequest}>Realizar una oferta.</Button>
+        <Button onClick={() => handleAnswerRequest(true)}>
+          Realizar una oferta.
+        </Button>
       );
     return null;
   }, [id, offersService, handleAnswerRequest]);
@@ -60,7 +65,11 @@ export default function CardRequest(props) {
         description={description}
         professional={professional}
       />
-      <Offers offers={offersService} professionalName={name} />
+      <Offers
+        offers={offersService}
+        idProfessional={id}
+        cancelOffer={handleAnswerRequest}
+      />
       <RenderButtonOffer />
     </Wrapper>
   );
