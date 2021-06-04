@@ -2,11 +2,18 @@ import styled from "styled-components";
 import DefaultImage from "../assets/profile-image.jpg";
 
 export default function Avatar(props) {
-  const { photo = "", name = "", type = "", maxWH = "50px" } = props;
+  const {
+    photo = "",
+    name = "",
+    type = "",
+    maxWH = "50px",
+    active = false,
+  } = props;
   return (
     <>
       <UserImageWrapper width={maxWH} height={maxWH}>
         <UserImage src={photo === "" ? DefaultImage : photo} />
+        {active && <Active />}
       </UserImageWrapper>
       <UserData>
         <UserName>{name}</UserName>
@@ -23,7 +30,7 @@ const UserImageWrapper = styled.span`
   height: ${(p) => p.height};
   border-radius: 50%;
   background: ${({ theme }) => theme.brandPrimary};
-  box-shadow: 0px 0px 0px 3px ${({ theme }) => theme.brandPrimary};
+  box-shadow: 0px 0px 0px 3px ${({ theme }) => theme.brandDark};
 `;
 
 const UserImage = styled.img`
@@ -50,4 +57,16 @@ const UserName = styled.h3`
 const UserType = styled.p`
   color: ${({ theme }) => theme.lightColor};
   font-weight: 300;
+`;
+
+const Active = styled.span`
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  width: 12px;
+  height: 12px;
+  background: #a7ff83;
+  z-index: 1;
+  border-radius: 50%;
+  box-shadow: 0px 0px 0px 3px ${({ theme }) => theme.brandDark};
 `;

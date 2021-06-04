@@ -10,8 +10,10 @@ import { WrapperWithBorder } from "./Details";
 
 // Assets
 import ArrowIcon from "../../assets/ArrowIcon";
+import useClient from "../../hooks/useClient";
 
 export default function Offers({ offers }) {
+  const { usersActive } = useClient();
   const [showOffers, setShowOffers] = useState(false);
   const offersList = offers.filter((pro) => pro.acceptRequest === true);
   return (
@@ -31,7 +33,12 @@ export default function Offers({ offers }) {
         <>
           {offersList.map((pro) => (
             <OffersUser key={pro.id}>
-              <Avatar name={pro.name} photo={pro.photo} maxWH={"30px"} />
+              <Avatar
+                name={pro.name}
+                photo={pro.photo}
+                maxWH={"30px"}
+                active={usersActive.includes(pro.id)}
+              />
               <Button variant={"subtn"}>Contratar</Button>
             </OffersUser>
           ))}
