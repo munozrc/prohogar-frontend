@@ -28,7 +28,7 @@ export default function SelectCategory({ changeStep }) {
             onClick={() => handleOnClick(category)}
           >
             <CategoryImg src={CategoryIcons[category]} />
-            Tapicero
+            {category}
           </CategoryItem>
         ))}
       </Center>
