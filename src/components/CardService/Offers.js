@@ -10,10 +10,10 @@ import { WrapperWithBorder } from "./Details";
 
 // Assets
 import ArrowIcon from "../../assets/ArrowIcon";
-import useClient from "../../hooks/useClient";
+import useGlobalUsers from "../../hooks/useGlobalUsers";
 
 export default function Offers({ offers }) {
-  const { usersActive } = useClient();
+  const usersActive = useGlobalUsers();
   const [showOffers, setShowOffers] = useState(false);
   const offersList = offers.filter((pro) => pro.acceptRequest === true);
   return (

@@ -27,7 +27,7 @@ export const LINK_PRO = [
     text: "Configuración",
   },
   {
-    path: "/logout",
+    path: "/dashboard/logout",
     icon: LogoutIcon,
     text: "Cerrar Sesion",
   },
@@ -50,7 +50,7 @@ export const LINK_CLIENT = [
     text: "Configuración",
   },
   {
-    path: "/logout",
+    path: "/dashboard/logout",
     icon: LogoutIcon,
     text: "Cerrar Sesion",
   },

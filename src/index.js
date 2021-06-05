@@ -18,17 +18,16 @@ import ClientDashboard from "./pages/ClientDashboard";
 import CreateAccount from "./pages/CreateAccount";
 import AccountType from "./pages/AccountType";
 
-// Utils functions
-import clearDataUser from "./utils/clearDataUser";
-import { UserContextProvider } from "./context/UserContext";
+// Contexts
+import { SocketContextProvider } from "./context/SocketContext";
 
 import "react-toastify/dist/ReactToastify.css";
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={Theme}>
-      <GlobalStyles />
-      <UserContextProvider>
+      <SocketContextProvider>
+        <GlobalStyles />
         <Router>
           <Switch>
             <PublicRoute exact path={"/"} component={Home} />
@@ -39,12 +38,11 @@ ReactDOM.render(
               path={"/register/:type"}
               component={CreateAccount}
             />
-            <PrivateRoute exact path={"/logout"} component={clearDataUser} />
             <PrivateRoute path={"/dashboard"} component={ClientDashboard} />
             <Route render={() => <Redirect to={"/"} />} />
           </Switch>
         </Router>
-      </UserContextProvider>
+      </SocketContextProvider>
       <StyledToastContainer />
     </ThemeProvider>
   </React.StrictMode>,

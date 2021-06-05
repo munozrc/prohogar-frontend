@@ -1,9 +1,7 @@
-import { useCallback, useContext, useState } from "react";
-import UserContext from "../context/UserContext";
+import { useCallback, useState } from "react";
 import { getServices, newService } from "../services/requestServices";
 
 export default function useClient() {
-  const { usersActive, setUsersActive } = useContext(UserContext);
   const [services, setServices] = useState([]);
   const [isCreated, setIsCreated] = useState(false);
   const [state, setState] = useState({ isLoading: false, error: "" });
@@ -39,15 +37,12 @@ export default function useClient() {
     setState((prev) => ({ ...prev, error: "" }));
   }, []);
 
-  const connectUser = useCallback(
-    (users) => {
-      setUsersActive(() => users);
-    },
-    [setUsersActive]
-  );
+  const connectUser = useCallback(() => {
+    console.log("");
+  }, []);
 
   return {
-    usersActive,
+    usersActive: [],
     services,
     isCreated,
     isLoading: state.isLoading,

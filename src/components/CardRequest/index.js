@@ -10,6 +10,7 @@ import Offers from "./Offers";
 
 // Custom Hooks and Utils
 import useProfessional from "../../hooks/useProfessional";
+import useGlobalUsers from "../../hooks/useGlobalUsers";
 import loadDataUser from "../../utils/loadDataUser";
 
 // Assets
@@ -19,7 +20,8 @@ export default function CardRequest(props) {
   const { title, description, location, professional, client } = props;
   const [offersService, setOffersService] = useState(props.offers);
   const { id } = loadDataUser();
-  const { usersActive, answerRequest } = useProfessional();
+  const { answerRequest } = useProfessional();
+  const usersActive = useGlobalUsers();
 
   const handleAnswerRequest = useCallback(
     (value) => {
