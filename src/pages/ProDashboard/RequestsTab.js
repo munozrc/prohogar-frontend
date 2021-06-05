@@ -1,14 +1,16 @@
 import { useEffect } from "react";
 
+// Custom Hooks
+import useProfessional from "../../hooks/useProfessional";
+import useGlobalUsers from "../../hooks/useGlobalUsers";
+
 // Custom Components
 import { TabContainer, TabTitle } from "../../components/TabElement";
 import CardRequest from "../../components/CardRequest";
 
-// Custom Hooks
-import useProfessional from "../../hooks/useProfessional";
-
 export default function RequestsTab() {
   const { requests, getAllRequests } = useProfessional();
+  const usersOnline = useGlobalUsers();
 
   useEffect(() => {
     getAllRequests();
@@ -27,6 +29,7 @@ export default function RequestsTab() {
           offers={request.professionals}
           professional={request.professional}
           client={request.client}
+          usersOnline={usersOnline}
         />
       ))}
     </TabContainer>
