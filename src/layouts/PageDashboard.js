@@ -65,7 +65,6 @@ const WrapperElement = styled.div`
 `;
 
 const HeaderElement = styled.header`
-  position: relative;
   grid-area: logo;
   display: flex;
   justify-content: center;
@@ -79,7 +78,7 @@ const HeaderElement = styled.header`
 `;
 
 const HeaderMenu = styled.div`
-  position: fixed;
+  position: absolute;
   top: 100px;
   left: 0;
   width: 100%;
@@ -148,4 +147,9 @@ const SectionContent = styled.div`
   border-left: solid 1px ${({ theme }) => theme.borderLightColor};
   max-height: 100vh;
   overflow-y: auto;
+
+  @media (max-width: 1000px) {
+    overflow-y: visible;
+    max-height: fit-content;
+  }
 `;
