@@ -10,7 +10,6 @@ import FormElement from "../components/Form";
 import Input from "../components/Input";
 import TextLink from "../components/TextLink";
 import Button from "../components/Button";
-import { ContainerSimple } from "../layouts/ContainerSimple";
 import { TitleForm } from "../layouts/TitleForm";
 
 export default function Login() {
@@ -38,29 +37,27 @@ export default function Login() {
 
   return (
     <PageWithGradient>
-      <ContainerSimple>
-        <FormElement login onSubmit={handleSubmit}>
-          <TitleForm>Iniciar Sesión</TitleForm>
-          <Input
-            name={"email"}
-            type={"email"}
-            label={"CORREO ELECTRONICO"}
-            ref={EmailInput}
-          />
-          <Input
-            name={"password"}
-            type={"password"}
-            label={"CONTRASEÑA"}
-            ref={PasswordInput}
-          />
-          <TextLink to={"/restorepassword"}>¿Olvidaste tu contraseña?</TextLink>
-          <Button>{isLoading ? "Cargando..." : "Entrar"}</Button>
-          <span>
-            ¿necesito una cuenta?{" "}
-            <TextLink to={"/register"}>Registrarse</TextLink>
-          </span>
-        </FormElement>
-      </ContainerSimple>
+      <FormElement login onSubmit={handleSubmit}>
+        <TitleForm>Iniciar Sesión</TitleForm>
+        <Input
+          name={"email"}
+          type={"email"}
+          label={"CORREO ELECTRONICO"}
+          ref={EmailInput}
+        />
+        <Input
+          name={"password"}
+          type={"password"}
+          label={"CONTRASEÑA"}
+          ref={PasswordInput}
+        />
+        <TextLink to={"/restorepassword"}>¿Olvidaste tu contraseña?</TextLink>
+        <Button>{isLoading ? "Cargando..." : "Entrar"}</Button>
+        <span>
+          ¿necesito una cuenta?{" "}
+          <TextLink to={"/register"}>Registrarse</TextLink>
+        </span>
+      </FormElement>
     </PageWithGradient>
   );
 }

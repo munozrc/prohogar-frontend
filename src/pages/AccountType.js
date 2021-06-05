@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 // Custom Components
 import PageWithGradient from "../layouts/PageWithGradient";
-import { ContainerSimple } from "../layouts/ContainerSimple";
 import { TitleForm } from "../layouts/TitleForm";
 
 // Assets
@@ -13,21 +12,19 @@ import ProIcon from "../assets/professional-icon.svg";
 export default function AccountType() {
   return (
     <PageWithGradient>
-      <ContainerSimple>
-        <BoxElement>
-          <TitleForm>¿Cómo desea registrarse?</TitleForm>
-          <WrapperCard>
-            <CardElement to={"/register/client"} role={"button"}>
-              <IconElement src={ClientIcon} alt={"icon cliente prohogar"} />
-              Cliente
-            </CardElement>
-            <CardElement to={"/register/professional"} role={"button"}>
-              <IconElement src={ProIcon} alt={"icon professional prohogar"} />
-              Profesional
-            </CardElement>
-          </WrapperCard>
-        </BoxElement>
-      </ContainerSimple>
+      <BoxElement>
+        <TitleForm>¿Cómo desea registrarse?</TitleForm>
+        <WrapperCard>
+          <CardElement to={"/register/client"} role={"button"}>
+            <IconElement src={ClientIcon} alt={"icon cliente prohogar"} />
+            Cliente
+          </CardElement>
+          <CardElement to={"/register/professional"} role={"button"}>
+            <IconElement src={ProIcon} alt={"icon professional prohogar"} />
+            Profesional
+          </CardElement>
+        </WrapperCard>
+      </BoxElement>
     </PageWithGradient>
   );
 }

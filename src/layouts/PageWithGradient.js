@@ -9,7 +9,7 @@ export default function PageWithGradient({ children }) {
       <HeaderSimple>
         <LogoLink />
       </HeaderSimple>
-      {children}
+      <ContainerSimple>{children}</ContainerSimple>
     </WrapperSimple>
   );
 }
@@ -20,6 +20,16 @@ const WrapperSimple = styled.div`
   height: 100%;
   min-height: 100vh;
   background: ${({ theme }) => theme.brandGradient};
+`;
+
+const ContainerSimple = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const HeaderSimple = styled.header`

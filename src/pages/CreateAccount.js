@@ -3,7 +3,6 @@ import { useParams } from "react-router";
 import { toast } from "react-toastify";
 
 // Custom Components
-import { ContainerSimple } from "../layouts/ContainerSimple";
 import PhotoPreview from "../components/PhotoPreview";
 import PageWithGradient from "../layouts/PageWithGradient";
 import Input from "../components/Input";
@@ -62,54 +61,52 @@ export default function CreateAccount(props) {
 
   return (
     <PageWithGradient>
-      <ContainerSimple>
-        {showWelcome ? (
-          <Welcome />
-        ) : (
-          <FormElement register onSubmit={handleSubmit}>
-            <PhotoPreview
-              title={type === "professional" ? "Profesional" : "Cliente"}
-              ref={PhotoInput}
+      {showWelcome ? (
+        <Welcome />
+      ) : (
+        <FormElement register onSubmit={handleSubmit}>
+          <PhotoPreview
+            title={type === "professional" ? "Profesional" : "Cliente"}
+            ref={PhotoInput}
+          />
+          {type === "professional" && (
+            <ComboBox
+              name={"Categoria"}
+              label={"Seleccione categoria"}
+              marginTop="12px"
+              options={["Albanil", "Mudanzas", "Plomero", "Tapicero"]}
+              ref={CInput}
             />
-            {type === "professional" && (
-              <ComboBox
-                name={"Categoria"}
-                label={"Seleccione categoria"}
-                marginTop="12px"
-                options={["Albanil", "Mudanzas", "Plomero", "Tapicero"]}
-                ref={CInput}
-              />
-            )}
-            <Input
-              name={"name-user"}
-              type={"text"}
-              label={"Nombres"}
-              ref={NameInput}
-              marginTop={"12px"}
-            />
-            <Input
-              name={"email"}
-              type={"email"}
-              label={"Correo electrónico"}
-              ref={EmailInput}
-              marginTop={"12px"}
-            />
-            <Input
-              name={"password"}
-              type={"password"}
-              label={"Contraseña"}
-              ref={PasswordInput}
-              marginTop={"12px"}
-            />
-            <CheckBox ref={CheckBoxInput}>
-              He leído y acepto las Condiciones del Servicio y la Política de
-              Privacidad de Prohogar
-            </CheckBox>
-            <Button>{isLoading ? "Cargando..." : "Continuar"}</Button>
-            <TextLink to={"/login"}>¿Ya tienes una cuenta?</TextLink>
-          </FormElement>
-        )}
-      </ContainerSimple>
+          )}
+          <Input
+            name={"name-user"}
+            type={"text"}
+            label={"Nombres"}
+            ref={NameInput}
+            marginTop={"12px"}
+          />
+          <Input
+            name={"email"}
+            type={"email"}
+            label={"Correo electrónico"}
+            ref={EmailInput}
+            marginTop={"12px"}
+          />
+          <Input
+            name={"password"}
+            type={"password"}
+            label={"Contraseña"}
+            ref={PasswordInput}
+            marginTop={"12px"}
+          />
+          <CheckBox ref={CheckBoxInput}>
+            He leído y acepto las Condiciones del Servicio y la Política de
+            Privacidad de Prohogar
+          </CheckBox>
+          <Button>{isLoading ? "Cargando..." : "Continuar"}</Button>
+          <TextLink to={"/login"}>¿Ya tienes una cuenta?</TextLink>
+        </FormElement>
+      )}
     </PageWithGradient>
   );
 }
