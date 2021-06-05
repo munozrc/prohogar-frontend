@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 // Custom Hooks
 import useClient from "../../hooks/useClient";
+import useGlobalUsers from "../../hooks/useGlobalUsers";
 
 // Custom Components
 import CardService from "../../components/CardService";
@@ -9,6 +10,7 @@ import { TabContainer, TabTitle } from "../../components/TabElement";
 
 export default function ServicesTab() {
   const { services, getAllServices } = useClient();
+  const usersOnline = useGlobalUsers();
 
   useEffect(() => {
     getAllServices();
@@ -27,6 +29,7 @@ export default function ServicesTab() {
           category={service.category}
           offers={service.professionals}
           professional={service.professional}
+          usersOnline={usersOnline}
         />
       ))}
     </TabContainer>
