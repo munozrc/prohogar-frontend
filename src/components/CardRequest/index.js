@@ -101,7 +101,7 @@ const UserImageWrapper = styled.span`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.brandDark};
+  background: ${({ theme }) => theme.bgContent};
   padding: 3px;
 `;
 
@@ -109,7 +109,7 @@ const UserImage = styled.img`
   position: relative;
   width: 100%;
   height: 100%;
-  background: ${({ theme }) => theme.brandPrimary};
+  background: ${({ theme }) => theme.bgContent};
   border-radius: 50%;
   object-fit: cover;
 `;
@@ -123,7 +123,7 @@ const Active = styled.span`
   background: #a7ff83;
   z-index: 1;
   border-radius: 50%;
-  box-shadow: 0px 0px 0px 3px ${({ theme }) => theme.brandDark};
+  box-shadow: 0px 0px 0px 3px ${({ theme }) => theme.bgContent};
 `;
 
 const Header = styled.div`
