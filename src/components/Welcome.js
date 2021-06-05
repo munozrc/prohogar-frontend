@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useHistory } from "react-router";
-import Button from "../components/Button";
+import Button from "./Button";
 import OkIcon from "../assets/OkIcon";
 
 export default function Welcome() {

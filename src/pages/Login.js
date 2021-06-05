@@ -1,5 +1,4 @@
-import { useEffect, useRef } from "react";
-import { toast } from "react-toastify";
+import { useRef } from "react";
 
 // Custom Hooks
 import useUser from "../hooks/useUser";
@@ -13,17 +12,10 @@ import Button from "../components/Button";
 import { TitleForm } from "../components/TitleForm";
 
 export default function Login() {
-  const { login, clearError, isLoading, messageError } = useUser();
+  const { login, isLoading } = useUser();
 
   const EmailInput = useRef(null);
   const PasswordInput = useRef(null);
-
-  useEffect(() => {
-    if (messageError !== "") {
-      toast.error(messageError);
-      clearError();
-    }
-  }, [messageError, clearError]);
 
   const handleSubmit = (event) => {
     event.preventDefault();

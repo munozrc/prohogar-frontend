@@ -1,5 +1,6 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import { toast } from "react-toastify";
 
 // Services
 import loginService from "../services/loginService";
@@ -26,6 +27,13 @@ export default function useUser() {
       })
     );
   }, []);
+
+  useEffect(() => {
+    if (state.error !== "") {
+      toast.error(state.error);
+      setState((prev) => ({ ...prev, error: "" }));
+    }
+  }, [state.error]);
 
   const login = useCallback(
     ({ email, password }) => {
@@ -101,16 +109,10 @@ export default function useUser() {
     [saveDataUser]
   );
 
-  const clearError = useCallback(() => {
-    setState((prev) => ({ ...prev, error: "" }));
-  }, []);
-
   return {
     login,
     register,
-    clearError,
     isLoading: state.isLoading,
-    messageError: state.error,
     showWelcome,
   };
 }

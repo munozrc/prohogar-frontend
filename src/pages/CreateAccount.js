@@ -1,6 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useParams } from "react-router";
-import { toast } from "react-toastify";
 
 // Custom Components
 import PhotoPreview from "../components/PhotoPreview";
@@ -11,14 +10,13 @@ import CheckBox from "../components/CheckBox";
 import TextLink from "../components/TextLink";
 import ComboBox from "../components/ComboBox";
 import FormElement from "../components/Form";
-import Welcome from "./Welcome";
+import Welcome from "../components/Welcome";
 
 // Custom Hooks
 import useUser from "../hooks/useUser";
 
 export default function CreateAccount(props) {
-  const { register, clearError, isLoading, messageError, showWelcome } =
-    useUser();
+  const { register, isLoading, showWelcome } = useUser();
   const { type } = useParams();
   const NameInput = useRef(null);
   const EmailInput = useRef(null);
@@ -26,13 +24,6 @@ export default function CreateAccount(props) {
   const PhotoInput = useRef(null);
   const CInput = useRef(null);
   const CheckBoxInput = useRef(null);
-
-  useEffect(() => {
-    if (messageError !== "") {
-      toast.error(messageError);
-      clearError();
-    }
-  }, [messageError, clearError]);
 
   const handleSubmit = (event) => {
     event.preventDefault();

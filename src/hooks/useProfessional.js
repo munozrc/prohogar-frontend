@@ -1,9 +1,7 @@
-import { useCallback, useContext, useState } from "react";
-import UserContext from "../context/UserContext";
+import { useCallback, useState } from "react";
 import { answerRequestByPro, getRequests } from "../services/requestServices";
 
 export default function useProfessional() {
-  const { usersActive, setUsersActive } = useContext(UserContext);
   const [requests, setRequests] = useState([]);
   const [state, setState] = useState({ isLoading: false, error: "" });
 
@@ -30,21 +28,12 @@ export default function useProfessional() {
     setState((prev) => ({ ...prev, error: "" }));
   }, []);
 
-  const connectUser = useCallback(
-    (users) => {
-      setUsersActive(() => users);
-    },
-    [setUsersActive]
-  );
-
   return {
-    usersActive,
     requests,
     isLoading: state.isLoading,
     messageError: state.error,
     getAllRequests,
     answerRequest,
-    connectUser,
     clearError,
   };
 }
