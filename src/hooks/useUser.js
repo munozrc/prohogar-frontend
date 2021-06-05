@@ -7,12 +7,25 @@ import registerService from "../services/registerService";
 
 // Utils
 import { checkDefaultImage } from "../components/PhotoPreview";
-import saveDataUser from "../utils/saveDataUser";
 
 export default function useUser() {
   const [state, setState] = useState({ isLoading: false, error: "" });
   const [showWelcome, setShowWelcome] = useState(false);
   const history = useHistory();
+
+  const saveDataUser = useCallback((response) => {
+    window.localStorage.setItem(
+      "loggedProhogarUser",
+      JSON.stringify({
+        jwt: response.data.jwt,
+        id: response.data.user.id,
+        role: response.data.user.role,
+        name: response.data.user.name.replace(/\b\w/g, (l) => l.toUpperCase()),
+        category: response.data.user.category,
+        photo: response.data.user.photo,
+      })
+    );
+  }, []);
 
   const login = useCallback(
     ({ email, password }) => {
@@ -36,7 +49,7 @@ export default function useUser() {
         setState({ isLoading: false, error: "Campos vacíos." });
       }
     },
-    [history]
+    [history, saveDataUser]
   );
 
   const register = useCallback(
@@ -85,7 +98,7 @@ export default function useUser() {
         setState({ isLoading: false, error: "Campos vacíos." });
       }
     },
-    []
+    [saveDataUser]
   );
 
   const clearError = useCallback(() => {
