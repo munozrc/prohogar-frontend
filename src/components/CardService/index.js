@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { CategoryIcons } from "../../settings";
 
+// Custom Hooks
+import useGlobalUsers from "../../hooks/useGlobalUsers";
+
 // Custom Components
 import Details from "./Details";
 import Offers from "./Offers";
@@ -9,6 +12,7 @@ import Offers from "./Offers";
 import MoreOptionsIcon from "../../assets/MoreOptionsIcon";
 
 export default function CardService(props) {
+  const usersOnline = useGlobalUsers();
   const { title, description, location, category, offers, professional } =
     props;
   return (
@@ -26,7 +30,7 @@ export default function CardService(props) {
         description={description}
         professional={professional}
       />
-      <Offers offers={offers} />
+      <Offers offers={offers} usersOnline={usersOnline} />
     </Wrapper>
   );
 }

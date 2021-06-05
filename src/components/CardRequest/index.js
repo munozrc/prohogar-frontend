@@ -21,7 +21,7 @@ export default function CardRequest(props) {
   const [offersService, setOffersService] = useState(props.offers);
   const { id } = loadDataUser();
   const { answerRequest } = useProfessional();
-  const usersActive = useGlobalUsers();
+  const usersOnline = useGlobalUsers();
 
   const handleAnswerRequest = useCallback(
     (value) => {
@@ -54,7 +54,7 @@ export default function CardRequest(props) {
       <Header>
         <UserImageWrapper>
           <UserImage src={client.photo} />
-          {usersActive.includes(client.id) && <Active />}
+          {usersOnline.includes(client.id) && <Active />}
         </UserImageWrapper>
         <WrapperTextHeader>
           <TitleCard>{client.name}</TitleCard>
@@ -72,6 +72,7 @@ export default function CardRequest(props) {
         offers={offersService}
         idProfessional={id}
         cancelOffer={handleAnswerRequest}
+        usersOnline={usersOnline}
       />
       <RenderButtonOffer />
     </Wrapper>

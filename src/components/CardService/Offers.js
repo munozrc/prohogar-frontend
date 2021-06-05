@@ -10,10 +10,8 @@ import { WrapperWithBorder } from "./Details";
 
 // Assets
 import ArrowIcon from "../../assets/ArrowIcon";
-import useGlobalUsers from "../../hooks/useGlobalUsers";
 
-export default function Offers({ offers }) {
-  const usersActive = useGlobalUsers();
+export default function Offers({ offers, usersOnline }) {
   const [showOffers, setShowOffers] = useState(false);
   const offersList = offers.filter((pro) => pro.acceptRequest === true);
   return (
@@ -37,7 +35,7 @@ export default function Offers({ offers }) {
                 name={pro.name}
                 photo={pro.photo}
                 maxWH={"30px"}
-                active={usersActive.includes(pro.id)}
+                active={usersOnline.includes(pro.id)}
               />
               <Button variant={"subtn"}>Contratar</Button>
             </OffersUser>

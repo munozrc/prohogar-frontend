@@ -11,7 +11,12 @@ import { WrapperWithBorder } from "./Details";
 // Assets
 import ArrowIcon from "../../assets/ArrowIcon";
 
-export default function Offers({ offers, idProfessional, cancelOffer }) {
+export default function Offers({
+  offers,
+  idProfessional,
+  cancelOffer,
+  usersOnline,
+}) {
   const offersList = offers.filter((pro) => pro.acceptRequest === true);
   const [showOffers, setShowOffers] = useState(false);
 
@@ -36,6 +41,11 @@ export default function Offers({ offers, idProfessional, cancelOffer }) {
                 name={pro.id === idProfessional ? "Tú" : pro.name}
                 photo={pro.photo}
                 maxWH={"30px"}
+                active={
+                  pro.id !== idProfessional
+                    ? usersOnline.includes(pro.id)
+                    : false
+                }
               />
               {pro.id === idProfessional && (
                 <Button variant={"subtn"} onClick={() => cancelOffer(false)}>
