@@ -5,7 +5,7 @@ import useClient from "../../hooks/useClient";
 
 // Custom Components
 import CardService from "../../components/CardService";
-import { TabContainer, TabTitle } from "../../layouts/TabElement";
+import { TabContainer, TabTitle } from "../../components/TabElement";
 
 export default function ServicesTab() {
   const { services, getAllServices } = useClient();

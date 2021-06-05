@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { forwardRef, useRef, useState } from "react";
 
 // Custom Components
-import { TitleForm } from "../layouts/TitleForm";
+import { TitleForm } from "../components/TitleForm";
 import Input from "./Input";
 
 // Assets

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 // Custom Components
 import PageWithGradient from "../layouts/PageWithGradient";
-import { TitleForm } from "../layouts/TitleForm";
+import { TitleForm } from "../components/TitleForm";
 
 // Assets
 import ClientIcon from "../assets/client-icon.svg";

@@ -10,7 +10,7 @@ import FormElement from "../components/Form";
 import Input from "../components/Input";
 import TextLink from "../components/TextLink";
 import Button from "../components/Button";
-import { TitleForm } from "../layouts/TitleForm";
+import { TitleForm } from "../components/TitleForm";
 
 export default function Login() {
   const { login, clearError, isLoading, messageError } = useUser();

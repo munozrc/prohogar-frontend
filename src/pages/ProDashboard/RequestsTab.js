@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 // Custom Components
-import { TabContainer, TabTitle } from "../../layouts/TabElement";
+import { TabContainer, TabTitle } from "../../components/TabElement";
 import CardRequest from "../../components/CardRequest";
 
 // Custom Hooks

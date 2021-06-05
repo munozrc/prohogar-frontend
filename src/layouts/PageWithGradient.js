@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 // Custom Components
-import LogoLink from "./LogoLink";
+import LogoLink from "../components/LogoLink";
 
 export default function PageWithGradient({ children }) {
   return (

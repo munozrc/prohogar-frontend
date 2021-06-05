@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // Custom Components
-import LogoLink from "./LogoLink";
+import LogoLink from "../components/LogoLink";
 
 export default function PageWithCenter({ children }) {
   return (

@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 
 // Custom Components
 import Avatar from "../components/Avatar";
-import LogoLink from "./LogoLink";
+import LogoLink from "../components/LogoLink";
 import Navbar from "../components/Navbar";
 
 // Assets
