@@ -50,7 +50,7 @@ export default function CardRequest(props) {
 
   const UpdateDataOffer = useCallback(
     (newOffers) => {
-      if (newOffers.client === client.id)
+      if (newOffers.id === props.id)
         setOffersService((prev) =>
           prev.map((offer, index) => {
             offer.acceptRequest = newOffers[index].acceptRequest;
@@ -58,7 +58,7 @@ export default function CardRequest(props) {
           })
         );
     },
-    [client.id]
+    [props.id]
   );
 
   useEffect(() => {
