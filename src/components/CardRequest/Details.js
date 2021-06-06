@@ -55,6 +55,7 @@ const ItemSimple = styled.div`
   }
 
   & > svg {
+    min-width: 20px;
     font-size: 20px;
     margin-right: 5px;
   }
