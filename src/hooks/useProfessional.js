@@ -14,17 +14,27 @@ export default function useProfessional() {
     });
   }, []);
 
-  const answerRequest = useCallback(({ service, id, value }) => {
-    setState({ isLoading: true, error: "" });
-    answerRequestByPro({ service, id, value })
-      .then((response) => {
-        if (response.message === "SUCCESSFUL_UPDATE_REQUEST")
-          setState({ isLoading: false, error: "" });
-      })
-      .catch(() => {
-        setState({ isLoading: false, error: "Error al responder solicitud." });
-      });
-  }, []);
+  const answerRequest = useCallback(
+    ({ service, id, value }) => {
+      setState({ isLoading: true, error: "" });
+      answerRequestByPro({ service, id, value })
+        .then((response) => {
+          if (response.message === "SUCCESSFUL_UPDATE_REQUEST") {
+            setState({ isLoading: false, error: "" });
+            console.log({ service: response.data });
+            // Send event Emit to Server
+            socket.emit("answerRequest", response.data);
+          }
+        })
+        .catch(() => {
+          setState({
+            isLoading: false,
+            error: "Error al responder solicitud.",
+          });
+        });
+    },
+    [socket]
+  );
 
   const clearError = useCallback(() => {
     setState((prev) => ({ ...prev, error: "" }));

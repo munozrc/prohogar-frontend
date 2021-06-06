@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 
 // Custom Components
@@ -20,7 +20,7 @@ export default function CardRequest(props) {
     props;
   const [offersService, setOffersService] = useState(props.offers);
   const { id } = loadDataUser();
-  const { answerRequest } = useProfessional();
+  const { socket, answerRequest } = useProfessional();
 
   const handleAnswerRequest = useCallback(
     (value) => {
@@ -47,6 +47,31 @@ export default function CardRequest(props) {
       );
     return null;
   }, [id, offersService, handleAnswerRequest]);
+
+  const UpdateDataOffer = useCallback(
+    (newOffers) => {
+      if (newOffers.client === client.id)
+        setOffersService((prev) =>
+          prev.map((offer, index) => {
+            offer.acceptRequest = newOffers[index].acceptRequest;
+            return offer;
+          })
+        );
+    },
+    [client.id]
+  );
+
+  useEffect(() => {
+    socket.on("answerRequest", (service) => {
+      UpdateDataOffer(service.professionals);
+    });
+
+    return () => {
+      socket.off("answerRequest", (service) => {
+        UpdateDataOffer(service.professionals);
+      });
+    };
+  }, [UpdateDataOffer, socket]);
 
   return (
     <Wrapper>
