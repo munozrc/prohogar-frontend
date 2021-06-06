@@ -22,6 +22,7 @@ export default function ServicesTab() {
       {services.map((service) => (
         <CardService
           key={service.id}
+          id={service.id}
           title={service.title}
           description={service.description}
           location={service.location}

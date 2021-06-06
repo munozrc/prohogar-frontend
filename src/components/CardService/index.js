@@ -7,33 +7,31 @@ import Offers from "./Offers";
 
 // Assets
 import MoreOptionsIcon from "../../assets/MoreOptionsIcon";
+import useClient from "../../hooks/useClient";
 
 export default function CardService(props) {
-  const {
-    title,
-    description,
-    location,
-    category,
-    offers,
-    professional,
-    usersOnline,
-  } = props;
+  const { socket } = useClient();
   return (
     <Wrapper>
       <Header>
-        <IconCard src={CategoryIcons[category]} />
+        <IconCard src={CategoryIcons[props.category]} />
         <WrapperTextHeader>
-          <TitleCard>{title}</TitleCard>
-          <SubTitle>{category}</SubTitle>
+          <TitleCard>{props.title}</TitleCard>
+          <SubTitle>{props.category}</SubTitle>
         </WrapperTextHeader>
         <OptionsButton />
       </Header>
       <Details
-        location={location}
-        description={description}
-        professional={professional}
+        location={props.location}
+        description={props.description}
+        professional={props.professional}
       />
-      <Offers offers={offers} usersOnline={usersOnline} />
+      <Offers
+        socket={socket}
+        offers={props.offers}
+        usersOnline={props.usersOnline}
+        idService={props.id}
+      />
     </Wrapper>
   );
 }

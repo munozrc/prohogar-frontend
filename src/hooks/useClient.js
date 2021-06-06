@@ -48,19 +48,14 @@ export default function useClient() {
     setState((prev) => ({ ...prev, error: "" }));
   }, []);
 
-  const connectUser = useCallback(() => {
-    console.log("");
-  }, []);
-
   return {
-    usersActive: [],
+    socket,
     services,
     isCreated,
     isLoading: state.isLoading,
     messageError: state.error,
     getAllServices,
     createNewService,
-    connectUser,
     clearError,
   };
 }

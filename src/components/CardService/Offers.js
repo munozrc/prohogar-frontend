@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 
 // Custom Components
@@ -11,9 +11,33 @@ import { WrapperWithBorder } from "./Details";
 // Assets
 import ArrowIcon from "../../assets/ArrowIcon";
 
-export default function Offers({ offers, usersOnline }) {
+export default function Offers({ socket, offers, usersOnline, idService }) {
   const [showOffers, setShowOffers] = useState(false);
-  const offersList = offers.filter((pro) => pro.acceptRequest === true);
+  const [offersList, setOffersList] = useState(
+    offers.filter((pro) => pro.acceptRequest === true)
+  );
+
+  const UpdateDataOffer = useCallback(
+    (ServiceCurrent) => {
+      if (ServiceCurrent.id === idService) {
+        const newOffers = offers.map((offer, index) => {
+          offer.acceptRequest =
+            ServiceCurrent.professionals[index].acceptRequest;
+          return offer;
+        });
+        setOffersList(() =>
+          newOffers.filter((pro) => pro.acceptRequest === true)
+        );
+      }
+    },
+    [idService, offers]
+  );
+
+  useEffect(() => {
+    socket.on("answerRequest", UpdateDataOffer);
+    return () => socket.off("answerRequest", UpdateDataOffer);
+  }, [UpdateDataOffer, socket]);
+
   return (
     <WrapperWithBorder>
       {offersList.length !== 0 ? (
