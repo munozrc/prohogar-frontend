@@ -16,11 +16,10 @@ import loadDataUser from "../../utils/loadDataUser";
 import MoreOptionsIcon from "../../assets/MoreOptionsIcon";
 
 export default function CardRequest(props) {
-  const { title, description, location, professional, client, usersOnline } =
-    props;
+  const { usersOnline } = props;
   const [offersService, setOffersService] = useState(props.offers);
-  const { id } = loadDataUser();
   const { socket, answerRequest } = useProfessional();
+  const { id } = loadDataUser();
 
   const handleAnswerRequest = useCallback(
     (value) => {
@@ -32,10 +31,11 @@ export default function CardRequest(props) {
         })
       );
     },
-    [answerRequest, id, props.id]
+    [answerRequest, props.id, id]
   );
 
   const RenderButtonOffer = useCallback(() => {
+    const { id } = loadDataUser();
     const proFind = offersService.find(
       (pro) => pro.id === id && pro.acceptRequest
     );
@@ -46,14 +46,15 @@ export default function CardRequest(props) {
         </Button>
       );
     return null;
-  }, [id, offersService, handleAnswerRequest]);
+  }, [offersService, handleAnswerRequest]);
 
   const UpdateDataOffer = useCallback(
-    (newOffers) => {
-      if (newOffers.id === props.id)
+    (ServiceCurrent) => {
+      if (ServiceCurrent.id === props.id)
         setOffersService((prev) =>
           prev.map((offer, index) => {
-            offer.acceptRequest = newOffers[index].acceptRequest;
+            offer.acceptRequest =
+              ServiceCurrent.professionals[index].acceptRequest;
             return offer;
           })
         );
@@ -62,35 +63,28 @@ export default function CardRequest(props) {
   );
 
   useEffect(() => {
-    socket.on("answerRequest", (service) => {
-      UpdateDataOffer(service.professionals);
-    });
-
-    return () => {
-      socket.off("answerRequest", (service) => {
-        UpdateDataOffer(service.professionals);
-      });
-    };
+    socket.on("answerRequest", UpdateDataOffer);
+    return () => socket.off("answerRequest", UpdateDataOffer);
   }, [UpdateDataOffer, socket]);
 
   return (
     <Wrapper>
       <Header>
         <UserImageWrapper>
-          <UserImage src={client.photo} />
-          {usersOnline.includes(client.id) && <Active />}
+          <UserImage src={props.client.photo} />
+          {usersOnline.includes(props.client.id) && <Active />}
         </UserImageWrapper>
         <WrapperTextHeader>
-          <TitleCard>{client.name}</TitleCard>
+          <TitleCard>{props.client.name}</TitleCard>
           <SubTitle>Cliente</SubTitle>
         </WrapperTextHeader>
         <OptionsButton />
       </Header>
       <Details
-        title={title}
-        location={location}
-        description={description}
-        professional={professional}
+        title={props.title}
+        location={props.location}
+        description={props.description}
+        professional={props.professional}
       />
       <Offers
         offers={offersService}

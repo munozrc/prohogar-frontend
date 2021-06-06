@@ -21,7 +21,6 @@ export default function useProfessional() {
         .then((response) => {
           if (response.message === "SUCCESSFUL_UPDATE_REQUEST") {
             setState({ isLoading: false, error: "" });
-            console.log({ service: response.data });
             // Send event Emit to Server
             socket.emit("answerRequest", response.data);
           }
