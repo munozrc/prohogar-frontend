@@ -1,23 +1,57 @@
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 // Custom Hooks
 import useProfessional from "../../hooks/useProfessional";
 import useGlobalUsers from "../../hooks/useGlobalUsers";
 
 // Custom Components
-import { TabContainer, TabTitle } from "../../components/TabElement";
+import {
+  NewContent,
+  TabContainer,
+  TabTitle,
+} from "../../components/TabElement";
 import CardRequest from "../../components/CardRequest";
 
 export default function RequestsTab() {
-  const { requests, getAllRequests } = useProfessional();
+  const [showBtnNewContent, setShowBtnNewContent] = useState(false);
+  const { socket, requests, getAllRequests } = useProfessional();
   const usersOnline = useGlobalUsers();
+
+  const handleNewServicesUpdate = useCallback(
+    (listUsersPro) => {
+      const dataUser = JSON.parse(
+        window.localStorage.getItem("loggedProhogarUser")
+      );
+      dataUser &&
+        listUsersPro.find((id) => id === dataUser.id) &&
+        setShowBtnNewContent(() => true);
+    },
+    [setShowBtnNewContent]
+  );
 
   useEffect(() => {
     getAllRequests();
   }, [getAllRequests]);
 
+  useEffect(() => {
+    socket.on("newServiceByClient", handleNewServicesUpdate);
+    return () => {
+      socket.off("newServiceByClient", handleNewServicesUpdate);
+    };
+  }, [socket, handleNewServicesUpdate]);
+
   return (
     <TabContainer>
+      {showBtnNewContent && (
+        <NewContent
+          onClick={() => {
+            getAllRequests();
+            setShowBtnNewContent(() => false);
+          }}
+        >
+          Nuevas Solicitudes
+        </NewContent>
+      )}
       <TabTitle>Mis solicitudes</TabTitle>
       {requests.map((request) => (
         <CardRequest

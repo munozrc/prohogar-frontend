@@ -1,7 +1,9 @@
-import { useCallback, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { answerRequestByPro, getRequests } from "../services/requestServices";
+import SocketContext from "../context/SocketContext";
 
 export default function useProfessional() {
+  const { socket } = useContext(SocketContext);
   const [requests, setRequests] = useState([]);
   const [state, setState] = useState({ isLoading: false, error: "" });
 
@@ -29,6 +31,7 @@ export default function useProfessional() {
   }, []);
 
   return {
+    socket,
     requests,
     isLoading: state.isLoading,
     messageError: state.error,
