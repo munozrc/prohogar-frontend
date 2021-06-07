@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fadeInLarge } from "../../styles/Animations";
 import loadDataUser from "../../utils/loadDataUser";
 
 export default function GreetingTab() {
@@ -16,6 +17,7 @@ const SectionElement = styled.section`
   width: 100%;
   height: fit-content;
   padding: 50px;
+  animation: ${fadeInLarge} 0.3s;
 `;
 
 const Title = styled.h3`

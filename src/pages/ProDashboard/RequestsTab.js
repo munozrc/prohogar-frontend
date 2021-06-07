@@ -6,15 +6,21 @@ import useGlobalUsers from "../../hooks/useGlobalUsers";
 
 // Custom Components
 import {
+  EmptyContent,
+  EmptyImage,
   NewContent,
   TabContainer,
   TabTitle,
 } from "../../components/TabElement";
 import CardRequest from "../../components/CardRequest";
 
+// Assets
+import NoRequestImage from "../../assets/noRequest.svg";
+
 export default function RequestsTab() {
   const [showBtnNewContent, setShowBtnNewContent] = useState(false);
   const { socket, requests, getAllRequests } = useProfessional();
+  const requestWithOutContract = requests.filter((req) => req.state === 0);
   const usersOnline = useGlobalUsers();
 
   const handleNewServicesUpdate = useCallback(
@@ -53,7 +59,7 @@ export default function RequestsTab() {
         </NewContent>
       )}
       <TabTitle>Mis solicitudes</TabTitle>
-      {requests.map((request) => (
+      {requestWithOutContract.map((request) => (
         <CardRequest
           key={request.id}
           id={request.id}
@@ -66,6 +72,18 @@ export default function RequestsTab() {
           usersOnline={usersOnline}
         />
       ))}
+      {requestWithOutContract.length === 0 && (
+        <EmptyContent>
+          <EmptyImage
+            src={NoRequestImage}
+            style={{
+              maxWidth: "20%",
+              filter: "drop-shadow(0 0 1px #fff)",
+            }}
+          />
+          No tienes solicitudes.
+        </EmptyContent>
+      )}
     </TabContainer>
   );
 }
