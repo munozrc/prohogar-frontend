@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ServiceForm from "../../components/ServiceForm";
+import { fadeInLarge } from "../../styles/Animations";
 import loadDataUser from "../../utils/loadDataUser";
 
 export default function GreetingTab() {
@@ -18,6 +19,7 @@ const SectionElement = styled.section`
   width: 100%;
   height: 100%;
   padding: 50px;
+  animation: ${fadeInLarge} 0.8s;
 
   @media (max-width: 800px) {
     padding: 15px;

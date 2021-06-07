@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { fadeIn } from "../styles/Animations";
+import { fadeIn, fadeInLarge } from "../styles/Animations";
 
 export const TabContainer = styled.div`
   width: 100%;
   padding: 20px;
+  animation: ${fadeInLarge} 0.8s;
 
   @media (max-width: 360px) {
     padding: 10px;
@@ -48,4 +49,21 @@ export const NewContent = styled.span`
     top: 120px;
     left: 26%;
   }
+`;
+
+export const EmptyContent = styled.div`
+  width: 100%;
+  min-height: 600px;
+  font-size: 18px;
+  color: ${({ theme }) => theme.labelColor};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+`;
+
+export const EmptyImage = styled.img`
+  max-width: 30%;
+  margin-bottom: 15px;
 `;

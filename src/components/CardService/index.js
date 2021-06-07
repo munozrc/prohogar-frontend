@@ -10,6 +10,7 @@ import MoreOptions from "./MoreOptions";
 import useClient from "../../hooks/useClient";
 
 export default function CardService(props) {
+  const { isCardContract = false } = props;
   const { socket } = useClient();
   return (
     <Wrapper>
@@ -26,12 +27,14 @@ export default function CardService(props) {
         description={props.description}
         professional={props.professional}
       />
-      <Offers
-        socket={socket}
-        offers={props.offers}
-        usersOnline={props.usersOnline}
-        idService={props.id}
-      />
+      {!isCardContract && (
+        <Offers
+          socket={socket}
+          offers={props.offers}
+          usersOnline={props.usersOnline}
+          idService={props.id}
+        />
+      )}
     </Wrapper>
   );
 }
