@@ -11,6 +11,7 @@ import { LINK_PRO } from "../../settings";
 import RequestsTab from "./RequestsTab";
 import GreetingTab from "./GreetingTab";
 import useSocket from "../../hooks/useSocket";
+import ContractsTab from "./ContractsTab";
 
 export default function ProDashboard() {
   const { name, photo, category } = loadDataUser();
@@ -21,6 +22,7 @@ export default function ProDashboard() {
       <Switch>
         <Route exact path={"/dashboard"} component={GreetingTab} />
         <Route exact path={"/dashboard/requests"} component={RequestsTab} />
+        <Route exact path="/dashboard/contracts" component={ContractsTab} />
         <Route exact path="/dashboard/logout" component={logout} />
         <Route render={() => <Redirect to={"/dashboard"} />} />
       </Switch>

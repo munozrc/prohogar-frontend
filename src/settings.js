@@ -23,6 +23,11 @@ export const LINK_PRO = [
     text: "Solicitudes",
   },
   {
+    path: "/dashboard/contracts",
+    icon: ContractIcon,
+    text: "Contratos",
+  },
+  {
     path: "/dashboard/settings",
     icon: SettingsIcon,
     text: "Configuración",

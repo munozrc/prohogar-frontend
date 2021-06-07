@@ -13,7 +13,7 @@ import useProfessional from "../../hooks/useProfessional";
 import loadDataUser from "../../utils/loadDataUser";
 
 export default function CardRequest(props) {
-  const { usersOnline } = props;
+  const { usersOnline, isCardRequestContract = false } = props;
   const [offersService, setOffersService] = useState(props.offers);
   const { socket, answerRequest } = useProfessional();
   const { id } = loadDataUser();
@@ -82,13 +82,17 @@ export default function CardRequest(props) {
         description={props.description}
         professional={props.professional}
       />
-      <Offers
-        offers={offersService}
-        idProfessional={id}
-        cancelOffer={handleAnswerRequest}
-        usersOnline={usersOnline}
-      />
-      <RenderButtonOffer />
+      {!isCardRequestContract && (
+        <>
+          <Offers
+            offers={offersService}
+            idProfessional={id}
+            cancelOffer={handleAnswerRequest}
+            usersOnline={usersOnline}
+          />
+          <RenderButtonOffer />
+        </>
+      )}
     </Wrapper>
   );
 }
