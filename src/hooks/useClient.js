@@ -56,27 +56,32 @@ export default function useClient() {
     [socket]
   );
 
-  const contractWithPro = useCallback(({ service, professional, value }) => {
-    setIsCreated(() => false);
-    setState({ isLoading: true, error: "" });
-    contractProfessional({
-      service,
-      professional,
-      value,
-    })
-      .then((response) => {
-        if (response.message === "HIRED_PROFESSIONAL") {
-          setState({ isLoading: false, error: "" });
-          setIsCreated(() => true);
-        }
+  const contractWithPro = useCallback(
+    ({ service, professional, value }) => {
+      setIsCreated(() => false);
+      setState({ isLoading: true, error: "" });
+      contractProfessional({
+        service,
+        professional,
+        value,
       })
-      .catch(() => {
-        setState({
-          isLoading: false,
-          error: "Fallo al contratar professional",
+        .then((response) => {
+          if (response.message === "HIRED_PROFESSIONAL") {
+            setState({ isLoading: false, error: "" });
+            setIsCreated(() => true);
+            // Send event Emit to Server
+            socket.emit("contractProfessional", response.data);
+          }
+        })
+        .catch(() => {
+          setState({
+            isLoading: false,
+            error: "Fallo al contratar professional",
+          });
         });
-      });
-  }, []);
+    },
+    [socket]
+  );
 
   const clearError = useCallback(() => {
     setState((prev) => ({ ...prev, error: "" }));

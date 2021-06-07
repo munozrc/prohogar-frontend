@@ -11,10 +11,12 @@ import Offers from "./Offers";
 // Custom Hooks and Utils
 import useProfessional from "../../hooks/useProfessional";
 import loadDataUser from "../../utils/loadDataUser";
+import OkIcon from "../../assets/OkIcon";
 
 export default function CardRequest(props) {
   const { usersOnline, isCardRequestContract = false } = props;
   const [offersService, setOffersService] = useState(props.offers);
+  const [isContract, setIsContract] = useState(null);
   const { socket, answerRequest } = useProfessional();
   const { id } = loadDataUser();
 
@@ -59,39 +61,70 @@ export default function CardRequest(props) {
     [props.id]
   );
 
+  const ContractEventByClient = useCallback(
+    (ServiceCurrent) => {
+      if (ServiceCurrent.id === props.id && ServiceCurrent.professional === id)
+        setIsContract(() => 1);
+      else if (
+        ServiceCurrent.id === props.id &&
+        ServiceCurrent.professional !== id
+      )
+        setIsContract(() => 0);
+    },
+    [props.id, id]
+  );
+
   useEffect(() => {
     socket.on("answerRequest", UpdateDataOffer);
-    return () => socket.off("answerRequest", UpdateDataOffer);
-  }, [UpdateDataOffer, socket]);
+    socket.on("contractProfessional", ContractEventByClient);
+    return () => {
+      socket.off("answerRequest", UpdateDataOffer);
+      socket.off("contractProfessional", ContractEventByClient);
+    };
+  }, [UpdateDataOffer, ContractEventByClient, socket]);
 
   return (
     <Wrapper>
-      <Header>
-        <UserImageWrapper>
-          <UserImage src={props.client.photo} />
-          {usersOnline.includes(props.client.id) && <Active />}
-        </UserImageWrapper>
-        <WrapperTextHeader>
-          <TitleCard>{props.client.name}</TitleCard>
-          <SubTitle>Cliente</SubTitle>
-        </WrapperTextHeader>
-      </Header>
-      <Details
-        title={props.title}
-        location={props.location}
-        description={props.description}
-        professional={props.professional}
-      />
-      {!isCardRequestContract && (
+      {isContract === null ? (
         <>
-          <Offers
-            offers={offersService}
-            idProfessional={id}
-            cancelOffer={handleAnswerRequest}
-            usersOnline={usersOnline}
+          <Header>
+            <UserImageWrapper>
+              <UserImage src={props.client.photo} />
+              {usersOnline.includes(props.client.id) && <Active />}
+            </UserImageWrapper>
+            <WrapperTextHeader>
+              <TitleCard>{props.client.name}</TitleCard>
+              <SubTitle>Cliente</SubTitle>
+            </WrapperTextHeader>
+          </Header>
+          <Details
+            title={props.title}
+            location={props.location}
+            description={props.description}
+            professional={props.professional}
           />
-          <RenderButtonOffer />
+          {!isCardRequestContract && (
+            <>
+              <Offers
+                offers={offersService}
+                idProfessional={id}
+                cancelOffer={handleAnswerRequest}
+                usersOnline={usersOnline}
+              />
+              <RenderButtonOffer />
+            </>
+          )}
         </>
+      ) : (
+        <ContractWrapper>
+          {isContract === 1 && (
+            <>
+              <OkIcon />
+              Tú fuiste contratado.
+            </>
+          )}
+          {isContract === 0 && "Este servicio ya fue contrado."}
+        </ContractWrapper>
       )}
     </Wrapper>
   );
@@ -100,7 +133,6 @@ export default function CardRequest(props) {
 const Wrapper = styled.div`
   width: 100%;
   height: fit-content;
-  min-height: 120px;
   display: flex;
   flex-direction: column;
   background: ${({ theme }) => theme.bgContent};
@@ -177,4 +209,21 @@ const TitleCard = styled.p`
   text-align: left;
   color: ${({ theme }) => theme.bgWhite};
   overflow: hidden;
+`;
+
+const ContractWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: ${({ theme }) => theme.bgWhite};
+
+  & > svg {
+    font-size: 25px;
+    margin-right: 10px;
+  }
+
+  & circle {
+    min-width: 25px;
+  }
 `;
