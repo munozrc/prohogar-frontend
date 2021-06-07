@@ -12,9 +12,6 @@ import Offers from "./Offers";
 import useProfessional from "../../hooks/useProfessional";
 import loadDataUser from "../../utils/loadDataUser";
 
-// Assets
-import MoreOptionsIcon from "../../assets/MoreOptionsIcon";
-
 export default function CardRequest(props) {
   const { usersOnline } = props;
   const [offersService, setOffersService] = useState(props.offers);
@@ -78,7 +75,6 @@ export default function CardRequest(props) {
           <TitleCard>{props.client.name}</TitleCard>
           <SubTitle>Cliente</SubTitle>
         </WrapperTextHeader>
-        <OptionsButton />
       </Header>
       <Details
         title={props.title}
@@ -177,20 +173,4 @@ const TitleCard = styled.p`
   text-align: left;
   color: ${({ theme }) => theme.bgWhite};
   overflow: hidden;
-`;
-
-const OptionsButton = styled(MoreOptionsIcon)`
-  width: 30px;
-  height: 30px;
-  padding: 5px;
-  color: ${({ theme }) => theme.bgWhite};
-  font-size: 20px;
-  margin-left: auto;
-  border-radius: 50%;
-  transition: background 0.3s ease;
-  cursor: pointer;
-
-  &:hover {
-    background: ${({ theme }) => theme.bgContent};
-  }
 `;

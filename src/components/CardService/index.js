@@ -4,9 +4,9 @@ import { CategoryIcons } from "../../settings";
 // Custom Components
 import Details from "./Details";
 import Offers from "./Offers";
+import MoreOptions from "./MoreOptions";
 
-// Assets
-import MoreOptionsIcon from "../../assets/MoreOptionsIcon";
+// Custom Hooks
 import useClient from "../../hooks/useClient";
 
 export default function CardService(props) {
@@ -19,7 +19,7 @@ export default function CardService(props) {
           <TitleCard>{props.title}</TitleCard>
           <SubTitle>{props.category}</SubTitle>
         </WrapperTextHeader>
-        <OptionsButton />
+        <MoreOptions />
       </Header>
       <Details
         location={props.location}
@@ -65,6 +65,7 @@ const IconCard = styled.img`
 `;
 
 const Header = styled.div`
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -96,20 +97,4 @@ const TitleCard = styled.p`
   text-align: left;
   color: ${({ theme }) => theme.bgWhite};
   overflow: hidden;
-`;
-
-const OptionsButton = styled(MoreOptionsIcon)`
-  width: 30px;
-  height: 30px;
-  padding: 5px;
-  color: ${({ theme }) => theme.bgWhite};
-  font-size: 20px;
-  margin-left: auto;
-  border-radius: 50%;
-  transition: background 0.3s ease;
-  cursor: pointer;
-
-  &:hover {
-    background: ${({ theme }) => theme.bgContent};
-  }
 `;
