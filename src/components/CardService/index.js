@@ -10,9 +10,12 @@ import MoreOptions from "./MoreOptions";
 import useClient from "../../hooks/useClient";
 import { useCallback } from "react";
 
+// Assets
+import OkIcon from "../../assets/OkIcon";
+
 export default function CardService(props) {
   const { isCardContract = false } = props;
-  const { socket, contractWithPro, isLoading } = useClient();
+  const { socket, contractWithPro, isLoading, isCreated } = useClient();
 
   const handleContract = useCallback(
     (professional, value) => {
@@ -24,27 +27,36 @@ export default function CardService(props) {
 
   return (
     <Wrapper>
-      <Header>
-        <IconCard src={CategoryIcons[props.category]} />
-        <WrapperTextHeader>
-          <TitleCard>{props.title}</TitleCard>
-          <SubTitle>{props.category}</SubTitle>
-        </WrapperTextHeader>
-        <MoreOptions />
-      </Header>
-      <Details
-        location={props.location}
-        description={props.description}
-        professional={props.professional}
-      />
-      {!isCardContract && (
-        <Offers
-          socket={socket}
-          offers={props.offers}
-          usersOnline={props.usersOnline}
-          idService={props.id}
-          handleContract={handleContract}
-        />
+      {!isCreated ? (
+        <>
+          <Header>
+            <IconCard src={CategoryIcons[props.category]} />
+            <WrapperTextHeader>
+              <TitleCard>{props.title}</TitleCard>
+              <SubTitle>{props.category}</SubTitle>
+            </WrapperTextHeader>
+            <MoreOptions />
+          </Header>
+          <Details
+            location={props.location}
+            description={props.description}
+            professional={props.professional}
+          />
+          {!isCardContract && (
+            <Offers
+              socket={socket}
+              offers={props.offers}
+              usersOnline={props.usersOnline}
+              idService={props.id}
+              handleContract={handleContract}
+            />
+          )}
+        </>
+      ) : (
+        <ContractWrapper>
+          <OkIcon />
+          Profesional contratado.
+        </ContractWrapper>
       )}
     </Wrapper>
   );
@@ -53,7 +65,6 @@ export default function CardService(props) {
 const Wrapper = styled.div`
   width: 100%;
   height: fit-content;
-  min-height: 120px;
   display: flex;
   flex-direction: column;
   background: ${({ theme }) => theme.bgContent};
@@ -111,4 +122,21 @@ const TitleCard = styled.p`
   text-align: left;
   color: ${({ theme }) => theme.bgWhite};
   overflow: hidden;
+`;
+
+const ContractWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: ${({ theme }) => theme.bgWhite};
+
+  & > svg {
+    font-size: 25px;
+    margin-right: 10px;
+  }
+
+  & circle {
+    min-width: 25px;
+  }
 `;

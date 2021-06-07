@@ -57,6 +57,7 @@ export default function useClient() {
   );
 
   const contractWithPro = useCallback(({ service, professional, value }) => {
+    setIsCreated(() => false);
     setState({ isLoading: true, error: "" });
     contractProfessional({
       service,
@@ -66,6 +67,7 @@ export default function useClient() {
       .then((response) => {
         if (response.message === "HIRED_PROFESSIONAL") {
           setState({ isLoading: false, error: "" });
+          setIsCreated(() => true);
         }
       })
       .catch(() => {
