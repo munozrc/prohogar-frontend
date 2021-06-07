@@ -11,6 +11,7 @@ import { LINK_CLIENT } from "../../settings";
 import ServicesTab from "./ServicesTab";
 import GreetingTab from "./GreetingTab";
 import useSocket from "../../hooks/useSocket";
+import ContractsTab from "./ContractsTab";
 
 export default function ClientDashboard() {
   const { name, photo } = loadDataUser();
@@ -26,6 +27,7 @@ export default function ClientDashboard() {
       <Switch>
         <Route exact path="/dashboard" component={GreetingTab} />
         <Route exact path="/dashboard/services" component={ServicesTab} />
+        <Route exact path="/dashboard/contracts" component={ContractsTab} />
         <Route exact path="/dashboard/logout" component={logout} />
         <Route render={() => <Redirect to="/dashboard" />} />
       </Switch>
