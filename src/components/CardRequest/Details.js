@@ -19,7 +19,7 @@ export default function Details(props) {
       <ItemSimple>
         <UserIcon />
         <ItemText>
-          {professional ? professional.id : "Profesional no contratado."}
+          {professional === null ? "Profesional no contratado." : professional}
         </ItemText>
       </ItemSimple>
       <ItemSimple>

@@ -34,6 +34,9 @@ export default function ContractsTab() {
           description={service.description}
           location={service.location}
           category={service.category}
+          professional={service.professionals.find(
+            (pro) => pro.id === service.professional
+          )}
           isCardContract={true}
         />
       ))}

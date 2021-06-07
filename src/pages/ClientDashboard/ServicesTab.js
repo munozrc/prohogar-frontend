@@ -10,6 +10,9 @@ import { TabContainer, TabTitle } from "../../components/TabElement";
 
 export default function ServicesTab() {
   const { services, getAllServices } = useClient();
+  const servicesWithOutContract = services.filter(
+    (service) => service.state === 0
+  );
   const usersOnline = useGlobalUsers();
 
   useEffect(() => {
@@ -19,7 +22,7 @@ export default function ServicesTab() {
   return (
     <TabContainer>
       <TabTitle>Mis servicios</TabTitle>
-      {services.map((service) => (
+      {servicesWithOutContract.map((service) => (
         <CardService
           key={service.id}
           id={service.id}

@@ -38,3 +38,13 @@ export async function answerRequestByPro({ service, id, value }) {
   );
   return data;
 }
+
+export async function contractProfessional({ service, professional, value }) {
+  const { jwt } = loadDataUser();
+  const { data } = await axios.put(
+    `${URL_SERVER}/services`,
+    { service, professional, value },
+    { headers: { Authorization: `Bearer ${jwt}` } }
+  );
+  return data;
+}

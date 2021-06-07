@@ -11,7 +11,8 @@ import { WrapperWithBorder } from "./Details";
 // Assets
 import ArrowIcon from "../../assets/ArrowIcon";
 
-export default function Offers({ socket, offers, usersOnline, idService }) {
+export default function Offers(props) {
+  const { socket, offers, usersOnline, idService } = props;
   const [showOffers, setShowOffers] = useState(false);
   const [offersList, setOffersList] = useState(
     offers.filter((pro) => pro.acceptRequest === true)
@@ -61,7 +62,12 @@ export default function Offers({ socket, offers, usersOnline, idService }) {
                 maxWH={"30px"}
                 active={usersOnline.includes(pro.id)}
               />
-              <Button variant={"subtn"}>Contratar</Button>
+              <Button
+                variant={"subtn"}
+                onClick={() => props.handleContract(pro.id, 1)}
+              >
+                Contratar
+              </Button>
             </OffersUser>
           ))}
         </>

@@ -16,11 +16,15 @@ import CardRequest from "../../components/CardRequest";
 
 // Assets
 import EmptySVG from "../../assets/emptyImage.svg";
+import loadDataUser from "../../utils/loadDataUser";
 
 export default function ContractsTab() {
   const [showBtnNewContent, setShowBtnNewContent] = useState(false);
   const { socket, requests, getAllRequests } = useProfessional();
-  const requestWithContract = requests.filter((req) => req.state === 1);
+  const { id = "" } = loadDataUser();
+  const requestWithContract = requests.filter(
+    (req) => req.state === 1 && req.professional === id
+  );
   const usersOnline = useGlobalUsers();
 
   const handleNewContract = useCallback(
@@ -66,7 +70,7 @@ export default function ContractsTab() {
           title={request.title}
           description={request.description}
           location={request.location}
-          professional={request.professional}
+          professional={"Tú estas contratado."}
           client={request.client}
           usersOnline={usersOnline}
           isCardRequestContract={true}

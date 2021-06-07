@@ -8,10 +8,20 @@ import MoreOptions from "./MoreOptions";
 
 // Custom Hooks
 import useClient from "../../hooks/useClient";
+import { useCallback } from "react";
 
 export default function CardService(props) {
   const { isCardContract = false } = props;
-  const { socket } = useClient();
+  const { socket, contractWithPro, isLoading } = useClient();
+
+  const handleContract = useCallback(
+    (professional, value) => {
+      if (!isLoading)
+        contractWithPro({ service: props.id, professional, value });
+    },
+    [contractWithPro, props.id, isLoading]
+  );
+
   return (
     <Wrapper>
       <Header>
@@ -33,6 +43,7 @@ export default function CardService(props) {
           offers={props.offers}
           usersOnline={props.usersOnline}
           idService={props.id}
+          handleContract={handleContract}
         />
       )}
     </Wrapper>

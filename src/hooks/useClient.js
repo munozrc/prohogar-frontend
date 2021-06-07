@@ -1,12 +1,24 @@
-import { useCallback, useContext, useState } from "react";
-import { getServices, newService } from "../services/requestServices";
+import { useCallback, useContext, useEffect, useState } from "react";
+import {
+  contractProfessional,
+  getServices,
+  newService,
+} from "../services/requestServices";
 import SocketContext from "../context/SocketContext";
+import { toast } from "react-toastify";
 
 export default function useClient() {
   const { socket } = useContext(SocketContext);
   const [services, setServices] = useState([]);
   const [isCreated, setIsCreated] = useState(false);
   const [state, setState] = useState({ isLoading: false, error: "" });
+
+  useEffect(() => {
+    if (state.error !== "") {
+      toast.error(state.error);
+      setState((prev) => ({ ...prev, error: "" }));
+    }
+  }, [state.error]);
 
   const getAllServices = useCallback(() => {
     getServices().then((response) => {
@@ -44,6 +56,26 @@ export default function useClient() {
     [socket]
   );
 
+  const contractWithPro = useCallback(({ service, professional, value }) => {
+    setState({ isLoading: true, error: "" });
+    contractProfessional({
+      service,
+      professional,
+      value,
+    })
+      .then((response) => {
+        if (response.message === "HIRED_PROFESSIONAL") {
+          setState({ isLoading: false, error: "" });
+        }
+      })
+      .catch(() => {
+        setState({
+          isLoading: false,
+          error: "Fallo al contratar professional",
+        });
+      });
+  }, []);
+
   const clearError = useCallback(() => {
     setState((prev) => ({ ...prev, error: "" }));
   }, []);
@@ -56,6 +88,7 @@ export default function useClient() {
     messageError: state.error,
     getAllServices,
     createNewService,
+    contractWithPro,
     clearError,
   };
 }
