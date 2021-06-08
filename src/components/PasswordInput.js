@@ -29,6 +29,7 @@ const PasswordInput = forwardRef((props, ref) => {
       </LabelElement>
       <WrapperInput>
         <InputElement
+          autoComplete="off"
           type={values.showPassword ? "text" : "password"}
           name={props.name}
           ref={ref}

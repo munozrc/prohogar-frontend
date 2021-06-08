@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 // Custom Components
 import PhotoPreview from "../components/PhotoPreview";
 import PageWithGradient from "../layouts/PageWithGradient";
+import PasswordInput from "../components/PasswordInput";
 import Input from "../components/Input";
 import Button, { ArrowButton } from "../components/Button";
 import CheckBox from "../components/CheckBox";
@@ -20,7 +21,7 @@ export default function CreateAccount(props) {
   const { type } = useParams();
   const NameInput = useRef(null);
   const EmailInput = useRef(null);
-  const PasswordInput = useRef(null);
+  const PasswordInputRef = useRef(null);
   const PhotoInput = useRef(null);
   const CInput = useRef(null);
   const CheckBoxInput = useRef(null);
@@ -31,7 +32,7 @@ export default function CreateAccount(props) {
     if (!isLoading) {
       const name = NameInput.current.value;
       const email = EmailInput.current.value;
-      const password = PasswordInput.current.value;
+      const password = PasswordInputRef.current.value;
       const photo = PhotoInput.current.currentSrc;
       const category = CInput.current !== null ? CInput.current.value : "";
       const checkbox = CheckBoxInput.current.checked;
@@ -84,11 +85,11 @@ export default function CreateAccount(props) {
             ref={EmailInput}
             marginTop={"12px"}
           />
-          <Input
+          <PasswordInput
             name={"password"}
             type={"password"}
             label={"Contraseña"}
-            ref={PasswordInput}
+            ref={PasswordInputRef}
             marginTop={"12px"}
           />
           <CheckBox ref={CheckBoxInput}>
