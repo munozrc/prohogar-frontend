@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components";
+import { fadeInLarge } from "../styles/Animations";
 
 const FormElement = styled.form`
+  position: relative;
   width: 100%;
   height: fit-content;
   max-width: 380px;
@@ -13,6 +15,7 @@ const FormElement = styled.form`
   box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
   padding: 30px;
   margin: 30px 0px;
+  animation: ${fadeInLarge} 0.3s;
 
   ${({ register }) =>
     register &&

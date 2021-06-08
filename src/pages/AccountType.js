@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // Custom Components
 import PageWithGradient from "../layouts/PageWithGradient";
 import { TitleForm } from "../components/TitleForm";
+import { fadeInLarge } from "../styles/Animations";
 
 // Assets
 import ClientIcon from "../assets/client-icon.svg";
@@ -32,6 +33,7 @@ export default function AccountType() {
 const BoxElement = styled.div`
   display: flex;
   flex-direction: column;
+  animation: ${fadeInLarge} 0.3s;
 `;
 
 const WrapperCard = styled.div`

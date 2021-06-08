@@ -5,7 +5,7 @@ import { useParams } from "react-router";
 import PhotoPreview from "../components/PhotoPreview";
 import PageWithGradient from "../layouts/PageWithGradient";
 import Input from "../components/Input";
-import Button from "../components/Button";
+import Button, { ArrowButton } from "../components/Button";
 import CheckBox from "../components/CheckBox";
 import TextLink from "../components/TextLink";
 import ComboBox from "../components/ComboBox";
@@ -56,6 +56,7 @@ export default function CreateAccount(props) {
         <Welcome />
       ) : (
         <FormElement register onSubmit={handleSubmit}>
+          <ArrowButton onClick={() => props.history.push("/register")} />
           <PhotoPreview
             title={type === "professional" ? "Profesional" : "Cliente"}
             ref={PhotoInput}
