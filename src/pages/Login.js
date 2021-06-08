@@ -9,20 +9,21 @@ import FormElement from "../components/Form";
 import Input from "../components/Input";
 import TextLink from "../components/TextLink";
 import Button from "../components/Button";
+import PasswordInput from "../components/PasswordInput";
 import { TitleForm } from "../components/TitleForm";
 
 export default function Login() {
   const { login, isLoading } = useUser();
 
   const EmailInput = useRef(null);
-  const PasswordInput = useRef(null);
+  const PasswordInputRef = useRef(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (!isLoading) {
       const email = EmailInput.current.value;
-      const password = PasswordInput.current.value;
+      const password = PasswordInputRef.current.value;
       login({ email, password });
     }
   };
@@ -37,11 +38,11 @@ export default function Login() {
           label={"CORREO ELECTRONICO"}
           ref={EmailInput}
         />
-        <Input
+        <PasswordInput
           name={"password"}
           type={"password"}
           label={"CONTRASEÑA"}
-          ref={PasswordInput}
+          ref={PasswordInputRef}
         />
         <TextLink to={"/restorepassword"}>¿Olvidaste tu contraseña?</TextLink>
         <Button>{isLoading ? "Cargando..." : "Entrar"}</Button>

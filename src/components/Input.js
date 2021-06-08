@@ -56,7 +56,7 @@ const Input = forwardRef(
   }
 );
 
-const LabelElement = styled.label`
+export const LabelElement = styled.label`
   display: inline-block;
   color: ${({ theme }) => theme.labelColor};
   margin-top: ${({ marginTop }) => marginTop};
@@ -67,12 +67,12 @@ const LabelElement = styled.label`
   text-transform: uppercase;
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
   width: 100%;
   height: fit-content;
 `;
 
-const InputElement = styled.input`
+export const InputElement = styled.input`
   height: 40px;
   width: 100%;
   min-height: 40px;
