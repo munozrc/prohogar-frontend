@@ -1,24 +1,26 @@
 {
   "files": {
-    "main.js": "/prohogar-frontend/static/js/main.68877319.chunk.js",
-    "main.js.map": "/prohogar-frontend/static/js/main.68877319.chunk.js.map",
+    "main.js": "/prohogar-frontend/static/js/main.b2cf3807.chunk.js",
+    "main.js.map": "/prohogar-frontend/static/js/main.b2cf3807.chunk.js.map",
     "runtime-main.js": "/prohogar-frontend/static/js/runtime-main.191951b1.js",
     "runtime-main.js.map": "/prohogar-frontend/static/js/runtime-main.191951b1.js.map",
     "static/css/2.97503911.chunk.css": "/prohogar-frontend/static/css/2.97503911.chunk.css",
-    "static/js/2.3f060987.chunk.js": "/prohogar-frontend/static/js/2.3f060987.chunk.js",
-    "static/js/2.3f060987.chunk.js.map": "/prohogar-frontend/static/js/2.3f060987.chunk.js.map",
+    "static/js/2.c69597d6.chunk.js": "/prohogar-frontend/static/js/2.c69597d6.chunk.js",
+    "static/js/2.c69597d6.chunk.js.map": "/prohogar-frontend/static/js/2.c69597d6.chunk.js.map",
     "index.html": "/prohogar-frontend/index.html",
     "static/css/2.97503911.chunk.css.map": "/prohogar-frontend/static/css/2.97503911.chunk.css.map",
-    "static/js/2.3f060987.chunk.js.LICENSE.txt": "/prohogar-frontend/static/js/2.3f060987.chunk.js.LICENSE.txt",
+    "static/js/2.c69597d6.chunk.js.LICENSE.txt": "/prohogar-frontend/static/js/2.c69597d6.chunk.js.LICENSE.txt",
     "static/media/app.6dca0cb6.svg": "/prohogar-frontend/static/media/app.6dca0cb6.svg",
     "static/media/client-icon.ccbbb176.svg": "/prohogar-frontend/static/media/client-icon.ccbbb176.svg",
+    "static/media/emptyImage.32524157.svg": "/prohogar-frontend/static/media/emptyImage.32524157.svg",
     "static/media/home-img.d22046bf.svg": "/prohogar-frontend/static/media/home-img.d22046bf.svg",
+    "static/media/noRequest.ad6baa38.svg": "/prohogar-frontend/static/media/noRequest.ad6baa38.svg",
     "static/media/professional-icon.828b683b.svg": "/prohogar-frontend/static/media/professional-icon.828b683b.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.191951b1.js",
     "static/css/2.97503911.chunk.css",
-    "static/js/2.3f060987.chunk.js",
-    "static/js/main.68877319.chunk.js"
+    "static/js/2.c69597d6.chunk.js",
+    "static/js/main.b2cf3807.chunk.js"
   ]
 }
