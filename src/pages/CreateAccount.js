@@ -66,7 +66,7 @@ export default function CreateAccount(props) {
               name={"Categoria"}
               label={"Seleccione categoria"}
               marginTop="12px"
-              options={["Albanil", "Mudanzas", "Plomero", "Tapicero"]}
+              options={["Albañil", "Mudanzas", "Plomero", "Tapicero"]}
               ref={CInput}
             />
           )}

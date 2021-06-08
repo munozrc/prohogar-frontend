@@ -4,6 +4,7 @@ import Button from "../Button";
 import useClient from "../../hooks/useClient";
 import { useEffect, useRef } from "react";
 import { toast } from "react-toastify";
+import { CategoryStatement } from "../../settings";
 
 export default function EntryData({ category = "", changeStep }) {
   const { isCreated, isLoading, messageError, clearError, createNewService } =
@@ -42,7 +43,7 @@ export default function EntryData({ category = "", changeStep }) {
 
   const FormCreateService = () => (
     <Container onSubmit={handleSubmit}>
-      <Title>¿Que necesitas de un {category}?</Title>
+      <Title>{CategoryStatement[category]}</Title>
       <Input
         label="Titulo del servicio"
         marginTop="12px"

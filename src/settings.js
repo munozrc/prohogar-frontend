@@ -68,7 +68,7 @@ export const LINK_CLIENT = [
 ];
 
 export const CategoryIcons = {
-  Albanil:
+  Albañil:
     "https://s3.amazonaws.com/timbrit-produccion/icono_albanil_thumb.png",
   Mudanzas:
     "https://s3.amazonaws.com/timbrit-produccion/icono_mudanzas_thumb.png",
@@ -76,4 +76,11 @@ export const CategoryIcons = {
     "https://s3.amazonaws.com/timbrit-produccion/icono_plomero_thumb.png",
   Tapicero:
     "https://s3.amazonaws.com/timbrit-produccion/icono_tapicero_thumb.png",
+};
+
+export const CategoryStatement = {
+  Albañil: "¿Que necesitas de un Albañil?",
+  Mudanzas: "¡Te vas a mudar!  Dinos lo que necesitas...",
+  Plomero: "¿Que necesitas de un Promero?",
+  Tapicero: "¿Que necesitas de un Tapicero?",
 };
