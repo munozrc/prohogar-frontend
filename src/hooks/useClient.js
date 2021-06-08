@@ -1,6 +1,7 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import {
   contractProfessional,
+  deleteService,
   getServices,
   newService,
 } from "../services/requestServices";
@@ -11,6 +12,7 @@ export default function useClient() {
   const { socket } = useContext(SocketContext);
   const [services, setServices] = useState([]);
   const [isCreated, setIsCreated] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
   const [state, setState] = useState({ isLoading: false, error: "" });
 
   useEffect(() => {
@@ -56,6 +58,27 @@ export default function useClient() {
     [socket]
   );
 
+  const deleteServiceByClient = useCallback(
+    (service) => {
+      setIsDeleted(() => false);
+      setState({ isLoading: true, error: "" });
+      deleteService(service)
+        .then((response) => {
+          if (response.message === "DELETED_SERVICE") {
+            setState({ isLoading: false, error: "" });
+            setIsDeleted(() => true);
+
+            // Send event Emit to Server
+            socket.emit("deleteRequest", response.data);
+          }
+        })
+        .catch(() => {
+          setState({ isLoading: false, error: "Fallo al eliminar servicio" });
+        });
+    },
+    [socket]
+  );
+
   const contractWithPro = useCallback(
     ({ service, professional, value }) => {
       setIsCreated(() => false);
@@ -91,11 +114,13 @@ export default function useClient() {
     socket,
     services,
     isCreated,
+    isDeleted,
     isLoading: state.isLoading,
     messageError: state.error,
     getAllServices,
     createNewService,
     contractWithPro,
+    deleteServiceByClient,
     clearError,
   };
 }

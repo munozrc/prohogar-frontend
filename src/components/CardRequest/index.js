@@ -16,7 +16,7 @@ import OkIcon from "../../assets/OkIcon";
 export default function CardRequest(props) {
   const { usersOnline, isCardRequestContract = false } = props;
   const [offersService, setOffersService] = useState(props.offers);
-  const [isContract, setIsContract] = useState(null);
+  const [stateRequest, setStateRequest] = useState(null);
   const { socket, answerRequest } = useProfessional();
   const { id } = loadDataUser();
 
@@ -64,28 +64,37 @@ export default function CardRequest(props) {
   const ContractEventByClient = useCallback(
     (ServiceCurrent) => {
       if (ServiceCurrent.id === props.id && ServiceCurrent.professional === id)
-        setIsContract(() => 1);
+        setStateRequest(() => 1);
       else if (
         ServiceCurrent.id === props.id &&
         ServiceCurrent.professional !== id
       )
-        setIsContract(() => 0);
+        setStateRequest(() => 0);
     },
     [props.id, id]
+  );
+
+  const RequestIsDeleted = useCallback(
+    (ServiceCurrent) => {
+      if (ServiceCurrent.id === props.id) setStateRequest(() => 2);
+    },
+    [props.id]
   );
 
   useEffect(() => {
     socket.on("answerRequest", UpdateDataOffer);
     socket.on("contractProfessional", ContractEventByClient);
+    socket.on("deleteRequest", RequestIsDeleted);
     return () => {
       socket.off("answerRequest", UpdateDataOffer);
       socket.off("contractProfessional", ContractEventByClient);
+      socket.off("deleteRequest", RequestIsDeleted);
     };
-  }, [UpdateDataOffer, ContractEventByClient, socket]);
+  }, [UpdateDataOffer, ContractEventByClient, RequestIsDeleted, socket]);
 
   return (
     <Wrapper>
-      {isContract === null ? (
+      {stateRequest === null ? (
         <>
           <Header>
             <UserImageWrapper>
@@ -117,13 +126,14 @@ export default function CardRequest(props) {
         </>
       ) : (
         <ContractWrapper>
-          {isContract === 1 && (
+          {stateRequest === 0 &&
+            "Este servicio fue asignado a otro profesional."}
+          {stateRequest === 1 && (
             <>
-              <OkIcon />
-              Tú fuiste contratado.
+              <OkIcon /> Tú fuiste contratado.
             </>
           )}
-          {isContract === 0 && "Este servicio ya fue contrado."}
+          {stateRequest === 2 && "Este servicio fue eliminado."}
         </ContractWrapper>
       )}
     </Wrapper>

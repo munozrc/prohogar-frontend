@@ -15,7 +15,14 @@ import OkIcon from "../../assets/OkIcon";
 
 export default function CardService(props) {
   const { isCardContract = false } = props;
-  const { socket, contractWithPro, isLoading, isCreated } = useClient();
+  const {
+    socket,
+    isLoading,
+    isCreated,
+    isDeleted,
+    contractWithPro,
+    deleteServiceByClient,
+  } = useClient();
 
   const handleContract = useCallback(
     (professional, value) => {
@@ -25,9 +32,13 @@ export default function CardService(props) {
     [contractWithPro, props.id, isLoading]
   );
 
+  const handleDeleteService = useCallback(() => {
+    if (!isLoading) deleteServiceByClient(props.id);
+  }, [deleteServiceByClient, props.id, isLoading]);
+
   return (
     <Wrapper>
-      {!isCreated ? (
+      {!isCreated && !isDeleted ? (
         <>
           <Header>
             <IconCard src={CategoryIcons[props.category]} />
@@ -35,7 +46,7 @@ export default function CardService(props) {
               <TitleCard>{props.title}</TitleCard>
               <SubTitle>{props.category}</SubTitle>
             </WrapperTextHeader>
-            <MoreOptions />
+            <MoreOptions onDeleteService={handleDeleteService} />
           </Header>
           <Details
             location={props.location}
@@ -53,11 +64,14 @@ export default function CardService(props) {
           )}
         </>
       ) : (
-        <ContractWrapper>
-          <OkIcon />
-          Profesional contratado.
-        </ContractWrapper>
+        !isDeleted && (
+          <ContractWrapper>
+            <OkIcon />
+            Profesional contratado.
+          </ContractWrapper>
+        )
       )}
+      {isDeleted && <ContractWrapper>Servicio Eliminado.</ContractWrapper>}
     </Wrapper>
   );
 }

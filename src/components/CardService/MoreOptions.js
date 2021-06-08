@@ -4,7 +4,7 @@ import styled from "styled-components";
 // Assets
 import MoreOptionsIcon from "../../assets/MoreOptionsIcon";
 
-export default function MoreOption() {
+export default function MoreOption({ onDeleteService }) {
   const [showMoreOptions, setShowMoreOptions] = useState(false);
   return (
     <>
@@ -12,7 +12,7 @@ export default function MoreOption() {
       {showMoreOptions && (
         <ContainerBox onMouseLeave={() => setShowMoreOptions(() => false)}>
           <ItemOption>Editar</ItemOption>
-          <ItemOption>Eliminar</ItemOption>
+          <ItemOption onClick={onDeleteService}>Eliminar</ItemOption>
         </ContainerBox>
       )}
     </>

@@ -21,6 +21,14 @@ export async function getServices() {
   return data;
 }
 
+export async function deleteService(service) {
+  const { jwt } = loadDataUser();
+  const { data } = await axios.delete(`${URL_SERVER}/services/${service}`, {
+    headers: { Authorization: `Bearer ${jwt}` },
+  });
+  return data;
+}
+
 export async function getRequests() {
   const { jwt } = loadDataUser();
   const { data } = await axios.get(`${URL_SERVER}/requests`, {
