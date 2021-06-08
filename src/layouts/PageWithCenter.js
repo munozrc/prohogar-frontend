@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 // Custom Components
 import LogoLink from "../components/LogoLink";
+import { fadeUpDown } from "../styles/Animations";
 
 export default function PageWithCenter({ children }) {
   return (
@@ -27,6 +28,7 @@ const WrapperMain = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: ${fadeUpDown} 0.8s ease;
 `;
 
 const HeaderElement = styled.header`

@@ -7,6 +7,7 @@ import PageWithCenter from "../layouts/PageWithCenter";
 // Assets
 import ComputerSVG from "../assets/app.svg";
 import HouseSVG from "../assets/home-img.svg";
+import { fadeLeft, fadeRight } from "../styles/Animations";
 
 export default function Home() {
   return (
@@ -108,6 +109,7 @@ const HouseImg = styled.img`
   right: -320px;
   max-width: 790px;
   user-select: none;
+  animation: ${fadeRight} 0.8s ease;
 
   @media (max-width: 720px) {
     right: -50px;
@@ -122,6 +124,7 @@ const ComputerImg = styled.img`
   max-width: 70%;
   user-select: none;
   transform: scaleX(-1);
+  animation: ${fadeLeft} 0.8s ease;
 
   @media (min-width: 1400px) {
     left: -480px;
