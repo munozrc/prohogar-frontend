@@ -65,7 +65,7 @@ export default function CreateAccount(props) {
           {type === "professional" && (
             <ComboBox
               name={"Categoria"}
-              label={"Seleccione categoria"}
+              label={"Seleccione categoría"}
               marginTop="12px"
               options={["Albañil", "Mudanzas", "Plomero", "Tapicero"]}
               ref={CInput}

@@ -35,7 +35,7 @@ export const LINK_PRO = [
   {
     path: "/dashboard/logout",
     icon: LogoutIcon,
-    text: "Cerrar Sesion",
+    text: "Cerrar Sesión",
   },
 ];
 
@@ -63,7 +63,7 @@ export const LINK_CLIENT = [
   {
     path: "/dashboard/logout",
     icon: LogoutIcon,
-    text: "Cerrar Sesion",
+    text: "Cerrar Sesión",
   },
 ];
 
@@ -79,8 +79,8 @@ export const CategoryIcons = {
 };
 
 export const CategoryStatement = {
-  Albañil: "¿Que necesitas de un Albañil?",
-  Mudanzas: "¡Te vas a mudar!  Dinos lo que necesitas...",
-  Plomero: "¿Que necesitas de un Promero?",
-  Tapicero: "¿Que necesitas de un Tapicero?",
+  Albañil: "No dejes que tu casa se caiga a pedazos, dinos tu problema...",
+  Mudanzas: "¿Vas a mudarte?, déjanos ayudarte...",
+  Plomero: "Tuberías tapadas, olores extraños, déjalo en nuestras manos...",
+  Tapicero: "¿Muebles o sillas viejas?, déjanos renovarlos por ti...",
 };

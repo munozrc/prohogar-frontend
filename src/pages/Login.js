@@ -35,13 +35,13 @@ export default function Login() {
         <Input
           name={"email"}
           type={"email"}
-          label={"CORREO ELECTRONICO"}
+          label={"Correo electrónico"}
           ref={EmailInput}
         />
         <PasswordInput
           name={"password"}
           type={"password"}
-          label={"CONTRASEÑA"}
+          label={"Contraseña"}
           ref={PasswordInputRef}
         />
         <TextLink to={"/restorepassword"}>¿Olvidaste tu contraseña?</TextLink>
