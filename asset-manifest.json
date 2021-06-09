@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/prohogar-frontend/static/js/main.7cc5a83d.chunk.js",
-    "main.js.map": "/prohogar-frontend/static/js/main.7cc5a83d.chunk.js.map",
+    "main.js": "/prohogar-frontend/static/js/main.2481f97d.chunk.js",
+    "main.js.map": "/prohogar-frontend/static/js/main.2481f97d.chunk.js.map",
     "runtime-main.js": "/prohogar-frontend/static/js/runtime-main.191951b1.js",
     "runtime-main.js.map": "/prohogar-frontend/static/js/runtime-main.191951b1.js.map",
     "static/css/2.97503911.chunk.css": "/prohogar-frontend/static/css/2.97503911.chunk.css",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.191951b1.js",
     "static/css/2.97503911.chunk.css",
     "static/js/2.795b4407.chunk.js",
-    "static/js/main.7cc5a83d.chunk.js"
+    "static/js/main.2481f97d.chunk.js"
   ]
 }
