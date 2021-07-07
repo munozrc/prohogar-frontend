@@ -1,7 +1,7 @@
 {
   "name": "prohogar-frontend",
   "version": "0.0.1",
-  "homepage": "https://iamcarlosmunoz.github.io/prohogar-frontend",
+  "homepage": "https://munozrc.github.io/prohogar-frontend",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "5.11.10",
