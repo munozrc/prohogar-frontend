@@ -1,6 +1,6 @@
-# [Prohogar](https://iamcarlosmunoz.github.io/prohogar-frontend/) frontend
+# [Prohogar](https://munozrc.github.io/prohogar-frontend/) frontend
 
-> Also, check out the [backend](https://github.com/iamcarlosmunoz/prohogar-backend) of the app.
+> Also, check out the [backend](https://github.com/munozrc/prohogar-backend) of the app.
 
 ## Used technologies:
 
